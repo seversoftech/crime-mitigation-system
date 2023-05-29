@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'screens/forgetpassword.dart';
 import 'screens/loginscreen.dart';
 import 'screens/signup.dart';
 
@@ -19,8 +20,8 @@ class MainApp extends StatelessWidget {
         primarySwatch: Colors.blueGrey,
       ),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: SignupScreen(),
+      home: const Scaffold(
+        body: ForgetPassword(),
       ),
     );
   }

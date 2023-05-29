@@ -1,10 +1,12 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class ElevatedClickButton extends StatelessWidget {
   final Widget child;
   final VoidCallback onPressed;
 
-  ElevatedClickButton({
+  const ElevatedClickButton({
     super.key,
     required this.onPressed,
     required this.child,
