@@ -3,18 +3,20 @@ import 'package:flutter/material.dart';
 class ElevatedClickButton extends StatelessWidget {
   final Widget child;
   final VoidCallback onPressed;
-  final Gradient gradient;
 
-  const ElevatedClickButton(
-      {super.key,
-      required this.onPressed,
-      required this.child,
-      required this.gradient});
+  ElevatedClickButton({
+    super.key,
+    required this.onPressed,
+    required this.child,
+  });
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
+      textTheme: ButtonTextTheme.primary,
+      textColor: Colors.white,
       onPressed: onPressed,
+      color: Theme.of(context).primaryColor,
       splashColor: Colors.black12,
       padding: const EdgeInsets.all(0),
       shape: RoundedRectangleBorder(
@@ -23,7 +25,6 @@ class ElevatedClickButton extends StatelessWidget {
       child: Ink(
         width: double.infinity,
         decoration: BoxDecoration(
-          gradient: gradient,
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Container(

@@ -4,7 +4,7 @@ class TextClickButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
 
-  const TextClickButton({
+  const TextClickButton({super.key, 
     required this.text,
     required this.onPressed,
   });

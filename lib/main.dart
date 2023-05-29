@@ -11,9 +11,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
- 
-      theme: ThemeData(primaryColor: Colors.black),
+    return MaterialApp(
+      theme: ThemeData(
+        primaryColor: Colors.grey[900],
+        hintColor: Colors.black54,
+        primarySwatch: Colors.blueGrey,
+      ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: LoginScreen(),
