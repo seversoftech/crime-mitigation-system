@@ -20,9 +20,6 @@ class MainApp extends StatelessWidget {
         primarySwatch: Colors.blueGrey,
       ),
       debugShowCheckedModeBanner: false,
-      home: const Scaffold(
-        body: SignupScreen(),
-      ),
       initialRoute: '/',
       routes: {
         '/': (context) => const LoginScreen(),
