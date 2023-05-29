@@ -5,7 +5,7 @@ class ClickButton extends StatelessWidget {
   final VoidCallback onPressed;
   final Gradient gradient;
 
-  const ClickBuClickButtontton(
+  const ClickButton(
       {super.key,
       required this.onPressed,
       required this.child,
