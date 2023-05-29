@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/button.dart';
+import '../widgets/elevatedButton.dart';
+import '../widgets/textButton.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -33,7 +34,7 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20.0),
-            ClickButton(
+            ElevatedClickButton(
               gradient: const RadialGradient(
                 colors: [Color(0xFFFFFFFF), Color(0xFF141313)],
                 stops: [0, 1],
@@ -43,9 +44,13 @@ class LoginScreen extends StatelessWidget {
               child: const Text('Login'),
             ),
             const SizedBox(height: 10.0),
-            TextButton(
-              onPressed: () {},
-              child: const Text('Forgot Password?'),
+            Column(
+              children: [
+                TextClickButton(
+                  onPressed: () {},
+                  text: ' Forget Password',
+                )
+              ],
             ),
           ],
         ),
