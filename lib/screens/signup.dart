@@ -54,11 +54,15 @@ class SignupScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextClickButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/forgetpassword');
+                    },
                     text: 'Forget Password',
                   ),
                   TextClickButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/');
+                    },
                     text: 'Already Registered? Sign In',
                   )
                 ],
