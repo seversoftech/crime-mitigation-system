@@ -45,11 +45,11 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextClickButton(
-                  onPressed: () {},
+                  onPressed: () { Navigator.pushNamed(context, '/forgetpassword');},
                   text: 'Forget Password',
                 ),
                 TextClickButton(
-                  onPressed: () {},
+                  onPressed: () { Navigator.pushNamed(context, '/signup');},
                   text: 'Sign Up',
                 )
               ],

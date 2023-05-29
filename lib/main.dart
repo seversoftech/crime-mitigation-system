@@ -21,8 +21,14 @@ class MainApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: const Scaffold(
-        body: ForgetPassword(),
+        body: SignupScreen(),
       ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const LoginScreen(),
+        '/signup': (context) => const SignupScreen(),
+        '/forgetpassword': (context) => const ForgetPassword(),
+      },
     );
   }
 }
