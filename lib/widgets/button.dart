@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class GradientButton extends StatelessWidget {
+class ClickButton extends StatelessWidget {
   final Widget child;
-  final Function onPressed;
+  final VoidCallback onPressed;
   final Gradient gradient;
 
-  const GradientButton(
+  const ClickBuClickButtontton(
       {super.key,
       required this.onPressed,
       required this.child,
