@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'screens/loginscreen.dart';
+import 'screens/signup.dart';
 
 void main() {
   runApp(const MainApp());
@@ -19,7 +20,7 @@ class MainApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: LoginScreen(),
+        body: SignupScreen(),
       ),
     );
   }
