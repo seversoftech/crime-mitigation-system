@@ -35,7 +35,7 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 20.0),
             ClickButton(
               gradient: const RadialGradient(
-                colors: [Color(0xffcddc39), Color(0xFF141313)],
+                colors: [Color(0xFFFFFFFF), Color(0xFF141313)],
                 stops: [0, 1],
                 center: Alignment.center,
               ),
@@ -45,7 +45,7 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 10.0),
             TextButton(
               onPressed: () {},
-              child: const Text('Forgot Password?' ),
+              child: const Text('Forgot Password?'),
             ),
           ],
         ),
