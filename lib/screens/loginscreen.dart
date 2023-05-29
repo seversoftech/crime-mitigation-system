@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../widgets/button.dart';
 
 class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,18 +33,19 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20.0),
-             ClickButton(gradient: const RadialGradient(
-          colors: [Color(0xffffeb3b), Color(0xff673ab7)],
-          stops: [0, 1],
-          center: Alignment.bottomRight,
-        )
-        ,
-            onPressed: () {},
-            child: const Text('Login'),),
+            ClickButton(
+              gradient: const RadialGradient(
+                colors: [Color(0xffcddc39), Color(0xFF141313)],
+                stops: [0, 1],
+                center: Alignment.center,
+              ),
+              onPressed: () {},
+              child: const Text('Login'),
+            ),
             const SizedBox(height: 10.0),
             TextButton(
               onPressed: () {},
-              child: const Text('Forgot Password?'),
+              child: const Text('Forgot Password?' ),
             ),
           ],
         ),
@@ -50,5 +53,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-
-

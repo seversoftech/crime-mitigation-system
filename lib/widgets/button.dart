@@ -24,7 +24,7 @@ class ClickButton extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           gradient: gradient,
-          borderRadius: BorderRadius.circular(30.0),
+          borderRadius: BorderRadius.circular(12.0),
         ),
         child: Container(
             constraints: const BoxConstraints(maxWidth: 200.0, minHeight: 50.0),
