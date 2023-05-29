@@ -38,7 +38,9 @@ class LoginScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10.0),
             ElevatedClickButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/profile');
+              },
               child: const Text('Login'),
             ),
             Row(
