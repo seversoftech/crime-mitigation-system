@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
@@ -45,7 +46,11 @@ class UserProfilePage extends StatelessWidget {
                 ],
               ),
             ),
-            ProfileMenu()
+            ProfileMenu(
+              icon: LineAwesomeIcons.user_circle,
+              press: () {},
+              text: 'My Account',
+            )
           ],
         ),
       ),
@@ -55,8 +60,15 @@ class UserProfilePage extends StatelessWidget {
 
 class ProfileMenu extends StatelessWidget {
   const ProfileMenu({
-    super.key,
-  });
+    Key? key,
+    required this.icon,
+    required this.press,
+    required this.text,
+  }) : super(key: key);
+
+  final String text;
+  final IconData icon;
+  final VoidCallback press;
 
   @override
   Widget build(BuildContext context) {
@@ -70,19 +82,16 @@ class ProfileMenu extends StatelessWidget {
             ),
           ),
         ),
-        onPressed: () {},
+        onPressed: press,
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Row(
             children: [
-              Icon(
-                size: 30,
-                LineAwesomeIcons.user_circle,
-              ),
+              Icon(size: 30, icon),
               SizedBox(width: 20),
               Expanded(
                 child: Text(
-                  "My Account",
+                  text,
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ),
