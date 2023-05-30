@@ -21,10 +21,18 @@ class LoginScreen extends StatelessWidget {
                   'assets/icons/icon.png',
                   height: 150,
                 ),
+                Text(
+                  'WELCOME BACK',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Muli',
+                      fontSize: 25),
+                ),
                 const SizedBox(height: 20.0),
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Email',
+                    hintText: 'Enter your email',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(12))),
                   ),
@@ -34,6 +42,7 @@ class LoginScreen extends StatelessWidget {
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Password',
+                    hintText: 'Enter your password',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(12))),
                   ),
@@ -60,9 +69,7 @@ class LoginScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, '/profile');
                   },
-                  child: 
-                    'Login',
-                  
+                  child: 'Login',
                 ),
               ],
             ),

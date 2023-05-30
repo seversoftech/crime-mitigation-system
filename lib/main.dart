@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'screens/forgetpassword.dart';
 import 'screens/loginscreen.dart';
@@ -16,12 +17,9 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        fontFamily: "Muli",
-        // textTheme: TextTheme(bodyText1: ),
-        scaffoldBackgroundColor: Colors.white,
+        textTheme: GoogleFonts.latoTextTheme(),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
-       
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
