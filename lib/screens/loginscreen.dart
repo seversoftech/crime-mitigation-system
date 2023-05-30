@@ -38,13 +38,6 @@ class LoginScreen extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(12))),
                   ),
                 ),
-                const SizedBox(height: 10.0),
-                ElevatedClickButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/profile');
-                  },
-                  child: const Text('Login'),
-                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -61,6 +54,13 @@ class LoginScreen extends StatelessWidget {
                       text: 'Sign Up',
                     )
                   ],
+                ),
+                const SizedBox(height: 10.0),
+                ElevatedClickButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/profile');
+                  },
+                  child: const Text('Login'),
                 ),
               ],
             ),

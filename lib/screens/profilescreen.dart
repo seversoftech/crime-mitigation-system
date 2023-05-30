@@ -6,43 +6,45 @@ class UserProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('User Profile'),
-      // ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          CircleAvatar(
-            radius: 50,
-            backgroundImage: AssetImage('assets/icons/icon.png'),
-          ),
-          SizedBox(height: 16),
-          Text(
-            'Sever Emmanuel',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          Text(
-            'Student',
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.grey,
-            ),
-          ),
-          SizedBox(height: 16),
-          ListTile(
-            leading: Icon(LineAwesomeIcons.mail_bulk, color: Colors.green),
-            title: Text('sever@seversoftech.com'),
-          ),
-          ListTile(
-            leading: Icon(LineAwesomeIcons.phone, color: Colors.green),
-            title: Text('07033409667'),
-          ),
-        ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('User Profile'),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 115,
+              width: 115,
+              child: Stack(
+                clipBehavior: Clip.hardEdge,
+                fit: StackFit.expand,
+                children: [
+                  CircleAvatar(
+                    backgroundImage: AssetImage("assets/icons/icon.png"),
+                  ),
+                  Positioned(
+                    right: -12,
+                    bottom: 0,
+                    child: SizedBox(
+                      height: 46,
+                      width: 46,
+                      child: IconButton(
+                        color: const Color(0xFF030116),
+                        onPressed: () {},
+                        icon: (Icon(
+                          size: 28,
+                          LineAwesomeIcons.camera,
+                        )),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
