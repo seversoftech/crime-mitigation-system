@@ -23,10 +23,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 Text(
                   'WELCOME BACK',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Muli',
-                      fontSize: 25),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                 ),
                 const SizedBox(height: 20.0),
                 TextFormField(
