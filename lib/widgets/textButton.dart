@@ -22,8 +22,8 @@ class TextClickButton extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.bold,
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
           color: Theme.of(context).primaryColor,
         ),
       ),

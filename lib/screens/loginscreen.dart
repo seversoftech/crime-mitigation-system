@@ -2,16 +2,22 @@ import 'package:flutter/material.dart';
 
 import '../widgets/elevatedButton.dart';
 import '../widgets/textButton.dart';
+import '../constants/constants.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+bool isChecked = false;
+
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-       
-        
         title: const Text('Login'),
       ),
       body: Center(
@@ -30,12 +36,10 @@ class LoginScreen extends StatelessWidget {
                   'WELCOME BACK',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                 ),
-                const Text(
+                Text(
                   textAlign: TextAlign.center,
                   'Sign in with your registered email address and password to continue...',
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
+                  style: textStyle,
                 ),
                 const SizedBox(height: 20.0),
                 TextFormField(
@@ -59,17 +63,29 @@ class LoginScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    Row(
+                      children: [
+                        Checkbox(
+                          value: isChecked,
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                isChecked = value!;
+                              },
+                            );
+                          },
+                        ),
+                        Text(
+                          'Remember Me',
+                          style: textStyle,
+                        ),
+                      ],
+                    ),
                     TextClickButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/forgetpassword');
                       },
                       text: 'Forget Password',
-                    ),
-                    TextClickButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/signup');
-                      },
-                      text: 'Sign Up',
                     )
                   ],
                 ),
@@ -79,6 +95,24 @@ class LoginScreen extends StatelessWidget {
                     Navigator.pushNamed(context, '/profile');
                   },
                   child: 'Login',
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Dont have an account?',
+                      style: textStyle,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    TextClickButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/signup');
+                      },
+                      text: 'Sign Up',
+                    )
+                  ],
                 ),
               ],
             ),
