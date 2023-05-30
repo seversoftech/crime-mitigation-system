@@ -27,6 +27,15 @@ class SignupScreen extends StatelessWidget {
                 const SizedBox(height: 10.0),
                 const TextField(
                   decoration: InputDecoration(
+                    hintText: 'Enter your full name',
+                    labelText: 'Full Name',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(12))),
+                  ),
+                ),
+                const SizedBox(height: 10.0),
+                const TextField(
+                  decoration: InputDecoration(
                     hintText: 'Enter your email',
                     labelText: 'Email',
                     border: OutlineInputBorder(
@@ -38,6 +47,15 @@ class SignupScreen extends StatelessWidget {
                   decoration: InputDecoration(
                     hintText: 'Enter your Phone number',
                     labelText: 'Phone Number',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(12))),
+                  ),
+                ),
+                const SizedBox(height: 10.0),
+                const TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Enter your resident address',
+                    labelText: 'Address',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(12))),
                   ),
@@ -56,23 +74,6 @@ class SignupScreen extends StatelessWidget {
                 ElevatedClickButton(
                   onPressed: () {},
                   child: 'Register',
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextClickButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/forgetpassword');
-                      },
-                      text: 'Forget Password',
-                    ),
-                    TextClickButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/');
-                      },
-                      text: 'Already Registered? Sign In',
-                    )
-                  ],
                 ),
               ],
             ),
