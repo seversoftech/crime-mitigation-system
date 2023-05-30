@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../constants/constants.dart';
 import '../widgets/elevatedButton.dart';
 import '../widgets/textButton.dart';
 
@@ -10,7 +11,6 @@ class ForgetPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-       
         title: const Text('Reset Password'),
       ),
       body: Center(
@@ -25,6 +25,11 @@ class ForgetPassword extends StatelessWidget {
                   'assets/icons/icon.png',
                   height: 150,
                 ),
+                Text(
+                  textAlign: TextAlign.center,
+                  'Please enter your email, we will send you a password reset link...',
+                  style: textStyle,
+                ),
                 const SizedBox(height: 20.0),
                 const TextField(
                   decoration: InputDecoration(
@@ -37,22 +42,23 @@ class ForgetPassword extends StatelessWidget {
                 const SizedBox(height: 10.0),
                 ElevatedClickButton(
                   onPressed: () {},
-                  child: 'Rest Password',
+                  child: 'Continue',
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Text(
+                      'Dont have an account?',
+                      style: textStyle,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     TextClickButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/signup');
                       },
-                      text: 'Register',
-                    ),
-                    TextClickButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/');
-                      },
-                      text: 'Login',
+                      text: 'Sign Up',
                     )
                   ],
                 ),
