@@ -14,6 +14,7 @@ class UserProfilePage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
+            SizedBox(height: 10),
             SizedBox(
               height: 115,
               width: 115,
@@ -44,31 +45,50 @@ class UserProfilePage extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                  ),
-                ),
-                onPressed: () {},
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Row(
-                    children: [
-                      Icon(
-                        size: 30,
-                        LineAwesomeIcons.user_circle,
-                      ),
-                    ],
-                  ),
+            ProfileMenu()
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ProfileMenu extends StatelessWidget {
+  const ProfileMenu({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: ElevatedButton(
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+          ),
+        ),
+        onPressed: () {},
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Row(
+            children: [
+              Icon(
+                size: 30,
+                LineAwesomeIcons.user_circle,
+              ),
+              SizedBox(width: 20),
+              Expanded(
+                child: Text(
+                  "My Account",
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ),
-            )
-          ],
+              Icon(LineAwesomeIcons.angle_right)
+            ],
+          ),
         ),
       ),
     );
