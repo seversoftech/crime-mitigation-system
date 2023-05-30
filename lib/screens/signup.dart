@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/elevatedButton.dart';
-import '../widgets/textButton.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
 
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  final TextEditingController _fullname = TextEditingController();
+  final TextEditingController _password = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _phone = TextEditingController();
+  final TextEditingController _address = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,8 +34,9 @@ class SignupScreen extends StatelessWidget {
                   height: 120,
                 ),
                 const SizedBox(height: 10.0),
-                const TextField(
-                  decoration: InputDecoration(
+                TextField(
+                  controller: _fullname,
+                  decoration: const InputDecoration(
                     hintText: 'Enter your full name',
                     labelText: 'Full Name',
                     border: OutlineInputBorder(
@@ -34,8 +44,9 @@ class SignupScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10.0),
-                const TextField(
-                  decoration: InputDecoration(
+                TextField(
+                  controller: _email,
+                  decoration: const InputDecoration(
                     hintText: 'Enter your email',
                     labelText: 'Email',
                     border: OutlineInputBorder(
@@ -43,8 +54,10 @@ class SignupScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10.0),
-                const TextField(
-                  decoration: InputDecoration(
+                TextField(
+                  controller: _phone,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
                     hintText: 'Enter your Phone number',
                     labelText: 'Phone Number',
                     border: OutlineInputBorder(
@@ -52,8 +65,9 @@ class SignupScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10.0),
-                const TextField(
-                  decoration: InputDecoration(
+                TextField(
+                  controller: _address,
+                  decoration: const InputDecoration(
                     hintText: 'Enter your resident address',
                     labelText: 'Address',
                     border: OutlineInputBorder(
@@ -61,9 +75,10 @@ class SignupScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10.0),
-                const TextField(
+                TextField(
+                  controller: _password,
                   obscureText: true,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: 'Enter your password',
                     labelText: 'Password',
                     border: OutlineInputBorder(

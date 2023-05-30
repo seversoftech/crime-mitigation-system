@@ -14,6 +14,8 @@ class LoginScreen extends StatefulWidget {
 bool isChecked = false;
 
 class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,6 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 20.0),
                 TextFormField(
+                  controller: _email,
                   decoration: const InputDecoration(
                     labelText: 'Email',
                     hintText: 'Enter your email',
@@ -51,9 +54,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(height: 10.0),
-                const TextField(
+                TextField(
+                  controller: _password,
                   obscureText: true,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Password',
                     hintText: 'Enter your password',
                     border: OutlineInputBorder(

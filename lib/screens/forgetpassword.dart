@@ -4,9 +4,15 @@ import '../constants/constants.dart';
 import '../widgets/elevatedButton.dart';
 import '../widgets/textButton.dart';
 
-class ForgetPassword extends StatelessWidget {
+class ForgetPassword extends StatefulWidget {
   const ForgetPassword({super.key});
 
+  @override
+  State<ForgetPassword> createState() => _ForgetPasswordState();
+}
+
+class _ForgetPasswordState extends State<ForgetPassword> {
+  final TextEditingController _email = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,8 +37,9 @@ class ForgetPassword extends StatelessWidget {
                   style: textStyle,
                 ),
                 const SizedBox(height: 20.0),
-                const TextField(
-                  decoration: InputDecoration(
+                TextField(
+                  controller: _email,
+                  decoration: const InputDecoration(
                     labelText: 'Email',
                     hintText: 'Enter your email',
                     border: OutlineInputBorder(

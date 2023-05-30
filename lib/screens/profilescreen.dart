@@ -4,15 +4,19 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../widgets/profilemenu.dart';
 
-class UserProfilePage extends StatelessWidget {
+class UserProfilePage extends StatefulWidget {
   const UserProfilePage({super.key});
 
+  @override
+  State<UserProfilePage> createState() => _UserProfilePageState();
+}
+
+class _UserProfilePageState extends State<UserProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('User Profile'),
-      
       ),
       body: Center(
         child: Column(
