@@ -33,7 +33,7 @@ class ElevatedClickButton extends StatelessWidget {
           alignment: Alignment.center,
           child: Text(
             child,
-            style: Theme.of(context).textTheme.titleMedium,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
       ),
