@@ -103,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       'Dont have an account?',
                       style: textStyle,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     TextClickButton(
