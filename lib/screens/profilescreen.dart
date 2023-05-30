@@ -35,11 +35,11 @@ class UserProfilePage extends StatelessWidget {
           ),
           SizedBox(height: 16),
           ListTile(
-            leading: Icon(Icons.email),
+            leading: Icon(LineAwesomeIcons.mail_bulk, color: Colors.green),
             title: Text('sever@seversoftech.com'),
           ),
           ListTile(
-            leading: Icon(LineAwesomeIcons.home, size: 50, color: Colors.green),
+            leading: Icon(LineAwesomeIcons.phone, color: Colors.green),
             title: Text('07033409667'),
           ),
         ],
