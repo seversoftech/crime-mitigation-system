@@ -16,7 +16,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: Colors.grey[900],
+        useMaterial3: true,
+        primaryColor: Colors.blueGrey,
         hintColor: Colors.black54,
         primarySwatch: Colors.blueGrey,
       ),

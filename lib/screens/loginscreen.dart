@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
                   height: 150,
                 ),
                 const SizedBox(height: 20.0),
-                const TextField(
+                TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Email',
                     border: OutlineInputBorder(
@@ -60,7 +60,9 @@ class LoginScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, '/profile');
                   },
-                  child: const Text('Login'),
+                  child: 
+                    'Login',
+                  
                 ),
               ],
             ),

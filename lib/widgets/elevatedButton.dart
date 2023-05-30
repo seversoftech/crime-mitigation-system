@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 class ElevatedClickButton extends StatelessWidget {
-  final Widget child;
+  final String child;
   final VoidCallback onPressed;
 
   const ElevatedClickButton({
@@ -14,15 +14,14 @@ class ElevatedClickButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-      textTheme: ButtonTextTheme.primary,
-      textColor: Colors.white,
+    return ElevatedButton(
       onPressed: onPressed,
-      color: Theme.of(context).primaryColor,
-      splashColor: Colors.black12,
-      padding: const EdgeInsets.all(0),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0),
+      style: ButtonStyle(
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+        ),
       ),
       child: Ink(
         width: double.infinity,
@@ -30,9 +29,13 @@ class ElevatedClickButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Container(
-            constraints: const BoxConstraints(maxWidth: 200.0, minHeight: 50.0),
-            alignment: Alignment.center,
-            child: child),
+          constraints: const BoxConstraints(maxWidth: 200.0, minHeight: 50.0),
+          alignment: Alignment.center,
+          child: Text(
+            child,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+        ),
       ),
     );
   }

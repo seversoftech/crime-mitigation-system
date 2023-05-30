@@ -32,7 +32,7 @@ class ForgetPassword extends StatelessWidget {
                 const SizedBox(height: 10.0),
                 ElevatedClickButton(
                   onPressed: () {},
-                  child: const Text('Rest Password'),
+                  child: 'Rest Password',
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

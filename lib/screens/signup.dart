@@ -49,7 +49,7 @@ class SignupScreen extends StatelessWidget {
                 const SizedBox(height: 10.0),
                 ElevatedClickButton(
                   onPressed: () {},
-                  child: const Text('Register'),
+                  child: 'Register',
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

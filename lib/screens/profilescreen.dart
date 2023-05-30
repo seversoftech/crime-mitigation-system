@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
+import '../widgets/profilemenu.dart';
+
 class UserProfilePage extends StatelessWidget {
   const UserProfilePage({super.key});
 
@@ -34,7 +36,6 @@ class UserProfilePage extends StatelessWidget {
                       width: 40,
                       child: CircleAvatar(
                         child: IconButton(
-                          color: const Color(0xFFFFFFFF),
                           onPressed: () {},
                           icon: (Icon(
                             LineAwesomeIcons.camera,
@@ -47,57 +48,33 @@ class UserProfilePage extends StatelessWidget {
               ),
             ),
             ProfileMenu(
-              icon: LineAwesomeIcons.user_circle,
+              icon: LineAwesomeIcons.eye,
               press: () {},
-              text: 'My Account',
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class ProfileMenu extends StatelessWidget {
-  const ProfileMenu({
-    Key? key,
-    required this.icon,
-    required this.press,
-    required this.text,
-  }) : super(key: key);
-
-  final String text;
-  final IconData icon;
-  final VoidCallback press;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: ElevatedButton(
-        style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
+              text: 'Report Crime',
             ),
-          ),
-        ),
-        onPressed: press,
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Row(
-            children: [
-              Icon(size: 30, icon),
-              SizedBox(width: 20),
-              Expanded(
-                child: Text(
-                  text,
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-              ),
-              Icon(LineAwesomeIcons.angle_right)
-            ],
-          ),
+            ProfileMenu(
+              icon: LineAwesomeIcons.history,
+              press: () {},
+              text: 'Report History',
+            ),
+            ProfileMenu(
+              icon: LineAwesomeIcons.bell,
+              press: () {},
+              text: 'Notification',
+            ),
+            ProfileMenu(
+              icon: LineAwesomeIcons.address_card,
+              press: () {},
+              text: 'About',
+            ),
+            ProfileMenu(
+              icon: LineAwesomeIcons.alternate_sign_out,
+              press: () {
+                Navigator.pushNamed(context, '/');
+              },
+              text: 'Log Out',
+            ),
+          ],
         ),
       ),
     );
