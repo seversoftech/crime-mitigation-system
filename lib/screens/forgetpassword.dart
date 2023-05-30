@@ -25,6 +25,7 @@ class ForgetPassword extends StatelessWidget {
                 const TextField(
                   decoration: InputDecoration(
                     labelText: 'Email',
+                    hintText: 'Enter your email',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(12))),
                   ),

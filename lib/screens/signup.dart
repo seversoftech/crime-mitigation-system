@@ -24,6 +24,7 @@ class SignupScreen extends StatelessWidget {
                 const SizedBox(height: 10.0),
                 const TextField(
                   decoration: InputDecoration(
+                    hintText: 'Enter your email',
                     labelText: 'Email',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(12))),
@@ -32,6 +33,7 @@ class SignupScreen extends StatelessWidget {
                 const SizedBox(height: 10.0),
                 const TextField(
                   decoration: InputDecoration(
+                    hintText: 'Enter your Phone number',
                     labelText: 'Phone Number',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(12))),
@@ -41,6 +43,7 @@ class SignupScreen extends StatelessWidget {
                 const TextField(
                   obscureText: true,
                   decoration: InputDecoration(
+                    hintText: 'Enter your password',
                     labelText: 'Password',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(12))),

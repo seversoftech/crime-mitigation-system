@@ -21,13 +21,20 @@ class LoginScreen extends StatelessWidget {
                   'assets/icons/icon.png',
                   height: 150,
                 ),
-                Text(
+                const Text(
                   'WELCOME BACK',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                 ),
+                const Text(
+                  textAlign: TextAlign.center,
+                  'Sign in with your registered email address and password to continue...',
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
                 const SizedBox(height: 20.0),
                 TextFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Email',
                     hintText: 'Enter your email',
                     border: OutlineInputBorder(
