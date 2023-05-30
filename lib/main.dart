@@ -16,11 +16,12 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        fontFamily: "Muli",
+        // textTheme: TextTheme(bodyText1: ),
+        scaffoldBackgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
-        // primaryColor: Colors.blueGrey,
-        // hintColor: Colors.black54,
-        // primarySwatch: Colors.blueGrey,
+       
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
