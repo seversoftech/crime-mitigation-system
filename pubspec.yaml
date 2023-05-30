@@ -1,5 +1,5 @@
 name: crime_mitigation_system
-description: A new Flutter project.
+description: Mobile Baes Crime Mitigation System.
 publish_to: 'none'
 version: 0.1.0
 
@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   line_awesome_flutter: ^2.0.0
-  google_fonts: ^2.1.0
+  google_fonts: ^4.0.4
  
 
 dev_dependencies:
