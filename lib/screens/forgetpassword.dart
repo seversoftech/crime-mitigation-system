@@ -23,7 +23,7 @@ class ForgetPassword extends StatelessWidget {
               children: [
                 Image.asset(
                   'assets/icons/icon.png',
-                  height: 150,
+                  height: 120,
                 ),
                 Text(
                   textAlign: TextAlign.center,

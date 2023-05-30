@@ -10,7 +10,6 @@ class SignupScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-       
         title: const Text('Register'),
       ),
       body: Center(
@@ -23,7 +22,7 @@ class SignupScreen extends StatelessWidget {
               children: [
                 Image.asset(
                   'assets/icons/icon.png',
-                  height: 150,
+                  height: 120,
                 ),
                 const SizedBox(height: 10.0),
                 const TextField(

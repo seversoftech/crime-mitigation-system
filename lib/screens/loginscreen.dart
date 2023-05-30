@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Image.asset(
                   'assets/icons/icon.png',
-                  height: 150,
+                  height: 120,
                 ),
                 const Text(
                   'WELCOME BACK',
