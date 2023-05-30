@@ -16,10 +16,11 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
-        primaryColor: Colors.blueGrey,
-        hintColor: Colors.black54,
-        primarySwatch: Colors.blueGrey,
+        // primaryColor: Colors.blueGrey,
+        // hintColor: Colors.black54,
+        // primarySwatch: Colors.blueGrey,
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
