@@ -25,22 +25,47 @@ class UserProfilePage extends StatelessWidget {
                     backgroundImage: AssetImage("assets/icons/icon.png"),
                   ),
                   Positioned(
-                    right: -12,
+                    right: 0,
                     bottom: 0,
                     child: SizedBox(
-                      height: 46,
-                      width: 46,
-                      child: IconButton(
-                        color: const Color(0xFF030116),
-                        onPressed: () {},
-                        icon: (Icon(
-                          size: 28,
-                          LineAwesomeIcons.camera,
-                        )),
+                      height: 40,
+                      width: 40,
+                      child: CircleAvatar(
+                        child: IconButton(
+                          color: const Color(0xFFFFFFFF),
+                          onPressed: () {},
+                          icon: (Icon(
+                            LineAwesomeIcons.camera,
+                          )),
+                        ),
                       ),
                     ),
                   )
                 ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                  ),
+                ),
+                onPressed: () {},
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        size: 30,
+                        LineAwesomeIcons.user_circle,
+                      ),
+                    ],
+                  ),
+                ),
               ),
             )
           ],
