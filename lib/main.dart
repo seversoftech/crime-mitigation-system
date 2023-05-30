@@ -17,10 +17,12 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        appBarTheme: const AppBarTheme(color: Colors.white, elevation: 0),
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarTheme(
+            color: Colors.white, elevation: 0, centerTitle: true),
         textTheme: GoogleFonts.latoTextTheme(),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: false,
+        useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
@@ -31,6 +33,5 @@ class MainApp extends StatelessWidget {
         '/profile': (context) => const UserProfilePage(),
       },
     );
-    
   }
 }

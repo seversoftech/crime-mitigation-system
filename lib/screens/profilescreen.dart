@@ -12,7 +12,7 @@ class UserProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('User Profile'),
-        centerTitle: true,
+      
       ),
       body: Center(
         child: Column(
