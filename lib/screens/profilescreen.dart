@@ -58,12 +58,12 @@ class _UserProfilePageState extends State<UserProfilePage> {
             ),
             ProfileMenu(
               icon: LineAwesomeIcons.history,
-              press: () {},
+              press: () { Navigator.pushNamed(context, '/report');},
               text: 'Report History',
             ),
             ProfileMenu(
               icon: LineAwesomeIcons.bell,
-              press: () {},
+              press: () { Navigator.pushNamed(context, '/notifications');},
               text: 'Notification',
             ),
             ProfileMenu(

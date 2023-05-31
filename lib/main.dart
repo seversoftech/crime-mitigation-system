@@ -1,3 +1,5 @@
+import 'package:crime_mitigation_system/screens/notificationscreen.dart';
+import 'package:crime_mitigation_system/screens/reportscreen.dart';
 import 'package:flutter/material.dart';
 import 'constants/constants.dart';
 import 'screens/forgetpassword.dart';
@@ -23,6 +25,8 @@ class MainApp extends StatelessWidget {
         '/signup': (context) => const SignupScreen(),
         '/forgetpassword': (context) => const ForgetPassword(),
         '/profile': (context) => const UserProfilePage(),
+        '/notifications': (context) => const Notifications(),
+        '/report': (context) => const ReportCrime(),
       },
     );
   }
