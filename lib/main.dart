@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'constants/constants.dart';
 import 'screens/forgetpassword.dart';
 import 'screens/loginscreen.dart';
 import 'screens/profilescreen.dart';
@@ -16,14 +17,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
-        appBarTheme: const AppBarTheme(
-            color: Colors.white, elevation: 0, centerTitle: true),
-        textTheme: GoogleFonts.latoTextTheme(),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: themeData(),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
@@ -34,4 +28,6 @@ class MainApp extends StatelessWidget {
       },
     );
   }
+
+  
 }

@@ -35,9 +35,9 @@ class _SignupScreenState extends State<SignupScreen> {
                   'assets/icons/icon.png',
                   height: 120,
                 ),
-                const Text(
+                 Text(
                   'Create Account',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                  style: textStyleBig,
                 ),
                 Text(
                   textAlign: TextAlign.center,

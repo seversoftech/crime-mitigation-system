@@ -35,10 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   'assets/icons/icon.png',
                   height: 120,
                 ),
-                const Text(
-                  'WELCOME BACK',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                ),
+                Text('WELCOME BACK', style: textStyleBig),
                 Text(
                   textAlign: TextAlign.center,
                   'Sign in with your registered email address and password to continue...',
