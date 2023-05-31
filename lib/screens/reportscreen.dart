@@ -10,8 +10,9 @@ class ReportCrime extends StatefulWidget {
 class _ReportCrimeState extends State<ReportCrime> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: AppBar(title:const Text('RepoRT Crime'),)
-    );
+    return Scaffold(
+        appBar: AppBar(
+      title: const Text('Report Crime'),
+    ));
   }
-} 
+}
