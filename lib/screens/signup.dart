@@ -12,11 +12,19 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  final TextEditingController _fullname = TextEditingController();
-  final TextEditingController _password = TextEditingController();
-  final TextEditingController _email = TextEditingController();
-  final TextEditingController _phone = TextEditingController();
-  final TextEditingController _address = TextEditingController();
+  String? _fullname;
+  String? _email;
+  String? _phone;
+  String? _address;
+  String? _password;
+
+  final TextEditingController _fullnameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +43,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   'assets/icons/icon.png',
                   height: 120,
                 ),
-                 Text(
+                Text(
                   'Create Account',
                   style: textStyleBig,
                 ),
@@ -46,7 +54,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 10.0),
                 TextField(
-                  controller: _fullname,
+                  controller: _fullnameController,
                   decoration: const InputDecoration(
                     suffixIcon: Icon(LineAwesomeIcons.user_circle),
                     hintText: 'Enter your full name',
@@ -57,7 +65,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 10.0),
                 TextField(
-                  controller: _email,
+                  controller: _emailController,
                   decoration: const InputDecoration(
                     suffixIcon: Icon(LineAwesomeIcons.envelope),
                     hintText: 'Enter your email',
@@ -68,7 +76,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 10.0),
                 TextField(
-                  controller: _phone,
+                  controller: _phoneController,
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     suffixIcon: Icon(LineAwesomeIcons.phone),
@@ -80,7 +88,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 10.0),
                 TextField(
-                  controller: _address,
+                  controller: _addressController,
                   decoration: const InputDecoration(
                     suffixIcon: Icon(LineAwesomeIcons.home),
                     hintText: 'Enter your resident address',
@@ -91,7 +99,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 10.0),
                 TextField(
-                  controller: _password,
+                  controller: _passwordController,
                   obscureText: true,
                   decoration: const InputDecoration(
                     suffixIcon: Icon(LineAwesomeIcons.lock),
