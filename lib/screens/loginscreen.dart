@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../widgets/elevatedButton.dart';
 import '../widgets/textButton.dart';
@@ -47,6 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextFormField(
                   controller: _email,
                   decoration: const InputDecoration(
+                    suffixIcon: Icon(LineAwesomeIcons.envelope),
                     labelText: 'Email',
                     hintText: 'Enter your email',
                     border: OutlineInputBorder(
@@ -58,6 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   controller: _password,
                   obscureText: true,
                   decoration: const InputDecoration(
+                    suffixIcon: Icon(LineAwesomeIcons.lock),
                     labelText: 'Password',
                     hintText: 'Enter your password',
                     border: OutlineInputBorder(

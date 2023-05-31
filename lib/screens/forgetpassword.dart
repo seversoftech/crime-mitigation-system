@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../constants/constants.dart';
 import '../widgets/elevatedButton.dart';
@@ -31,6 +32,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   'assets/icons/icon.png',
                   height: 120,
                 ),
+                const SizedBox(height: 10),
                 Text(
                   textAlign: TextAlign.center,
                   'Please enter your email, we will send you a password reset link...',
@@ -40,6 +42,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 TextField(
                   controller: _email,
                   decoration: const InputDecoration(
+                    suffixIcon: Icon(LineAwesomeIcons.envelope),
                     labelText: 'Email',
                     hintText: 'Enter your email',
                     border: OutlineInputBorder(
