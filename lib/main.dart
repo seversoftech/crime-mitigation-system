@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
 import 'constants/constants.dart';
 import 'screens/forgetpassword.dart';
 import 'screens/loginscreen.dart';
@@ -28,6 +26,4 @@ class MainApp extends StatelessWidget {
       },
     );
   }
-
-  
 }

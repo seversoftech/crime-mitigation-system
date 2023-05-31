@@ -123,10 +123,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 10.0),
                   ElevatedClickButton(
                     onPressed: () {
-                      // Navigator.pushNamed(context, '/profile');
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
                       }
+                      Navigator.pushNamed(context, '/profile');
                     },
                     child: 'Login',
                   ),
