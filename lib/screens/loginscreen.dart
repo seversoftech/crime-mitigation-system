@@ -53,12 +53,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 20.0),
                   TextFormField(
                     validator: (value) {
-                      if (value!.isEmpty) {
-                        setState(() {
-                          errors.add("Please enter your email address");
-                        });
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your email.';
                       }
                       return null;
+                    },
+                    onSaved: (value) {
+                      _email = value!;
                     },
                     controller: _emailController,
                     decoration: const InputDecoration(
@@ -72,12 +73,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 10.0),
                   TextFormField(
                     validator: (value) {
-                      if (value!.isEmpty) {
-                        setState(() {
-                          errors.add("Please enter your password");
-                        });
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your password.';
                       }
                       return null;
+                    },
+                    onSaved: (value) {
+                      _password = value!;
                     },
                     controller: _passwordController,
                     obscureText: true,
@@ -121,7 +123,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 10.0),
                   ElevatedClickButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/profile');
+                      // Navigator.pushNamed(context, '/profile');
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState!.save();
+                        // Perform further actions with the form data
+                      }
                     },
                     child: 'Login',
                   ),
