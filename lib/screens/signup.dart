@@ -56,7 +56,16 @@ class _SignupScreenState extends State<SignupScreen> {
                     style: textStyle,
                   ),
                   const SizedBox(height: 10.0),
-                  TextField(
+                  TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your fullname.';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      _email = value!;
+                    },
                     controller: _fullnameController,
                     decoration: const InputDecoration(
                       suffixIcon: Icon(LineAwesomeIcons.user_circle),
@@ -67,7 +76,16 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                   const SizedBox(height: 10.0),
-                  TextField(
+                  TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your email.';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      _email = value!;
+                    },
                     controller: _emailController,
                     decoration: const InputDecoration(
                       suffixIcon: Icon(LineAwesomeIcons.envelope),
@@ -78,7 +96,16 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                   const SizedBox(height: 10.0),
-                  TextField(
+                  TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your phone number.';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      _email = value!;
+                    },
                     controller: _phoneController,
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
@@ -90,7 +117,16 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                   const SizedBox(height: 10.0),
-                  TextField(
+                  TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your address.';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      _email = value!;
+                    },
                     controller: _addressController,
                     decoration: const InputDecoration(
                       suffixIcon: Icon(LineAwesomeIcons.home),
@@ -101,7 +137,16 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                   const SizedBox(height: 10.0),
-                  TextField(
+                  TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your password.';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      _email = value!;
+                    },
                     controller: _passwordController,
                     obscureText: true,
                     decoration: const InputDecoration(
