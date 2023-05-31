@@ -11,7 +11,8 @@ ThemeData themeData() {
     visualDensity: VisualDensity.adaptivePlatformDensity,
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: const AppBarTheme(
-        titleSpacing: 1.7,
+        shadowColor: Colors.deepPurple,
+        surfaceTintColor: Colors.white,
         color: Colors.white,
         elevation: 0,
         centerTitle: true,
