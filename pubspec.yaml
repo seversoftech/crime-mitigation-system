@@ -33,7 +33,7 @@ flutter_icons:
 flutter_native_splash:
 
   color: "#FFFFFF"
-  image: assets/icons/icon.png
+  image: assets/images/ImageIcon.png
 
 # fonts:
 #     - family: Muli
