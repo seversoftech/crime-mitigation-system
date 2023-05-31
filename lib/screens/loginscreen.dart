@@ -126,7 +126,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       // Navigator.pushNamed(context, '/profile');
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
-                        // Perform further actions with the form data
                       }
                     },
                     child: 'Login',
