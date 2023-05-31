@@ -12,6 +12,8 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  final _formKey = GlobalKey<FormState>();
+
   String? _fullname;
   String? _email;
   String? _phone;
@@ -24,7 +26,6 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,93 +36,100 @@ class _SignupScreenState extends State<SignupScreen> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/icons/icon.png',
-                  height: 120,
-                ),
-                Text(
-                  'Create Account',
-                  style: textStyleBig,
-                ),
-                Text(
-                  textAlign: TextAlign.center,
-                  'Fill in the required details ',
-                  style: textStyle,
-                ),
-                const SizedBox(height: 10.0),
-                TextField(
-                  controller: _fullnameController,
-                  decoration: const InputDecoration(
-                    suffixIcon: Icon(LineAwesomeIcons.user_circle),
-                    hintText: 'Enter your full name',
-                    labelText: 'Full Name',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12))),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/icons/icon.png',
+                    height: 120,
                   ),
-                ),
-                const SizedBox(height: 10.0),
-                TextField(
-                  controller: _emailController,
-                  decoration: const InputDecoration(
-                    suffixIcon: Icon(LineAwesomeIcons.envelope),
-                    hintText: 'Enter your email',
-                    labelText: 'Email',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12))),
+                  Text(
+                    'Create Account',
+                    style: textStyleBig,
                   ),
-                ),
-                const SizedBox(height: 10.0),
-                TextField(
-                  controller: _phoneController,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    suffixIcon: Icon(LineAwesomeIcons.phone),
-                    hintText: 'Enter your Phone number',
-                    labelText: 'Phone Number',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12))),
+                  Text(
+                    textAlign: TextAlign.center,
+                    'Fill in the required details ',
+                    style: textStyle,
                   ),
-                ),
-                const SizedBox(height: 10.0),
-                TextField(
-                  controller: _addressController,
-                  decoration: const InputDecoration(
-                    suffixIcon: Icon(LineAwesomeIcons.home),
-                    hintText: 'Enter your resident address',
-                    labelText: 'Address',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12))),
+                  const SizedBox(height: 10.0),
+                  TextField(
+                    controller: _fullnameController,
+                    decoration: const InputDecoration(
+                      suffixIcon: Icon(LineAwesomeIcons.user_circle),
+                      hintText: 'Enter your full name',
+                      labelText: 'Full Name',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(12))),
+                    ),
                   ),
-                ),
-                const SizedBox(height: 10.0),
-                TextField(
-                  controller: _passwordController,
-                  obscureText: true,
-                  decoration: const InputDecoration(
-                    suffixIcon: Icon(LineAwesomeIcons.lock),
-                    hintText: 'Enter your password',
-                    labelText: 'Password',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12))),
+                  const SizedBox(height: 10.0),
+                  TextField(
+                    controller: _emailController,
+                    decoration: const InputDecoration(
+                      suffixIcon: Icon(LineAwesomeIcons.envelope),
+                      hintText: 'Enter your email',
+                      labelText: 'Email',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(12))),
+                    ),
                   ),
-                ),
-                const SizedBox(height: 30.0),
-                ElevatedClickButton(
-                  onPressed: () {},
-                  child: 'Register',
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  textAlign: TextAlign.center,
-                  'Kindly confirm all details. By Continuing, you agree with our Terms and Conditions',
-                  style: textStyle,
-                ),
-                const SizedBox(height: 10.0),
-              ],
+                  const SizedBox(height: 10.0),
+                  TextField(
+                    controller: _phoneController,
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      suffixIcon: Icon(LineAwesomeIcons.phone),
+                      hintText: 'Enter your Phone number',
+                      labelText: 'Phone Number',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(12))),
+                    ),
+                  ),
+                  const SizedBox(height: 10.0),
+                  TextField(
+                    controller: _addressController,
+                    decoration: const InputDecoration(
+                      suffixIcon: Icon(LineAwesomeIcons.home),
+                      hintText: 'Enter your resident address',
+                      labelText: 'Address',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(12))),
+                    ),
+                  ),
+                  const SizedBox(height: 10.0),
+                  TextField(
+                    controller: _passwordController,
+                    obscureText: true,
+                    decoration: const InputDecoration(
+                      suffixIcon: Icon(LineAwesomeIcons.lock),
+                      hintText: 'Enter your password',
+                      labelText: 'Password',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(12))),
+                    ),
+                  ),
+                  const SizedBox(height: 30.0),
+                  ElevatedClickButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState!.save();
+                      }
+                    },
+                    child: 'Register',
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    textAlign: TextAlign.center,
+                    'Kindly confirm all details. By Continuing, you agree with our Terms and Conditions',
+                    style: textStyle,
+                  ),
+                  const SizedBox(height: 10.0),
+                ],
+              ),
             ),
           ),
         ),
