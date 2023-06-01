@@ -36,6 +36,14 @@ class _ReportCrimeState extends State<ReportCrime> {
                 style: textStyleBig,
               ),
               TextFormField(
+                 maxLines: 1,
+                controller: _incidentController,
+                decoration: const InputDecoration(
+                  hintText: 'Enter type of incident',
+                  labelText: 'Incident type*',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(6))),
+                ),
                 onSaved: (newValue) => _incident = newValue,
                 onChanged: (value) {
                   if (value.isNotEmpty) {
@@ -48,13 +56,6 @@ class _ReportCrimeState extends State<ReportCrime> {
                   }
                   return null;
                 },
-                controller: _incidentController,
-                decoration: const InputDecoration(
-                  hintText: 'Enter type of incident',
-                  labelText: 'Incident type*',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(12))),
-                ),
               ),
             ],
           ),
