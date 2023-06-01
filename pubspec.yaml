@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   line_awesome_flutter: ^2.0.0
-  google_fonts: ^4.0.4
+  google_fonts: 
  
 
 dev_dependencies:
