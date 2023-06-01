@@ -3,6 +3,7 @@ import 'package:crime_mitigation_system/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../main.dart';
+import '../widgets/report_input_fields.dart';
 
 class ReportCrime extends StatefulWidget {
   const ReportCrime({super.key});
@@ -11,11 +12,7 @@ class ReportCrime extends StatefulWidget {
   State<ReportCrime> createState() => _ReportCrimeState();
 }
 
-TextEditingController _incidentController = TextEditingController();
-TextEditingController _dateController = TextEditingController();
-TextEditingController _severityController = TextEditingController();
-TextEditingController _locationController = TextEditingController();
-TextEditingController _descriptionController = TextEditingController();
+
 
 String? _incident;
 
@@ -54,7 +51,7 @@ class _ReportCrimeState extends State<ReportCrime> {
             children: [
               Text(
                   textAlign: TextAlign.center,
-                  style: textStyle,
+                  style: textStyleWarning,
                   'Please note that reporting fasle & misleading Information is punishable by the law'),
               const Divider(
                 color: Colors.grey,
@@ -63,6 +60,13 @@ class _ReportCrimeState extends State<ReportCrime> {
               Text(
                 'Make a report',
                 style: textStyleBig,
+              ),
+              Text(
+                'Fill in the required fields and click the Report button to file a report',
+                style: textStyle,
+              ),
+              const SizedBox(
+                height: 20,
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -85,7 +89,20 @@ class _ReportCrimeState extends State<ReportCrime> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: reportFormInputDescription(),
+              
               ),
+               FutureBuilder<void>(
+        future: _initializeControllerFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            // If the controller has finished initializing, show the camera preview
+            return CameraPreview(_controller!);
+          } else {
+            // Otherwise, display a loading indicator
+            return Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
             ],
           ),
         ),
@@ -93,147 +110,11 @@ class _ReportCrimeState extends State<ReportCrime> {
     );
   }
 
-  SizedBox reportFormInputIncidentType() {
-    return SizedBox(
-      height: 45,
-      child: TextFormField(
-        maxLines: 1,
-        controller: _incidentController,
-        decoration: const InputDecoration(
-          hintText: 'Enter type of incident',
-          labelText: 'Incident type*',
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(6))),
-        ),
-        onSaved: (newValue) => _incident = newValue,
-        onChanged: (value) {
-          if (value.isNotEmpty) {
-          } else if (value.length >= 8) {}
-          return;
-        },
-        validator: (value) {
-          if (value!.isEmpty) {
-            return incidentError;
-          }
-          return null;
-        },
-      ),
-    );
-  }
+  
 
-  SizedBox reportFormInputDate() {
-    return SizedBox(
-      height: 45,
-      child: TextFormField(
-        maxLines: 1,
-        controller: _dateController,
-        decoration: const InputDecoration(
-          hintText: 'Enter type date',
-          labelText: 'DD/MM/YYYY*',
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(6))),
-        ),
-        onSaved: (newValue) => _incident = newValue,
-        onChanged: (value) {
-          if (value.isNotEmpty) {
-          } else if (value.length >= 8) {}
-          return;
-        },
-        validator: (value) {
-          if (value!.isEmpty) {
-            return incidentError;
-          }
-          return null;
-        },
-      ),
-    );
-  }
+ 
 
-  SizedBox reportFormInputSeverity() {
-    return SizedBox(
-      height: 45,
-      child: TextFormField(
-        maxLines: 1,
-        controller: _severityController,
-        decoration: const InputDecoration(
-          hintText: 'Select how severe',
-          labelText: 'severerity*',
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(6))),
-        ),
-        onSaved: (newValue) => _incident = newValue,
-        onChanged: (value) {
-          if (value.isNotEmpty) {
-          } else if (value.length >= 8) {}
-          return;
-        },
-        validator: (value) {
-          if (value!.isEmpty) {
-            return incidentError;
-          }
-          return null;
-        },
-      ),
-    );
-  }
+ 
 
-  SizedBox reportFormInputLocation() {
-    return SizedBox(
-      height: 45,
-      child: TextFormField(
-        maxLines: 1,
-        controller: _locationController,
-        decoration: const InputDecoration(
-          hintText: 'Enter type the incident location',
-          labelText: 'Location*',
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(6))),
-        ),
-        onSaved: (newValue) => _incident = newValue,
-        onChanged: (value) {
-          if (value.isNotEmpty) {
-          } else if (value.length >= 8) {}
-          return;
-        },
-        validator: (value) {
-          if (value!.isEmpty) {
-            return incidentError;
-          }
-          return null;
-        },
-      ),
-    );
-  }
-
-  SizedBox reportFormInputDescription() {
-    return SizedBox(
-      // height: 45,
-      child: TextField(
-        minLines: 6,
-        keyboardType: TextInputType.multiline,
-        maxLines: null,
-
-        controller: _descriptionController,
-        decoration: const InputDecoration(
-          alignLabelWithHint: true,
-          hintText: 'Detailed incident description',
-          labelText: 'Description*',
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(6))),
-        ),
-        // onSaved: (newValue) => _incident = newValue,
-        // onChanged: (value) {
-        //   if (value.isNotEmpty) {
-        //   } else if (value.length >= 8) {}
-        //   return;
-        // },
-        // validator: (value) {
-        //   if (value!.isEmpty) {
-        //     return incidentError;
-        //   }
-        //   return null;
-        // },
-      ),
-    );
-  }
+  
 }

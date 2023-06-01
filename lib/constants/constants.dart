@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 TextStyle textStyle =
     const TextStyle(fontWeight: FontWeight.w400, fontSize: 16);
+TextStyle textStyleWarning = const TextStyle(
+    fontWeight: FontWeight.bold, fontSize: 16, color: Colors.red);
 TextStyle textStyleBig =
     const TextStyle(fontWeight: FontWeight.bold, fontSize: 25);
 
@@ -17,6 +19,3 @@ const String phoneNumberNullError = "Please Enter your phone number";
 const String addressNullError = "Please Enter your address";
 const String incidentError = "Field is required";
 const String noError = " ";
-
-
-
