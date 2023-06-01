@@ -1,10 +1,12 @@
 import 'package:camera/camera.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:crime_mitigation_system/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../main.dart';
+import '../widgets/elevatedButton.dart';
 import '../widgets/report_input_fields.dart';
 import 'display_image.dart';
 
@@ -20,6 +22,7 @@ String? _incident;
 class _ReportCrimeState extends State<ReportCrime> {
   CameraController? _controller;
   Future<void>? _initializeControllerFuture;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -41,6 +44,11 @@ class _ReportCrimeState extends State<ReportCrime> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+    final halfWidth = screenWidth / 2;
+    final halfHeight = screenHeight / 2;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Report Crime'),
@@ -48,83 +56,111 @@ class _ReportCrimeState extends State<ReportCrime> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
-          child: Column(
+          child: Stack(
             children: [
-              Text(
-                  textAlign: TextAlign.center,
-                  style: textStyleWarning,
-                  'Please note that reporting fasle & misleading Information is punishable by the law'),
-              const Divider(
-                color: Colors.grey,
-                thickness: 1.0,
-              ),
-              Text(
-                'Make a report',
-                style: textStyleBig,
-              ),
-              Text(
-                'Fill in the required fields and click the Report button to file a report',
-                style: textStyle,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: reportFormInputIncidentType(),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
+              Form(
+                key: _formKey,
+                child: Column(
                   children: [
-                    Expanded(child: reportFormInputDate()),
-                    const SizedBox(width: 5),
-                    Expanded(child: reportFormInputSeverity())
+                    Text(
+                        textAlign: TextAlign.center,
+                        style: textStyleWarning,
+                        'Please note that reporting fasle & misleading Information is punishable by the law'),
+                    const Divider(
+                      color: Colors.grey,
+                      thickness: 1.0,
+                    ),
+                    Text(
+                      'Make a report',
+                      style: textStyleBig,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: reportFormInputIncidentType(),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Expanded(child: reportFormInputDate()),
+                          const SizedBox(width: 5),
+                          Expanded(child: reportFormInputSeverity())
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: reportFormInputLocation(),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: reportFormInputDescription(),
+                    ),
+                    FutureBuilder<void>(
+                      future: _initializeControllerFuture,
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.done) {
+                          return SizedBox(
+                            width: halfWidth,
+                            height: halfHeight * .5,
+                            child: CameraPreview(_controller!),
+                          );
+                        } else {
+                          return Column(
+                            children: [
+                              const Center(
+                                  child: CircularProgressIndicator(
+                                strokeCap: StrokeCap.square,
+                                strokeWidth: 2,
+                              )),
+                              Text(
+                                'Grant Camera Permission',
+                                style: textStyle,
+                              )
+                            ],
+                          );
+                        }
+                      },
+                    ),
+                    ElevatedClickButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          _formKey.currentState!.save();
+                        }
+                        // Navigator.pushNamed(context, '/profile');
+                      },
+                      child: 'Report',
+                    ),
                   ],
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: reportFormInputLocation(),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: reportFormInputDescription(),
-              ),
-              FutureBuilder<void>(
-                future: _initializeControllerFuture,
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done) {
-                    // If the controller has finished initializing, show the camera preview
-                    return CameraPreview(_controller!);
-                  } else {
-                    // Otherwise, display a loading indicator
-                    return Center(child: CircularProgressIndicator());
-                  }
-                },
               ),
             ],
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.camera),
-        onPressed: () async {
-          try {
-            // Ensure that the camera is initialized before taking a picture
-            await _initializeControllerFuture;
+      floatingActionButton: Center(
+        child: Positioned(
+          bottom: 16.0,
+          left: 50,
+          right: 0,
+          child: FloatingActionButton(
+            child: const Icon(LineAwesomeIcons.retro_camera),
+            onPressed: () async {
+              try {
+                await _initializeControllerFuture;
 
-            // Capture the image and retrieve the path where it's saved
-            final path = join(
-              (await getTemporaryDirectory()).path,
-              '${DateTime.now()}.png',
-            );
+                final path = join(
+                  (await getTemporaryDirectory()).path,
+                  '${DateTime.now()}.png',
+                );
 
-            await _controller!.takePicture();
-          } catch (e) {
-            print(e);
-          }
-        },
+                await _controller!.takePicture();
+              } catch (e) {
+                print(e);
+              }
+            },
+          ),
+        ),
       ),
     );
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//
+
 TextStyle textStyle =
     const TextStyle(fontWeight: FontWeight.w400, fontSize: 16);
 TextStyle textStyleWarning = const TextStyle(
@@ -7,6 +9,7 @@ TextStyle textStyleWarning = const TextStyle(
 TextStyle textStyleBig =
     const TextStyle(fontWeight: FontWeight.bold, fontSize: 25);
 
+//
 final RegExp emailValidatorRegExp =
     RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 const String emailNullError = "Please Enter your email";

@@ -15,7 +15,6 @@ String? _location;
 
 SizedBox reportFormInputIncidentType() {
   return SizedBox(
-    height: 45,
     child: TextFormField(
       maxLines: 1,
       controller: _incidentController,
@@ -43,7 +42,6 @@ SizedBox reportFormInputIncidentType() {
 
 SizedBox reportFormInputDate() {
   return SizedBox(
-    height: 45,
     child: TextFormField(
       maxLines: 1,
       controller: _dateController,
@@ -71,7 +69,6 @@ SizedBox reportFormInputDate() {
 
 SizedBox reportFormInputSeverity() {
   return SizedBox(
-    height: 45,
     child: TextFormField(
       maxLines: 1,
       controller: _severityController,
@@ -99,7 +96,6 @@ SizedBox reportFormInputSeverity() {
 
 SizedBox reportFormInputLocation() {
   return SizedBox(
-    height: 45,
     child: TextFormField(
       maxLines: 1,
       controller: _locationController,
@@ -127,7 +123,6 @@ SizedBox reportFormInputLocation() {
 
 SizedBox reportFormInputDescription() {
   return SizedBox(
-    // height: 45,
     child: TextField(
       minLines: 6,
       keyboardType: TextInputType.multiline,
