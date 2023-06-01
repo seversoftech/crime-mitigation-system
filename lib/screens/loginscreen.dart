@@ -12,14 +12,12 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-bool isChecked = false;
-
 class _LoginScreenState extends State<LoginScreen> {
+  bool isChecked = false;
   String? _email;
   String? _password;
 
   final _formKey = GlobalKey<FormState>();
-  final List<String> errors = [];
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -52,14 +50,20 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 20.0),
                   TextFormField(
+                    onSaved: (newValue) => _email = newValue,
+                    onChanged: (value) {
+                      if (value.isNotEmpty) {
+                      } else if (emailValidatorRegExp.hasMatch(value)) {}
+                      return;
+                    },
+                    keyboardType: TextInputType.emailAddress,
                     validator: (value) {
-                      if (value == null || value.isEmpty) {
+                      if (value!.isEmpty) {
+                        return emailNullError;
+                      } else if (!emailValidatorRegExp.hasMatch(value)) {
                         return invalidEmailError;
                       }
                       return null;
-                    },
-                    onSaved: (value) {
-                      _email = value!;
                     },
                     controller: _emailController,
                     decoration: const InputDecoration(
@@ -72,14 +76,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
+                    onSaved: (newValue) => _password = newValue,
+                    onChanged: (value) {
+                      if (value.isNotEmpty) {
+                      } else if (value.length >= 8) {}
+                      return;
+                    },
                     validator: (value) {
-                      if (value == null || value.isEmpty) {
+                      if (value!.isEmpty) {
                         return passNullError;
+                      } else if (value.length < 8) {
+                        return shortPassError;
                       }
                       return null;
-                    },
-                    onSaved: (value) {
-                      _password = value!;
                     },
                     controller: _passwordController,
                     obscureText: true,
@@ -126,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
                       }
-                      Navigator.pushNamed(context, '/profile');
+                      // Navigator.pushNamed(context, '/profile');
                     },
                     child: 'Login',
                   ),
