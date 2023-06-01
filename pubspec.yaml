@@ -12,6 +12,8 @@ dependencies:
   line_awesome_flutter: ^2.0.0
   google_fonts: 
   camera: 
+  path:
+  path_provider:
  
 
 dev_dependencies:

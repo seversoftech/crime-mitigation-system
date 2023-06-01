@@ -1,8 +1,12 @@
 import 'package:camera/camera.dart';
 import 'package:crime_mitigation_system/constants/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
+
 import '../main.dart';
 import '../widgets/report_input_fields.dart';
+import 'display_image.dart';
 
 class ReportCrime extends StatefulWidget {
   const ReportCrime({super.key});
@@ -10,8 +14,6 @@ class ReportCrime extends StatefulWidget {
   @override
   State<ReportCrime> createState() => _ReportCrimeState();
 }
-
-
 
 String? _incident;
 
@@ -88,32 +90,42 @@ class _ReportCrimeState extends State<ReportCrime> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: reportFormInputDescription(),
-              
               ),
-               FutureBuilder<void>(
-        future: _initializeControllerFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            // If the controller has finished initializing, show the camera preview
-            return CameraPreview(_controller!);
-          } else {
-            // Otherwise, display a loading indicator
-            return Center(child: CircularProgressIndicator());
-          }
-        },
-      ),
+              FutureBuilder<void>(
+                future: _initializeControllerFuture,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    // If the controller has finished initializing, show the camera preview
+                    return CameraPreview(_controller!);
+                  } else {
+                    // Otherwise, display a loading indicator
+                    return Center(child: CircularProgressIndicator());
+                  }
+                },
+              ),
             ],
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.camera),
+        onPressed: () async {
+          try {
+            // Ensure that the camera is initialized before taking a picture
+            await _initializeControllerFuture;
+
+            // Capture the image and retrieve the path where it's saved
+            final path = join(
+              (await getTemporaryDirectory()).path,
+              '${DateTime.now()}.png',
+            );
+
+            await _controller!.takePicture();
+          } catch (e) {
+            print(e);
+          }
+        },
+      ),
     );
   }
-
-  
-
- 
-
- 
-
-  
 }
