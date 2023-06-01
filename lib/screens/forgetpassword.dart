@@ -46,14 +46,20 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   ),
                   const SizedBox(height: 20.0),
                   TextFormField(
+                    onSaved: (newValue) => _email = newValue,
+                    onChanged: (value) {
+                      if (value.isNotEmpty) {
+                      } else if (emailValidatorRegExp.hasMatch(value)) {}
+                      return;
+                    },
+                    keyboardType: TextInputType.emailAddress,
                     validator: (value) {
-                      if (value == null || value.isEmpty) {
+                      if (value!.isEmpty) {
+                        return emailNullError;
+                      } else if (!emailValidatorRegExp.hasMatch(value)) {
                         return invalidEmailError;
                       }
                       return null;
-                    },
-                    onSaved: (value) {
-                      _email = value!;
                     },
                     controller: _emailController,
                     decoration: const InputDecoration(
