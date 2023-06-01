@@ -48,7 +48,7 @@ SizedBox reportFormInputDate() {
     child: TextFormField(
       
       maxLines: 1,
-      controller: _dateController,
+      // controller: _dateController,
       decoration: const InputDecoration(
         
         hintText: 'Date of incident',

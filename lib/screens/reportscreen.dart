@@ -24,11 +24,7 @@ class _ReportCrimeState extends State<ReportCrime> {
   Future<void>? _initializeControllerFuture;
   final _formKey = GlobalKey<FormState>();
 
-   TextEditingController _dateController = TextEditingController();
-
- 
-
-
+  TextEditingController _dateController = TextEditingController();
 
   @override
   void initState() {
@@ -147,24 +143,22 @@ class _ReportCrimeState extends State<ReportCrime> {
           ),
         ),
       ),
-      floatingActionButton: Center(
-        child: FloatingActionButton(
-          child: const Icon(LineAwesomeIcons.retro_camera),
-          onPressed: () async {
-            try {
-              await _initializeControllerFuture;
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(LineAwesomeIcons.retro_camera),
+        onPressed: () async {
+          try {
+            await _initializeControllerFuture;
 
-              final path = join(
-                (await getTemporaryDirectory()).path,
-                '${DateTime.now()}.png',
-              );
+            final path = join(
+              (await getTemporaryDirectory()).path,
+              '${DateTime.now()}.png',
+            );
 
-              await _controller!.takePicture();
-            } catch (e) {
-              print(e);
-            }
-          },
-        ),
+            await _controller!.takePicture();
+          } catch (e) {
+            print(e);
+          }
+        },
       ),
     );
   }
