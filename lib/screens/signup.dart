@@ -57,14 +57,16 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
+                    onSaved: (newValue) => _fullname = newValue,
+                    onChanged: (value) {
+                      if (value.isNotEmpty) {}
+                      return;
+                    },
                     validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your fullname.';
+                      if (value!.isEmpty) {
+                        return namelNullError;
                       }
                       return null;
-                    },
-                    onSaved: (value) {
-                      _email = value!;
                     },
                     controller: _fullnameController,
                     decoration: const InputDecoration(
@@ -77,14 +79,20 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
+                    onSaved: (newValue) => _email = newValue,
+                    onChanged: (value) {
+                      if (value.isNotEmpty) {
+                      } else if (emailValidatorRegExp.hasMatch(value)) {}
+                      return;
+                    },
+                    keyboardType: TextInputType.emailAddress,
                     validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your email.';
+                      if (value!.isEmpty) {
+                        return emailNullError;
+                      } else if (!emailValidatorRegExp.hasMatch(value)) {
+                        return invalidEmailError;
                       }
                       return null;
-                    },
-                    onSaved: (value) {
-                      _email = value!;
                     },
                     controller: _emailController,
                     decoration: const InputDecoration(
@@ -97,14 +105,16 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
+                    onSaved: (newValue) => _phone = newValue,
+                    onChanged: (value) {
+                      if (value.isNotEmpty) {}
+                      return;
+                    },
                     validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your phone number.';
+                      if (value!.isEmpty) {
+                        return phoneNumberNullError;
                       }
                       return null;
-                    },
-                    onSaved: (value) {
-                      _email = value!;
                     },
                     controller: _phoneController,
                     keyboardType: TextInputType.number,
@@ -118,14 +128,16 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
+                    onSaved: (newValue) => _address = newValue,
+                    onChanged: (value) {
+                      if (value.isNotEmpty) {}
+                      return;
+                    },
                     validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your address.';
+                      if (value!.isEmpty) {
+                        return addressNullError;
                       }
                       return null;
-                    },
-                    onSaved: (value) {
-                      _email = value!;
                     },
                     controller: _addressController,
                     decoration: const InputDecoration(
@@ -138,14 +150,19 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
+                    onSaved: (newValue) => _password = newValue,
+                    onChanged: (value) {
+                      if (value.isNotEmpty) {
+                      } else if (value.length >= 8) {}
+                      return;
+                    },
                     validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your password.';
+                      if (value!.isEmpty) {
+                        return passNullError;
+                      } else if (value.length < 8) {
+                        return shortPassError;
                       }
                       return null;
-                    },
-                    onSaved: (value) {
-                      _email = value!;
                     },
                     controller: _passwordController,
                     obscureText: true,
