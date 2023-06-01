@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-
+import 'package:intl/intl.dart';
 import '../constants/constants.dart';
 
 TextEditingController _incidentController = TextEditingController();
-TextEditingController _dateController = TextEditingController();
 TextEditingController _severityController = TextEditingController();
 TextEditingController _locationController = TextEditingController();
 TextEditingController _descriptionController = TextEditingController();
+
+
+
+
 
 String? _incident;
 String? _severity;
@@ -20,7 +23,7 @@ SizedBox reportFormInputIncidentType() {
       controller: _incidentController,
       decoration: const InputDecoration(
         hintText: 'Enter type of incident',
-        labelText: 'Incident type*',
+        labelText: 'Incident type E.g Robbery, Kidnapping*',
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(6))),
       ),
@@ -43,10 +46,12 @@ SizedBox reportFormInputIncidentType() {
 SizedBox reportFormInputDate() {
   return SizedBox(
     child: TextFormField(
+      
       maxLines: 1,
       controller: _dateController,
       decoration: const InputDecoration(
-        hintText: 'Enter type date',
+        
+        hintText: 'Date of incident',
         labelText: 'DD/MM/YYYY*',
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(6))),

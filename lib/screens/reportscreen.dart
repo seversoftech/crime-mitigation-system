@@ -1,10 +1,10 @@
 import 'package:camera/camera.dart';
+import 'package:intl/intl.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:crime_mitigation_system/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
-
 import '../main.dart';
 import '../widgets/elevatedButton.dart';
 import '../widgets/report_input_fields.dart';
@@ -24,10 +24,19 @@ class _ReportCrimeState extends State<ReportCrime> {
   Future<void>? _initializeControllerFuture;
   final _formKey = GlobalKey<FormState>();
 
+   TextEditingController _dateController = TextEditingController();
+
+ 
+
+
+
   @override
   void initState() {
     super.initState();
 
+    _dateController = TextEditingController(
+      text: DateFormat('yyyy-MM-dd').format(DateTime.now()),
+    );
     // Select the first available camera
     _controller = CameraController(cameras![0], ResolutionPreset.medium);
 
@@ -139,27 +148,22 @@ class _ReportCrimeState extends State<ReportCrime> {
         ),
       ),
       floatingActionButton: Center(
-        child: Positioned(
-          bottom: 16.0,
-          left: 50,
-          right: 0,
-          child: FloatingActionButton(
-            child: const Icon(LineAwesomeIcons.retro_camera),
-            onPressed: () async {
-              try {
-                await _initializeControllerFuture;
+        child: FloatingActionButton(
+          child: const Icon(LineAwesomeIcons.retro_camera),
+          onPressed: () async {
+            try {
+              await _initializeControllerFuture;
 
-                final path = join(
-                  (await getTemporaryDirectory()).path,
-                  '${DateTime.now()}.png',
-                );
+              final path = join(
+                (await getTemporaryDirectory()).path,
+                '${DateTime.now()}.png',
+              );
 
-                await _controller!.takePicture();
-              } catch (e) {
-                print(e);
-              }
-            },
-          ),
+              await _controller!.takePicture();
+            } catch (e) {
+              print(e);
+            }
+          },
         ),
       ),
     );
