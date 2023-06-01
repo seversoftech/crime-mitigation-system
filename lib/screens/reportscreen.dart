@@ -58,89 +58,97 @@ class _ReportCrimeState extends State<ReportCrime> {
       appBar: AppBar(
         title: const Text('Report Crime'),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Stack(
-            children: [
-              Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    Text(
-                        textAlign: TextAlign.center,
-                        style: textStyleWarning,
-                        'Please note that reporting fasle & misleading Information is punishable by the law'),
-                    const Divider(
-                      color: Colors.grey,
-                      thickness: 1.0,
-                    ),
-                    Text(
-                      'Make a report',
-                      style: textStyleBig,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: reportFormInputIncidentType(),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Expanded(child: reportFormInputDate()),
-                          const SizedBox(width: 5),
-                          Expanded(child: reportFormInputSeverity())
-                        ],
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Stack(
+          children: [
+            ListView(
+              children: [
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      Text(
+                          textAlign: TextAlign.center,
+                          style: textStyleWarning,
+                          'Please note that reporting fasle & misleading Information is punishable by the law'),
+                      const Divider(
+                        color: Colors.grey,
+                        thickness: 1.0,
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: reportFormInputLocation(),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: reportFormInputDescription(),
-                    ),
-                    FutureBuilder<void>(
-                      future: _initializeControllerFuture,
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState == ConnectionState.done) {
-                          return SizedBox(
-                            width: halfWidth,
-                            height: halfHeight * .5,
-                            child: CameraPreview(_controller!),
-                          );
-                        } else {
-                          return Column(
-                            children: [
-                              const Center(
-                                  child: CircularProgressIndicator(
-                                strokeCap: StrokeCap.square,
-                                strokeWidth: 2,
-                              )),
-                              Text(
-                                'Grant Camera Permission',
-                                style: textStyle,
-                              )
-                            ],
-                          );
-                        }
-                      },
-                    ),
-                    ElevatedClickButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          _formKey.currentState!.save();
-                        }
-                        // Navigator.pushNamed(context, '/profile');
-                      },
-                      child: 'Report',
-                    ),
-                  ],
+                      Text(
+                        'Make a report',
+                        style: textStyleBig,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: reportFormInputIncidentType(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            Expanded(child: reportFormInputDate()),
+                            const SizedBox(width: 5),
+                            Expanded(child: reportFormInputSeverity())
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: reportFormInputLocation(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: reportFormInputDescription(),
+                      ),
+                      FutureBuilder<void>(
+                        future: _initializeControllerFuture,
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.done) {
+                            return SizedBox(
+                              width: halfWidth,
+                              height: halfHeight * .5,
+                              child: CameraPreview(_controller!),
+                            );
+                          } else {
+                            return Column(
+                              children: [
+                                const Center(
+                                    child: CircularProgressIndicator(
+                                  strokeCap: StrokeCap.square,
+                                  strokeWidth: 2,
+                                )),
+                                Text(
+                                  'Grant Camera Permission',
+                                  style: textStyle,
+                                )
+                              ],
+                            );
+                          }
+                        },
+                      ),
+                    ],
+                  ),
                 ),
+              ],
+            ),
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: ElevatedClickButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+                  }
+                  // Navigator.pushNamed(context, '/profile');
+                },
+                child: 'Send Report',
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -160,6 +168,7 @@ class _ReportCrimeState extends State<ReportCrime> {
           }
         },
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }

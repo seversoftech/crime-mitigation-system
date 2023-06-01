@@ -31,7 +31,7 @@ class MainApp extends StatelessWidget {
         '/signup': (context) => const SignupScreen(),
         '/forgetpassword': (context) => const ForgetPassword(),
         '/profile': (context) => const UserProfilePage(),
-        '/notifications': (context) => const Notifications(),
+        '/notifications': (context) =>  const Notifications(),
         '/report': (context) => const ReportCrime(),
         '/history': (context) => const History(),
       },
