@@ -48,7 +48,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   TextFormField(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter your email.';
+                        return invalidEmailError;
                       }
                       return null;
                     },

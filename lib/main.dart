@@ -2,11 +2,11 @@ import 'package:crime_mitigation_system/screens/history.dart';
 import 'package:crime_mitigation_system/screens/notificationscreen.dart';
 import 'package:crime_mitigation_system/screens/reportscreen.dart';
 import 'package:flutter/material.dart';
-import 'constants/constants.dart';
 import 'screens/forgetpassword.dart';
 import 'screens/loginscreen.dart';
 import 'screens/profilescreen.dart';
 import 'screens/signup.dart';
+import 'screens/theme.dart';
 
 void main() {
   runApp(const MainApp());
