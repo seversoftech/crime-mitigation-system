@@ -9,6 +9,9 @@ TextEditingController _locationController = TextEditingController();
 TextEditingController _descriptionController = TextEditingController();
 
 String? _incident;
+String? _severity;
+String? _date;
+String? _location;
 
 SizedBox reportFormInputIncidentType() {
   return SizedBox(
@@ -50,7 +53,7 @@ SizedBox reportFormInputDate() {
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(6))),
       ),
-      onSaved: (newValue) => _incident = newValue,
+      onSaved: (newValue) => _date = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
         } else if (value.length >= 8) {}
@@ -74,11 +77,11 @@ SizedBox reportFormInputSeverity() {
       controller: _severityController,
       decoration: const InputDecoration(
         hintText: 'Select how severe',
-        labelText: 'severerity*',
+        labelText: 'severity*',
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(6))),
       ),
-      onSaved: (newValue) => _incident = newValue,
+      onSaved: (newValue) => _severity = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
         } else if (value.length >= 8) {}
@@ -106,7 +109,7 @@ SizedBox reportFormInputLocation() {
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(6))),
       ),
-      onSaved: (newValue) => _incident = newValue,
+      onSaved: (newValue) => _location = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
         } else if (value.length >= 8) {}

@@ -1,7 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:crime_mitigation_system/constants/constants.dart';
 import 'package:flutter/material.dart';
-
 import '../main.dart';
 import '../widgets/report_input_fields.dart';
 
