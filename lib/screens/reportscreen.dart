@@ -116,12 +116,13 @@ class _ReportCrimeState extends State<ReportCrime> {
                             return Column(
                               children: [
                                 const Center(
-                                    child: CircularProgressIndicator(
-                                  strokeCap: StrokeCap.square,
-                                  strokeWidth: 2,
-                                )),
+                                  child: CircularProgressIndicator(
+                                    strokeCap: StrokeCap.square,
+                                    strokeWidth: 2,
+                                  ),
+                                ),
                                 Text(
-                                  'Grant Camera Permission',
+                                  'You must Grant Camera Permission',
                                   style: textStyle,
                                 )
                               ],
