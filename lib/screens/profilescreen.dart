@@ -74,7 +74,9 @@ class _UserProfilePageState extends State<UserProfilePage> {
             ),
             ProfileMenu(
               icon: LineAwesomeIcons.address_card,
-              press: () {},
+              press: () {
+                Navigator.pushNamed(context, '/about');
+              },
               text: 'About',
             ),
             ProfileMenu(
