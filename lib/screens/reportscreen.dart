@@ -78,6 +78,7 @@ class _ReportCrimeState extends State<ReportCrime> {
                         thickness: 1.0,
                       ),
                       Text(
+                       
                         'Make a report',
                         style: textStyleBig,
                       ),
