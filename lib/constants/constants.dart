@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 TextStyle textStyle =
     const TextStyle(fontWeight: FontWeight.w400, fontSize: 16);
+TextStyle textStyleBold =
+    const TextStyle(fontWeight: FontWeight.bold, fontSize: 16);
 TextStyle textStyleWarning = const TextStyle(
     fontWeight: FontWeight.bold, fontSize: 16, color: Colors.red);
 TextStyle textStyleBig =
