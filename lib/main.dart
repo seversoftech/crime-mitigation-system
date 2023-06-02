@@ -3,6 +3,7 @@ import 'package:crime_mitigation_system/screens/notificationscreen.dart';
 import 'package:crime_mitigation_system/screens/reportscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'screens/aboutscreen.dart';
 import 'screens/forgetpassword.dart';
 import 'screens/loginscreen.dart';
 import 'screens/profilescreen.dart';
@@ -34,6 +35,7 @@ class MainApp extends StatelessWidget {
         '/notifications': (context) => const NotificationScreen(),
         '/report': (context) => const ReportCrime(),
         '/history': (context) => const History(),
+        '/about': (context) => AboutScreen(),
       },
     );
   }

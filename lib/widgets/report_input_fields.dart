@@ -6,11 +6,8 @@ TextEditingController _incidentController = TextEditingController();
 TextEditingController _severityController = TextEditingController();
 TextEditingController _locationController = TextEditingController();
 TextEditingController _descriptionController = TextEditingController();
-TextEditingController _dateController = TextEditingController(text: DateFormat('yyyy-MM-dd').format(DateTime.now()));
-
-
-
-
+TextEditingController _dateController = TextEditingController(
+    text: DateFormat('dd-MM-yyyy').format(DateTime.now()));
 
 String? _incident;
 String? _severity;
@@ -47,28 +44,27 @@ SizedBox reportFormInputIncidentType() {
 SizedBox reportFormInputDate() {
   return SizedBox(
     child: TextFormField(
-      
+      readOnly: true,
       maxLines: 1,
       controller: _dateController,
       decoration: const InputDecoration(
-        
         hintText: 'Date of incident',
         labelText: 'DD/MM/YYYY*',
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(6))),
       ),
-      // onSaved: (newValue) => _date = newValue,
-      // onChanged: (value) {
-      //   if (value.isNotEmpty) {
-      //   } else if (value.length >= 8) {}
-      //   return;
-      // },
-      // validator: (value) {
-      //   if (value!.isEmpty) {
-      //     return incidentError;
-      //   }
-      //   return null;
-      // },
+      onSaved: (newValue) => _date = newValue,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+        } else if (value.length >= 8) {}
+        return;
+      },
+      validator: (value) {
+        if (value!.isEmpty) {
+          return incidentError;
+        }
+        return null;
+      },
     ),
   );
 }
