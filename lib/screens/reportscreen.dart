@@ -102,34 +102,7 @@ class _ReportCrimeState extends State<ReportCrime> {
                         padding: const EdgeInsets.all(8.0),
                         child: reportFormInputDescription(),
                       ),
-                      FutureBuilder<void>(
-                        future: _initializeControllerFuture,
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.done) {
-                            return SizedBox(
-                              width: halfWidth,
-                              height: halfHeight * .5,
-                              child: CameraPreview(_controller!),
-                            );
-                          } else {
-                            return Column(
-                              children: [
-                                const Center(
-                                  child: CircularProgressIndicator(
-                                    strokeCap: StrokeCap.square,
-                                    strokeWidth: 2,
-                                  ),
-                                ),
-                                Text(
-                                  'You must Grant Camera Permission',
-                                  style: textStyle,
-                                )
-                              ],
-                            );
-                          }
-                        },
-                      ),
+                      cameraView(halfWidth, halfHeight),
                     ],
                   ),
                 ),
@@ -170,6 +143,36 @@ class _ReportCrimeState extends State<ReportCrime> {
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+    );
+  }
+
+  FutureBuilder<void> cameraView(double halfWidth, double halfHeight) {
+    return FutureBuilder<void>(
+      future: _initializeControllerFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return SizedBox(
+            width: halfWidth,
+            height: halfHeight * .5,
+            child: CameraPreview(_controller!),
+          );
+        } else {
+          return Column(
+            children: [
+              const Center(
+                child: CircularProgressIndicator(
+                  strokeCap: StrokeCap.square,
+                  strokeWidth: 2,
+                ),
+              ),
+              Text(
+                'You must Grant Camera Permission',
+                style: textStyle,
+              )
+            ],
+          );
+        }
+      },
     );
   }
 }
