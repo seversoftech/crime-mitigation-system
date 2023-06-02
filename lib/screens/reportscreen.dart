@@ -25,15 +25,13 @@ class _ReportCrimeState extends State<ReportCrime> {
   Future<void>? _initializeControllerFuture;
   final _formKey = GlobalKey<FormState>();
 
-  TextEditingController _dateController = TextEditingController();
+ 
 
   @override
   void initState() {
     super.initState();
 
-    _dateController = TextEditingController(
-      text: DateFormat('yyyy-MM-dd').format(DateTime.now()),
-    );
+  
     // Select the first available camera
     _controller = CameraController(cameras![0], ResolutionPreset.medium);
 
@@ -43,6 +41,7 @@ class _ReportCrimeState extends State<ReportCrime> {
 
   @override
   void dispose() {
+
     // Dispose of the controller when the widget is disposed
     _controller!.dispose();
     super.dispose();

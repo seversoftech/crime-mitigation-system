@@ -6,6 +6,7 @@ TextEditingController _incidentController = TextEditingController();
 TextEditingController _severityController = TextEditingController();
 TextEditingController _locationController = TextEditingController();
 TextEditingController _descriptionController = TextEditingController();
+TextEditingController _dateController = TextEditingController(text: DateFormat('yyyy-MM-dd').format(DateTime.now()));
 
 
 
@@ -48,7 +49,7 @@ SizedBox reportFormInputDate() {
     child: TextFormField(
       
       maxLines: 1,
-      // controller: _dateController,
+      controller: _dateController,
       decoration: const InputDecoration(
         
         hintText: 'Date of incident',
@@ -56,18 +57,18 @@ SizedBox reportFormInputDate() {
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(6))),
       ),
-      onSaved: (newValue) => _date = newValue,
-      onChanged: (value) {
-        if (value.isNotEmpty) {
-        } else if (value.length >= 8) {}
-        return;
-      },
-      validator: (value) {
-        if (value!.isEmpty) {
-          return incidentError;
-        }
-        return null;
-      },
+      // onSaved: (newValue) => _date = newValue,
+      // onChanged: (value) {
+      //   if (value.isNotEmpty) {
+      //   } else if (value.length >= 8) {}
+      //   return;
+      // },
+      // validator: (value) {
+      //   if (value!.isEmpty) {
+      //     return incidentError;
+      //   }
+      //   return null;
+      // },
     ),
   );
 }
