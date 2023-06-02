@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import '../models/notification_model.dart';
+import '../models/models.dart';
 import '../widgets/notification_widget.dart';
 
 class NotificationScreen extends StatefulWidget {

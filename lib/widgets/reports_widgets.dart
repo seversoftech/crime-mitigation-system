@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import '../constants/constants.dart';
 
-class NotificationCard extends StatelessWidget {
+class ReportCard extends StatelessWidget {
   final String title;
   final String message;
   final String time;
   final IconData iconData;
 
-  const NotificationCard({
+  const ReportCard({
     Key? key,
     required this.title,
     required this.message,
@@ -28,7 +28,7 @@ class NotificationCard extends StatelessWidget {
         subtitle: Text(message),
         trailing: Text(time),
         onTap: () {
-          // Handle notification tap
+          // Handle Report tap
         },
       ),
     );
