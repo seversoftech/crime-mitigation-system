@@ -1,4 +1,5 @@
 import 'package:camera/camera.dart';
+import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:crime_mitigation_system/constants/constants.dart';
@@ -138,7 +139,9 @@ class _ReportCrimeState extends State<ReportCrime> {
 
             await _controller!.takePicture();
           } catch (e) {
-            print(e);
+            if (kDebugMode) {
+              print(e);
+            }
           }
         },
       ),
