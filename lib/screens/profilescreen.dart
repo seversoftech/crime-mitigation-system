@@ -29,7 +29,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                 clipBehavior: Clip.hardEdge,
                 fit: StackFit.expand,
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     backgroundImage: AssetImage("assets/icons/icon.png"),
                   ),
                   Positioned(
@@ -41,7 +41,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                       child: CircleAvatar(
                         child: IconButton(
                           onPressed: () {},
-                          icon: (Icon(
+                          icon: (const Icon(
                             LineAwesomeIcons.camera,
                           )),
                         ),
@@ -75,15 +75,14 @@ class _UserProfilePageState extends State<UserProfilePage> {
             ProfileMenu(
               icon: LineAwesomeIcons.address_card,
               press: () {
-                Navigator.pushNamed(context, '/about');
+                _aboutDialogue(context);
               },
               text: 'About',
             ),
             ProfileMenu(
               icon: LineAwesomeIcons.alternate_sign_out,
               press: () {
-                Navigator.pushNamed(context, '/'); 
-                
+                Navigator.pushNamed(context, '/');
               },
               text: 'Log Out',
             ),
@@ -92,4 +91,40 @@ class _UserProfilePageState extends State<UserProfilePage> {
       ),
     );
   }
+}
+
+Widget _aboutDialogue(BuildContext context) {
+  return Container(
+    padding: const EdgeInsets.all(16.0),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(10.0),
+    ),
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Text(
+          '',
+          style: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 16.0),
+        const Text(
+          '',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 16.0),
+        ),
+        const SizedBox(height: 24.0),
+        ElevatedButton(
+          onPressed: () {},
+          child: const Text(
+            'OK',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      ],
+    ),
+  );
 }

@@ -1,19 +1,8 @@
 import 'package:flutter/material.dart';
 
-class AboutScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      elevation: 0.0,
-      backgroundColor: Colors.transparent,
-      child: _buildDialogContent(context),
-    );
-  }
 
-  Widget _buildDialogContent(BuildContext context) {
+
+  Widget _aboutDialogue(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
@@ -48,4 +37,4 @@ class AboutScreen extends StatelessWidget {
       ),
     );
   }
-}
+
