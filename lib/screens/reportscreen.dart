@@ -1,6 +1,5 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
-import 'package:intl/intl.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:crime_mitigation_system/constants/constants.dart';
 import 'package:flutter/material.dart';

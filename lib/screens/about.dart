@@ -1,40 +1,89 @@
 import 'package:flutter/material.dart';
 
+class AnimatedBottomSheetExample extends StatefulWidget {
+  const AnimatedBottomSheetExample({super.key});
 
+  @override
+  _AnimatedBottomSheetExampleState createState() =>
+      _AnimatedBottomSheetExampleState();
+}
 
-  Widget _aboutDialogue(BuildContext context) {
+class _AnimatedBottomSheetExampleState extends State<AnimatedBottomSheetExample> {
+  bool _isBottomSheetOpen = false;
+
+  void _openBottomSheet() {
+    setState(() {
+      _isBottomSheetOpen = true;
+    });
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (BuildContext context) {
+        return AnimatedPadding(
+          padding: MediaQuery.of(context).viewInsets,
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.easeInOut,
+          child: _buildBottomSheetContent(),
+        );
+      },
+    );
+  }
+
+  Widget _buildBottomSheetContent() {
     return Container(
-      padding: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(16.0),
+          topRight: Radius.circular(16.0),
+        ),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text(
-            '',
-            style: TextStyle(
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-            ),
+          ListTile(
+            leading: const Icon(Icons.share),
+            title: const Text('Share'),
+            onTap: () {
+              // Handle share action
+              Navigator.pop(context);
+            },
           ),
-          const SizedBox(height: 16.0),
-          const Text(
-            '',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16.0),
+          ListTile(
+            leading: const Icon(Icons.link),
+            title: const Text('Copy Link'),
+            onTap: () {
+              // Handle copy link action
+              Navigator.pop(context);
+            },
           ),
-          const SizedBox(height: 24.0),
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text(
-              'OK',
-              style: TextStyle(color: Colors.white),
-            ),
+          ListTile(
+            leading: const Icon(Icons.delete),
+            title: const Text('Delete'),
+            onTap: () {
+              // Handle delete action
+              Navigator.pop(context);
+            },
           ),
         ],
       ),
     );
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Animated Bottom Sheet Example'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: _openBottomSheet,
+          child: const Text('Open Bottom Sheet'),
+        ),
+      ),
+    );
+  }
+}
