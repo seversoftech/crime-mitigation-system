@@ -12,8 +12,6 @@ class UserProfilePage extends StatefulWidget {
 }
 
 class _UserProfilePageState extends State<UserProfilePage> {
-  bool _isBottomSheetOpen = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,7 +74,9 @@ class _UserProfilePageState extends State<UserProfilePage> {
             ),
             ProfileMenu(
               icon: LineAwesomeIcons.address_card,
-              press: () {},
+              press: () {
+                _showSimpleDialog(context);
+              },
               text: 'About',
             ),
             ProfileMenu(
@@ -91,4 +91,24 @@ class _UserProfilePageState extends State<UserProfilePage> {
       ),
     );
   }
+}
+
+void _showSimpleDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Simple Dialog'),
+        content: const Text('This is a simple dialog.'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('Close'),
+          ),
+        ],
+      );
+    },
+  );
 }
