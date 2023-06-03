@@ -35,7 +35,6 @@ class MainApp extends StatelessWidget {
         '/notifications': (context) => const NotificationScreen(),
         '/report': (context) => const ReportCrime(),
         '/history': (context) => const History(),
-       
       },
     );
   }
