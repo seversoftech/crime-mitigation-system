@@ -21,7 +21,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
       body: Center(
         child: Column(
           children: [
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             SizedBox(
               height: 115,
               width: 115,
