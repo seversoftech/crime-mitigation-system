@@ -24,13 +24,10 @@ class _ReportCrimeState extends State<ReportCrime> {
   Future<void>? _initializeControllerFuture;
   final _formKey = GlobalKey<FormState>();
 
- 
-
   @override
   void initState() {
     super.initState();
 
-  
     // Select the first available camera
     _controller = CameraController(cameras![0], ResolutionPreset.medium);
 
@@ -40,7 +37,6 @@ class _ReportCrimeState extends State<ReportCrime> {
 
   @override
   void dispose() {
-
     // Dispose of the controller when the widget is disposed
     _controller!.dispose();
     super.dispose();
@@ -76,7 +72,6 @@ class _ReportCrimeState extends State<ReportCrime> {
                         thickness: 1.0,
                       ),
                       Text(
-                       
                         'Make a report',
                         style: textStyleBig,
                       ),

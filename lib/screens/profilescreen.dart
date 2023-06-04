@@ -97,7 +97,8 @@ void _showSimpleDialog(BuildContext context) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      var halfHeight = MediaQuery.of(context).size.height * 0.2;
+      var halfHeight = MediaQuery.of(context).size.height * 0.1;
+
       return AlertDialog(
         titleTextStyle: textStyleWarning,
         title: const Text(
@@ -115,11 +116,13 @@ void _showSimpleDialog(BuildContext context) {
           ),
         ),
         actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: const Text('Close'),
+          SizedBox(
+            child: TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Okay...'),
+            ),
           ),
         ],
       );
