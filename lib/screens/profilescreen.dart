@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import '../constants/constants.dart';
 import '../widgets/profilemenu.dart';
+import '../widgets/textButton.dart';
 
 class UserProfilePage extends StatefulWidget {
   const UserProfilePage({super.key});
@@ -95,11 +96,17 @@ class _UserProfilePageState extends State<UserProfilePage> {
 
 void _showSimpleDialog(BuildContext context) {
   showDialog(
+    barrierDismissible: false,
     context: context,
     builder: (BuildContext context) {
       var halfHeight = MediaQuery.of(context).size.height * 0.1;
 
       return AlertDialog(
+        icon: const Icon(
+          LineAwesomeIcons.info_circle,
+          color: Colors.deepPurple,
+          size: 40,
+        ),
         titleTextStyle: textStyleWarning,
         title: const Text(
             textAlign: TextAlign.center,
@@ -108,22 +115,20 @@ void _showSimpleDialog(BuildContext context) {
           height: halfHeight,
           child: Column(
             children: [
-              Text('Full Name:  Name goes here', style: textStyleBold),
-              Text('Department of Computer Science', style: textStyleBold),
-              Text('Supervised by Mr. Name goes here', style: textStyleBold),
-              Text('Verified by Mr. Name goes here', style: textStyleBold),
+              Text('Full Name:  Name goes here', style: textStyle),
+              Text('Department of Computer Science', style: textStyle),
+              Text('Supervised by Mr. Name goes here', style: textStyle),
+              Text('Verified by Mr. Name goes here', style: textStyle),
             ],
           ),
         ),
         actions: [
-          SizedBox(
-            child: TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('Okay...'),
-            ),
-          ),
+          TextClickButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            text: 'Close...',
+          )
         ],
       );
     },
