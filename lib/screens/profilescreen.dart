@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
+import '../constants/constants.dart';
 import '../widgets/profilemenu.dart';
 
 class UserProfilePage extends StatefulWidget {
@@ -98,8 +98,20 @@ void _showSimpleDialog(BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: const Text('Simple Dialog'),
-        content: const Text('This is a simple dialog.'),
+        titleTextStyle: textStyleWarning,
+        title: const Text(
+            textAlign: TextAlign.center,
+            'Design and Implementation of mobile app to mitigate insurgency in Nigeria'),
+        content: Center(
+          child: Column(
+            children: [
+              Text('Full Name: \n Name goes here', style: textStyle),
+              Text('Department of Computer Science', style: textStyle),
+              Text('Supervised by Mr. Name goes here', style: textStyle),
+              Text('Software verified by Mr. Name goes here', style: textStyle),
+            ],
+          ),
+        ),
         actions: [
           TextButton(
             onPressed: () {
