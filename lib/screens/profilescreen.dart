@@ -97,18 +97,22 @@ void _showSimpleDialog(BuildContext context) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
+      var halfHeight = MediaQuery.of(context).size.height * 0.2;
       return AlertDialog(
         titleTextStyle: textStyleWarning,
         title: const Text(
             textAlign: TextAlign.center,
             'Design and Implementation of mobile app to mitigate insurgency in Nigeria'),
-        content: Column(
-          children: [
-            Text('Full Name:  Name goes here', style: textStyle),
-            Text('Department of Computer Science', style: textStyle),
-            Text('Supervised by Mr. Name goes here', style: textStyle),
-            Text('Verified by Mr. Name goes here', style: textStyle),
-          ],
+        content: SizedBox(
+          height: halfHeight,
+          child: Column(
+            children: [
+              Text('Full Name:  Name goes here', style: textStyleBold),
+              Text('Department of Computer Science', style: textStyleBold),
+              Text('Supervised by Mr. Name goes here', style: textStyleBold),
+              Text('Verified by Mr. Name goes here', style: textStyleBold),
+            ],
+          ),
         ),
         actions: [
           TextButton(
