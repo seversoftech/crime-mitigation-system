@@ -102,15 +102,13 @@ void _showSimpleDialog(BuildContext context) {
         title: const Text(
             textAlign: TextAlign.center,
             'Design and Implementation of mobile app to mitigate insurgency in Nigeria'),
-        content: Center(
-          child: Column(
-            children: [
-              Text('Full Name: \n Name goes here', style: textStyle),
-              Text('Department of Computer Science', style: textStyle),
-              Text('Supervised by Mr. Name goes here', style: textStyle),
-              Text('Software verified by Mr. Name goes here', style: textStyle),
-            ],
-          ),
+        content: Column(
+          children: [
+            Text('Full Name:  Name goes here', style: textStyle),
+            Text('Department of Computer Science', style: textStyle),
+            Text('Supervised by Mr. Name goes here', style: textStyle),
+            Text('Verified by Mr. Name goes here', style: textStyle),
+          ],
         ),
         actions: [
           TextButton(
