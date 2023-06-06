@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 class DisplayImageScreen extends StatelessWidget {
-  final String imagePath;
+  final String path;
 
-  const DisplayImageScreen({required Key key, required this.imagePath}) : super(key: key);
+  const DisplayImageScreen({required Key key, required this.path, required imagePath}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class DisplayImageScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Captured Image'),
       ),
-      body: Image.file(File(imagePath)),
+      body: Image.file(File(path)),
     );
   }
 }

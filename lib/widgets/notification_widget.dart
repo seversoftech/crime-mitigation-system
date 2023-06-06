@@ -28,7 +28,7 @@ class NotificationCard extends StatelessWidget {
         subtitle: Text(message),
         trailing: Text(time),
         onTap: () {
-          // Handle notification tap
+          // Handle notification tap.
         },
       ),
     );
