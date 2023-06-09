@@ -31,19 +31,29 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _addressController = TextEditingController();
 
   Future signup() async {
-    var response = await http.post(Uri.parse(signupUrl), body: {
-      "fullname": _fullnameController.text,
-      "password": _passwordController.text,
-      "email": _emailController.text,
-      "phone": _phoneController.text,
-      "address": _addressController.text
-    });
+    var response = await http.post(
+      Uri.parse(signupUrl),
+      body: {
+        "fullname": _fullnameController.text,
+        "password": _passwordController.text,
+        "email": _emailController.text,
+        "phone": _phoneController.text,
+        "address": _addressController.text
+      },
+    );
 
     var data = json.decode(response.body);
     if (data == "Error") {
       const ToastMessage(
         message: "User Exists",
         gravity: ToastGravity.BOTTOM,
+        color: Colors.red,
+      );
+    } else {
+      const ToastMessage(
+        message: "Registration Successful",
+        gravity: ToastGravity.BOTTOM,
+        color: Colors.green,
       );
     }
   }
@@ -201,6 +211,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
+                        signup();
                       }
                     },
                     child: 'Register',

@@ -31,4 +31,8 @@ const String noError = " ";
 //
 var baseUrl = "http://192.168.15.214";
 
-var signupUrl = "$baseUrl/cms/admin/a_users.php";
+var signupUrl = "$baseUrl/cms/admin/register.php";
+var loginUrl = "$baseUrl/cms/admin/login.php";
+var reportUrl = "$baseUrl/cms/admin/report.php";
+var forgetpassUrl = "$baseUrl/cms/admin/login.php";
+var historyUrl = "$baseUrl/cms/admin/login.php";
