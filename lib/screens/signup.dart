@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:crime_mitigation_system/widgets/toast.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import '../constants/constants.dart';
@@ -29,7 +31,6 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _addressController = TextEditingController();
 
   Future signup() async {
-   
     var response = await http.post(Uri.parse(signupUrl), body: {
       "fullname": _fullnameController.text,
       "password": _passwordController.text,
@@ -39,8 +40,11 @@ class _SignupScreenState extends State<SignupScreen> {
     });
 
     var data = json.decode(response.body);
-    if (data=="Error"){
-      
+    if (data == "Error") {
+      const ToastMessage(
+        message: "User Exists",
+        gravity: ToastGravity.BOTTOM,
+      );
     }
   }
 

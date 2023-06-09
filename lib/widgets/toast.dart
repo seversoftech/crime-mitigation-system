@@ -1,28 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-class Toast extends StatelessWidget {
+class ToastMessage extends StatelessWidget {
   final String message;
   final ToastGravity gravity;
-  final Color backgroundColor;
-  final Color textColor;
-  final double fontSize;
 
-  Toast({
+
+  const ToastMessage({
+    super.key,
     required this.message,
     this.gravity = ToastGravity.BOTTOM,
-    this.backgroundColor = Colors.black54,
-    this.textColor = Colors.white,
-    this.fontSize = 16.0,
   });
 
   void showToast(BuildContext context) {
     Fluttertoast.showToast(
       msg: message,
       gravity: gravity,
-      backgroundColor: backgroundColor,
-      textColor: textColor,
-      fontSize: fontSize,
+      backgroundColor: Colors.deepPurple,
+      textColor: Colors.white,
+      fontSize: 16,
     );
   }
 
@@ -30,7 +27,7 @@ class Toast extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => showToast(context),
-      child: Icon(Icons.info_outline),
+      child: const Icon(LineAwesomeIcons.info_circle),
     );
   }
 }
