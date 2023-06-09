@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
@@ -27,14 +29,19 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _addressController = TextEditingController();
 
   Future signup() async {
-    var url = "";
-    var response = await http.post(Uri.parse(url), body: {
+   
+    var response = await http.post(Uri.parse(signupUrl), body: {
       "fullname": _fullnameController.text,
-      "fullname": _fullnameController.text,
-      "fullname": _fullnameController.text,
-      "fullname": _fullnameController.text,
-      "fullname": _fullnameController.text
+      "password": _passwordController.text,
+      "email": _emailController.text,
+      "phone": _phoneController.text,
+      "address": _addressController.text
     });
+
+    var data = json.decode(response.body);
+    if (data=="Error"){
+      
+    }
   }
 
   @override

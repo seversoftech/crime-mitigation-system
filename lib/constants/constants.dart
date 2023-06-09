@@ -28,5 +28,7 @@ const String addressNullError = "Please Enter your address";
 const String incidentError = "Field is required";
 const String noError = " ";
 
-
 //
+var baseUrl = "http://192.168.15.214";
+
+var signupUrl = "$baseUrl/cms/admin/a_users.php";
