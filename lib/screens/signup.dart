@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
+import 'package:http/http.dart' as http;
 import '../constants/constants.dart';
 import '../widgets/elevatedButton.dart';
 
@@ -25,6 +25,17 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
+
+  Future signup() async {
+    var url = "";
+    var response = await http.post(Uri.parse(url), body: {
+      "fullname": _fullnameController.text,
+      "fullname": _fullnameController.text,
+      "fullname": _fullnameController.text,
+      "fullname": _fullnameController.text,
+      "fullname": _fullnameController.text
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
