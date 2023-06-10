@@ -32,7 +32,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
 
-  add(UserModel userModel) async {
+  register(UserModel userModel) async {
     await UserService().registerUser(userModel).then(
       (success) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -243,7 +243,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             address: _addressController.text,
                             password: _passwordController.text,
                             id: '');
-                        add(userModel);
+                        register(userModel);
                       }
                     },
                     child: 'Register',
