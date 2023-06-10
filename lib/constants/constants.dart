@@ -30,11 +30,4 @@ const String noError = " ";
 
 //
 
-var baseUrl = "http://192.168.15.214/crimemitigation";
 
-var loginUrl = "$baseUrl/login.php";
-var signupUrl = "$baseUrl/register.php";
-var reportUrl = "$baseUrl/report.php";
-var historyUrl = "$baseUrl/history.php";
-var forgetpassUrl = "$baseUrl/forgetpass.php";
-var notificationUrl = "$baseUrl/notification.php";

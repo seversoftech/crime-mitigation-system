@@ -6,6 +6,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import '../constants/constants.dart';
+import '../models/userModel.dart';
+import '../services/user_services.dart';
 import '../widgets/elevatedButton.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -30,33 +32,52 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
 
-  Future signup() async {
-    var response = await http.post(
-      Uri.parse(signupUrl),
-      body: {
-        "fullname": _fullname,
-        "password": _password,
-        "email": _email,
-        "phone": _phone,
-        "address": _address,
+  add(UserModel userModel) async {
+    await UserService().registerUser(userModel).then(
+      (success) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Registratered"),
+            duration: Duration(milliseconds: 1000),
+          ),
+        );
+        Navigator.pop(context);
+        _fullnameController.text = '';
+        _passwordController.text = '';
+        _emailController.text = '';
+        _phoneController.text = '';
+        _addressController.text = '';
       },
     );
-
-    var data = json.decode(response.body);
-    if (data == "Error") {
-      const ToastMessage(
-        message: "User Exists",
-        gravity: ToastGravity.BOTTOM,
-        color: Colors.red,
-      );
-    } else {
-      const ToastMessage(
-        message: "Registration Successful",
-        gravity: ToastGravity.BOTTOM,
-        color: Colors.green,
-      );
-    }
   }
+
+  // Future signup() async {
+  //   var response = await http.post(
+  //     Uri.parse(signupUrl),
+  //     body: {
+  //       "fullname": _fullname,
+  //       "password": _password,
+  //       "email": _email,
+  //       "phone": _phone,
+  //       "address": _address,
+  //     },
+  //   );
+
+  //   var data = json.decode(response.body);
+  //   if (data == "Error") {
+  //     const ToastMessage(
+  //       message: "User Exists",
+  //       gravity: ToastGravity.BOTTOM,
+  //       color: Colors.red,
+  //     );
+  //   } else {
+  //     const ToastMessage(
+  //       message: "Registration Successful",
+  //       gravity: ToastGravity.BOTTOM,
+  //       color: Colors.green,
+  //     );
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -211,7 +232,14 @@ class _SignupScreenState extends State<SignupScreen> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
-                        signup();
+                        UserModel userModel = UserModel(
+                            fullname: _fullnameController.text,
+                            email: _emailController.text,
+                            phone: _phoneController.text,
+                            address: _addressController.text,
+                            password: _phoneController.text,
+                            id: '');
+                        add(userModel);
                       }
                     },
                     child: 'Register',
