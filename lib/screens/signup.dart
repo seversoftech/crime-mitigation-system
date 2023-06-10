@@ -20,12 +20,6 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  // String? _fullname;
-  // String? _email;
-  // String? _phone;
-  // String? _address;
-  // String? _password;
-
   final TextEditingController _fullnameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -54,7 +48,6 @@ class _SignupScreenState extends State<SignupScreen> {
       },
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
