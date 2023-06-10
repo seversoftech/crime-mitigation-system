@@ -22,8 +22,8 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
 
-  Future login() async {
-    var url = loginUrl;
+  Future register() async {
+    var url = signupUrl;
     var response = await http.post(url, body: {
       "fullname": _fullnameController.text,
       "email": _emailController.text,
@@ -212,6 +212,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
+                        register();
                       }
                     },
                     child: 'Register',
