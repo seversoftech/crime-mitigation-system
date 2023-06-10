@@ -13,7 +13,6 @@ dependencies:
     sdk: flutter
   line_awesome_flutter: ^2.0.0
   path_provider:
-  fluttertoast:
   google_fonts: 
   camera: 
   http:

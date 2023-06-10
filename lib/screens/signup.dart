@@ -1,8 +1,5 @@
 import 'dart:convert';
-
-import 'package:crime_mitigation_system/widgets/toast.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import '../constants/constants.dart';
