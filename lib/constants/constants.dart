@@ -30,4 +30,13 @@ const String noError = " ";
 
 //
 
-
+ var loginUrl = Uri.parse("http://192.168.15.214/crimemitigation/login.php");
+  var signupUrl =
+      Uri.parse("http://192.168.15.214/crimemitigation/register.php");
+  var reportUrl = Uri.parse("http://192.168.15.214/crimemitigation/report.php");
+  var historyUrl =
+      Uri.parse("http://192.168.15.214/crimemitigation/history.php");
+  var forgetpassUrl =
+      Uri.parse("http://192.168.15.214/crimemitigation/forgetpass.php");
+  var notificationUrl =
+      Uri.parse("http://192.168.15.214/crimemitigation/notification.php");

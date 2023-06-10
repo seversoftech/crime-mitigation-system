@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:http/http.dart' as http;
 import '../widgets/elevatedButton.dart';
 import '../widgets/textButton.dart';
 import '../constants/constants.dart';
@@ -18,6 +21,19 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  Future login() async {
+    var url = loginUrl;
+    var response = await http.post(url, body: {
+      "email": _emailController,
+      "password": _passwordController,
+    });
+
+    var data = json.decode(response.body);
+    if (data == "Success") {
+      
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +151,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
                       }
-                      Navigator.pushNamed(context, '/profile');
                     },
                     child: 'Login',
                   ),
