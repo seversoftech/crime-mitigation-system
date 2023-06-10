@@ -35,5 +35,5 @@ var baseUrl = "http://192.168.15.214/crimemitigation";
 var signupUrl = "$baseUrl/register.php";
 var loginUrl = "$baseUrl/login.php";
 var reportUrl = "$baseUrl/report.php";
-var forgetpassUrl = "$baseUrl/login.php";
 var historyUrl = "$baseUrl/login.php";
+var forgetpassUrl = "$baseUrl/login.php";
