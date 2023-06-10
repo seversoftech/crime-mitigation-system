@@ -37,3 +37,4 @@ var signupUrl = "$baseUrl/register.php";
 var reportUrl = "$baseUrl/report.php";
 var historyUrl = "$baseUrl/history.php";
 var forgetpassUrl = "$baseUrl/forgetpass.php";
+var notificationUrl = "$baseUrl/notification.php";
