@@ -36,9 +36,13 @@ class _SignupScreenState extends State<SignupScreen> {
     await UserService().registerUser(userModel).then(
       (success) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("Registratered"),
-            duration: Duration(milliseconds: 1000),
+          SnackBar(
+            backgroundColor: Colors.green,
+            content: Text(
+              "Registration Successful",
+              style: textStyle,
+            ),
+            duration: const Duration(milliseconds: 5000),
           ),
         );
         Navigator.pop(context);
@@ -237,7 +241,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             email: _emailController.text,
                             phone: _phoneController.text,
                             address: _addressController.text,
-                            password: _phoneController.text,
+                            password: _passwordController.text,
                             id: '');
                         add(userModel);
                       }

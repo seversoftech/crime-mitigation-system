@@ -9,23 +9,23 @@ class UserService {
   // var updateUrl = Uri.parse("http://192.168.0.101/del/server/update.php");
   // var deleteUrl = Uri.parse("http://192.168.0.101/del/server/delete.php");
 
-
-var loginUrl = Uri.parse("http://192.168.15.214/crimemitigation/login.php");
-var signupUrl = Uri.parse("http://192.168.15.214/crimemitigation/register.php");
-var reportUrl = Uri.parse("http://192.168.15.214/crimemitigation/report.php");
-var historyUrl = Uri.parse("http://192.168.15.214/crimemitigation/history.php");
-var forgetpassUrl = Uri.parse("http://192.168.15.214/crimemitigation/forgetpass.php");
-var notificationUrl = Uri.parse("http://192.168.15.214/crimemitigation/notification.php");
-
-
-
+  var loginUrl = Uri.parse("http://192.168.15.214/crimemitigation/login.php");
+  var signupUrl =
+      Uri.parse("http://192.168.15.214/crimemitigation/register.php");
+  var reportUrl = Uri.parse("http://192.168.15.214/crimemitigation/report.php");
+  var historyUrl =
+      Uri.parse("http://192.168.15.214/crimemitigation/history.php");
+  var forgetpassUrl =
+      Uri.parse("http://192.168.15.214/crimemitigation/forgetpass.php");
+  var notificationUrl =
+      Uri.parse("http://192.168.15.214/crimemitigation/notification.php");
 
   Future<String> registerUser(UserModel userModel) async {
-    final response = await http.post(signupUrl, body: userModel.toJsonRegister());
+    final response =
+        await http.post(signupUrl, body: userModel.toJsonRegister());
     if (response.statusCode == 200) {
-      if (kDebugMode) {
-        print("Add Response:${response.body}");
-      }
+      // var data = json.decode(response.body);
+     
       return response.body;
     } else {
       return "Error";
