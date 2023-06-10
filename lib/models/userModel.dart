@@ -24,12 +24,19 @@ class UserModel {
       password: json['password'] as String,
     );
   }
-  Map<String, dynamic> toJsonRegister() {
+  Map<String, dynamic> registerUser() {
     return {
       "fullname": fullname,
       "email": email,
       "phone": phone,
       "address": address,
+      "password": password,
+    };
+  }
+
+  Map<String, dynamic> loginUser() {
+    return {
+      "email": email,
       "password": password,
     };
   }

@@ -13,7 +13,7 @@ class ForgetPassword extends StatefulWidget {
 }
 
 class _ForgetPasswordState extends State<ForgetPassword> {
-  String? _email;
+
 
   final _formKey = GlobalKey<FormState>();
 
@@ -46,7 +46,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   ),
                   const SizedBox(height: 20.0),
                   TextFormField(
-                    onSaved: (newValue) => _email = newValue,
+                   
                     onChanged: (value) {
                       if (value.isNotEmpty) {
                       } else if (emailValidatorRegExp.hasMatch(value)) {}

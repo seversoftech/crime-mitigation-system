@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:http/http.dart' as http;
 import '../widgets/elevatedButton.dart';
 import '../widgets/textButton.dart';
 import '../constants/constants.dart';
@@ -14,8 +13,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool isChecked = false;
-  String? _email;
-  String? _password;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -50,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 20.0),
                   TextFormField(
-                    onSaved: (newValue) => _email = newValue,
+                    // onSaved: (newValue) => _email = newValue,
                     onChanged: (value) {
                       if (value.isNotEmpty) {
                       } else if (emailValidatorRegExp.hasMatch(value)) {}
@@ -71,12 +68,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       labelText: 'Email',
                       hintText: 'Enter your email',
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(12))),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(12),
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
-                    onSaved: (newValue) => _password = newValue,
+                    // onSaved: (newValue) => _password = newValue,
                     onChanged: (value) {
                       if (value.isNotEmpty) {
                       } else if (value.length >= 8) {}

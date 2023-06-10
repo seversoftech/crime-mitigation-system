@@ -8,7 +8,6 @@ import 'package:path_provider/path_provider.dart';
 import '../main.dart';
 import '../widgets/elevatedButton.dart';
 import '../widgets/report_input_fields.dart';
-import 'display_image.dart';
 
 class ReportCrime extends StatefulWidget {
   const ReportCrime({super.key});

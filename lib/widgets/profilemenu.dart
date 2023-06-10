@@ -31,14 +31,14 @@ class ProfileMenu extends StatelessWidget {
           child: Row(
             children: [
               Icon(size: 30, icon),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               Expanded(
                 child: Text(
                   text,
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
               ),
-              Icon(LineAwesomeIcons.angle_right)
+              const Icon(LineAwesomeIcons.angle_right)
             ],
           ),
         ),
