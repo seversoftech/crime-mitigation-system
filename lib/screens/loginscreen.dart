@@ -25,13 +25,34 @@ class _LoginScreenState extends State<LoginScreen> {
   Future login() async {
     var url = loginUrl;
     var response = await http.post(url, body: {
-      "email": _emailController,
-      "password": _passwordController,
+      "email": _emailController.text,
+      "password": _passwordController.text,
     });
 
     var data = json.decode(response.body);
     if (data == "Success") {
-      
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.green,
+          content: Text(
+            "Login Successful",
+            style: textStyle,
+          ),
+          duration: const Duration(milliseconds: 5000),
+        ),
+      );
+      Navigator.pushNamed(context, '/profile');
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.red,
+          content: Text(
+            "Username & Password Incorrect!",
+            style: textStyle,
+          ),
+          duration: const Duration(milliseconds: 5000),
+        ),
+      );
     }
   }
 
@@ -150,6 +171,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
+                        login();
                       }
                     },
                     child: 'Login',
