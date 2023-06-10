@@ -34,11 +34,11 @@ class _SignupScreenState extends State<SignupScreen> {
     var response = await http.post(
       Uri.parse(signupUrl),
       body: {
-        "fullname": _fullnameController.text,
-        "password": _passwordController.text,
-        "email": _emailController.text,
-        "phone": _phoneController.text,
-        "address": _addressController.text
+        "fullname": _fullname,
+        "password": _password,
+        "email": _email,
+        "phone": _phone,
+        "address": _address,
       },
     );
 
