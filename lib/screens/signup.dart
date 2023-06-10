@@ -1,8 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:http/http.dart' as http;
 import '../constants/constants.dart';
-import '../models/userModel.dart';
-import '../services/user_services.dart';
 import '../widgets/elevatedButton.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -21,27 +22,41 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
 
-  register(UserModel userModel) async {
-    await UserService().registerUser(userModel).then(
-      (success) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            backgroundColor: Colors.green,
-            content: Text(
-              "Registration Successful",
-              style: textStyle,
-            ),
-            duration: const Duration(milliseconds: 5000),
+  Future login() async {
+    var url = loginUrl;
+    var response = await http.post(url, body: {
+      "fullname": _fullnameController.text,
+      "email": _emailController.text,
+      "phone": _phoneController.text,
+      "address": _addressController.text,
+      "password": _passwordController.text,
+    });
+
+    var data = json.decode(response.body);
+    if (data == "Success") {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.green,
+          content: Text(
+            "Registeration Successful",
+            style: textStyle,
           ),
-        );
-        Navigator.pop(context);
-        _fullnameController.text = '';
-        _passwordController.text = '';
-        _emailController.text = '';
-        _phoneController.text = '';
-        _addressController.text = '';
-      },
-    );
+          duration: const Duration(milliseconds: 3000),
+        ),
+      );
+      Navigator.pushNamed(context, '/profile');
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.red,
+          content: Text(
+            "User already exist",
+            style: textStyle,
+          ),
+          duration: const Duration(milliseconds: 3000),
+        ),
+      );
+    }
   }
 
   @override
@@ -197,14 +212,6 @@ class _SignupScreenState extends State<SignupScreen> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
-                        UserModel userModel = UserModel(
-                            fullname: _fullnameController.text,
-                            email: _emailController.text,
-                            phone: _phoneController.text,
-                            address: _addressController.text,
-                            password: _passwordController.text,
-                            id: '');
-                        register(userModel);
                       }
                     },
                     child: 'Register',

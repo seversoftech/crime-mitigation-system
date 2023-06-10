@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
             "Login Successful",
             style: textStyle,
           ),
-          duration: const Duration(milliseconds: 5000),
+          duration: const Duration(milliseconds: 3000),
         ),
       );
       Navigator.pushNamed(context, '/profile');
@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
             "Username & Password Incorrect!",
             style: textStyle,
           ),
-          duration: const Duration(milliseconds: 5000),
+          duration: const Duration(milliseconds: 3000),
         ),
       );
     }
