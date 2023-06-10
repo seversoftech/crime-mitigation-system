@@ -20,11 +20,11 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  String? _fullname;
-  String? _email;
-  String? _phone;
-  String? _address;
-  String? _password;
+  // String? _fullname;
+  // String? _email;
+  // String? _phone;
+  // String? _address;
+  // String? _password;
 
   final TextEditingController _fullnameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -55,33 +55,6 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
-  // Future signup() async {
-  //   var response = await http.post(
-  //     Uri.parse(signupUrl),
-  //     body: {
-  //       "fullname": _fullname,
-  //       "password": _password,
-  //       "email": _email,
-  //       "phone": _phone,
-  //       "address": _address,
-  //     },
-  //   );
-
-  //   var data = json.decode(response.body);
-  //   if (data == "Error") {
-  //     const ToastMessage(
-  //       message: "User Exists",
-  //       gravity: ToastGravity.BOTTOM,
-  //       color: Colors.red,
-  //     );
-  //   } else {
-  //     const ToastMessage(
-  //       message: "Registration Successful",
-  //       gravity: ToastGravity.BOTTOM,
-  //       color: Colors.green,
-  //     );
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +87,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
-                    onSaved: (newValue) => _fullname = newValue,
+                    // onSaved: (newValue) => _fullname = newValue,
                     onChanged: (value) {
                       if (value.isNotEmpty) {}
                       return;
@@ -136,7 +109,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
-                    onSaved: (newValue) => _email = newValue,
+                    // onSaved: (newValue) => _email = newValue,
                     onChanged: (value) {
                       if (value.isNotEmpty) {
                       } else if (emailValidatorRegExp.hasMatch(value)) {}
@@ -162,7 +135,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
-                    onSaved: (newValue) => _phone = newValue,
+                    // onSaved: (newValue) => _phone = newValue,
                     onChanged: (value) {
                       if (value.isNotEmpty) {}
                       return;
@@ -185,7 +158,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
-                    onSaved: (newValue) => _address = newValue,
+                    // onSaved: (newValue) => _address = newValue,
                     onChanged: (value) {
                       if (value.isNotEmpty) {}
                       return;
@@ -207,7 +180,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
-                    onSaved: (newValue) => _password = newValue,
+                    // onSaved: (newValue) => _password = newValue,
                     onChanged: (value) {
                       if (value.isNotEmpty) {
                       } else if (value.length >= 8) {}
