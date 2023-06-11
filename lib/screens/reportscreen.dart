@@ -20,6 +20,9 @@ class ReportCrime extends StatefulWidget {
 
 class _ReportCrimeState extends State<ReportCrime> {
   CameraController? _controller;
+  
+
+
   Future<void>? _initializeControllerFuture;
   final _formKey = GlobalKey<FormState>();
 

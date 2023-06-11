@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../constants/constants.dart';
 
-TextEditingController _incidentController = TextEditingController();
+TextEditingController? _incidentController = TextEditingController();
 TextEditingController _severityController = TextEditingController();
 TextEditingController _locationController = TextEditingController();
 TextEditingController _descriptionController = TextEditingController();
 TextEditingController _dateController = TextEditingController(
     text: DateFormat('dd-MM-yyyy').format(DateTime.now()));
-
-
 
 SizedBox reportFormInputIncidentType() {
   return SizedBox(
