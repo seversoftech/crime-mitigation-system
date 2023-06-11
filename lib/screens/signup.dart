@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
@@ -32,33 +33,35 @@ class _SignupScreenState extends State<SignupScreen> {
       "password": _passwordController.text,
     });
 
-    print(response.body);
+    if (kDebugMode) {
+      print(response.body);
+    }
 
-    // var data = json.decode(response.body);
-    // if (data == "Success") {
-    //   ScaffoldMessenger.of(context).showSnackBar(
-    //     SnackBar(
-    //       backgroundColor: Colors.green,
-    //       content: Text(
-    //         "Registeration Successful",
-    //         style: textStyle,
-    //       ),
-    //       duration: const Duration(milliseconds: 3000),
-    //     ),
-    //   );
-    //   Navigator.pushNamed(context, '/profile');
-    // } else {
-    //   ScaffoldMessenger.of(context).showSnackBar(
-    //     SnackBar(
-    //       backgroundColor: Colors.red,
-    //       content: Text(
-    //         "User already exist",
-    //         style: textStyle,
-    //       ),
-    //       duration: const Duration(milliseconds: 3000),
-    //     ),
-    //   );
-    // }
+    var data = json.decode(response.body);
+    if (data == "Success") {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.green,
+          content: Text(
+            "Registeration Successful",
+            style: textStyle,
+          ),
+          duration: const Duration(milliseconds: 3000),
+        ),
+      );
+      Navigator.pushNamed(context, '/');
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.red,
+          content: Text(
+            "User email or phone number already exist",
+            style: textStyle,
+          ),
+          duration: const Duration(milliseconds: 3000),
+        ),
+      );
+    }
   }
 
   @override
