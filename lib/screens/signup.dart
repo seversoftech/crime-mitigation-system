@@ -32,31 +32,33 @@ class _SignupScreenState extends State<SignupScreen> {
       "password": _passwordController.text,
     });
 
-    var data = json.decode(response.body);
-    if (data == "Success") {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.green,
-          content: Text(
-            "Registeration Successful",
-            style: textStyle,
-          ),
-          duration: const Duration(milliseconds: 3000),
-        ),
-      );
-      Navigator.pushNamed(context, '/profile');
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.red,
-          content: Text(
-            "User already exist",
-            style: textStyle,
-          ),
-          duration: const Duration(milliseconds: 3000),
-        ),
-      );
-    }
+    print(response.body);
+
+    // var data = json.decode(response.body);
+    // if (data == "Success") {
+    //   ScaffoldMessenger.of(context).showSnackBar(
+    //     SnackBar(
+    //       backgroundColor: Colors.green,
+    //       content: Text(
+    //         "Registeration Successful",
+    //         style: textStyle,
+    //       ),
+    //       duration: const Duration(milliseconds: 3000),
+    //     ),
+    //   );
+    //   Navigator.pushNamed(context, '/profile');
+    // } else {
+    //   ScaffoldMessenger.of(context).showSnackBar(
+    //     SnackBar(
+    //       backgroundColor: Colors.red,
+    //       content: Text(
+    //         "User already exist",
+    //         style: textStyle,
+    //       ),
+    //       duration: const Duration(milliseconds: 3000),
+    //     ),
+    //   );
+    // }
   }
 
   @override
