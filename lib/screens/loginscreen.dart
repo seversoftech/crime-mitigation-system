@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
         color: Colors.green,
         'Successful Login',
       );
-      Navigator.pop(context);
+      Navigator.pushNamed(context, '/profile');
     } else {
       ShowMessage.show(
         context,
