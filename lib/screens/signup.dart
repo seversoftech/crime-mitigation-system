@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
@@ -6,6 +8,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import '../constants/constants.dart';
 import '../widgets/elevatedButton.dart';
+import '../widgets/showmessage.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -39,17 +42,12 @@ class _SignupScreenState extends State<SignupScreen> {
 
     var data = json.decode(response.body);
     if (data == "Success") {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.green,
-          content: Text(
-            "Registeration Successful",
-            style: textStyle,
-          ),
-          duration: const Duration(milliseconds: 3000),
-        ),
+      ShowMessage.show(
+        context,
+        color: Colors.green,
+        'Registeration Successful',
       );
-      Navigator.pushNamed(context, '/');
+      Navigator.pop(context);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
