@@ -138,12 +138,15 @@ class _SignupScreenState extends State<SignupScreen> {
                   TextFormField(
                     // onSaved: (newValue) => _phone = newValue,
                     onChanged: (value) {
-                      if (value.isNotEmpty) {}
+                      if (value.isNotEmpty) {
+                      } else if (value.length == 11) {}
                       return;
                     },
                     validator: (value) {
                       if (value!.isEmpty) {
                         return phoneNumberNullError;
+                      } else if (value.length != 11) {
+                        return shortPhoneError;
                       }
                       return null;
                     },
