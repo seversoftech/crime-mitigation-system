@@ -16,7 +16,7 @@ class ReportCrime extends StatefulWidget {
   State<ReportCrime> createState() => _ReportCrimeState();
 }
 
-String? _incident;
+// String? _incident;
 
 class _ReportCrimeState extends State<ReportCrime> {
   CameraController? _controller;
