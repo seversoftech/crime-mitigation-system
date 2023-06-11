@@ -9,10 +9,7 @@ TextEditingController _descriptionController = TextEditingController();
 TextEditingController _dateController = TextEditingController(
     text: DateFormat('dd-MM-yyyy').format(DateTime.now()));
 
-String? _incident;
-String? _severity;
-String? _date;
-String? _location;
+
 
 SizedBox reportFormInputIncidentType() {
   return SizedBox(
@@ -25,7 +22,7 @@ SizedBox reportFormInputIncidentType() {
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(6))),
       ),
-      onSaved: (newValue) => _incident = newValue,
+      // onSaved: (newValue) => _incident = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
         } else if (value.length >= 8) {}
@@ -53,7 +50,7 @@ SizedBox reportFormInputDate() {
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(6))),
       ),
-      onSaved: (newValue) => _date = newValue,
+      // onSaved: (newValue) => _date = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
         } else if (value.length >= 8) {}
@@ -80,7 +77,7 @@ SizedBox reportFormInputSeverity() {
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(6))),
       ),
-      onSaved: (newValue) => _severity = newValue,
+      // onSaved: (newValue) => _severity = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
         } else if (value.length >= 8) {}
@@ -107,7 +104,7 @@ SizedBox reportFormInputLocation() {
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(6))),
       ),
-      onSaved: (newValue) => _location = newValue,
+      // onSaved: (newValue) => _location = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
         } else if (value.length >= 8) {}
