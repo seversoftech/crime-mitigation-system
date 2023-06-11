@@ -139,14 +139,14 @@ class _SignupScreenState extends State<SignupScreen> {
                     // onSaved: (newValue) => _phone = newValue,
                     onChanged: (value) {
                       if (value.isNotEmpty) {
-                      } else if (value.length == 11) {}
+                      } else if (phoneValidatorRegExp.hasMatch(value)) {}
                       return;
                     },
                     validator: (value) {
                       if (value!.isEmpty) {
+                        return emailNullError;
+                      } else if (!phoneValidatorRegExp.hasMatch(value)) {
                         return phoneNumberNullError;
-                      } else if (value.length != 11) {
-                        return shortPhoneError;
                       }
                       return null;
                     },
