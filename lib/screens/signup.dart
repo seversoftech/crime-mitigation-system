@@ -55,7 +55,7 @@ class _SignupScreenState extends State<SignupScreen> {
         SnackBar(
           backgroundColor: Colors.red,
           content: Text(
-            "User email or phone number already exist",
+            "Email or Phone number already exist",
             style: textStyle,
           ),
           duration: const Duration(milliseconds: 3000),
