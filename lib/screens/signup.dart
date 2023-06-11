@@ -49,15 +49,10 @@ class _SignupScreenState extends State<SignupScreen> {
       );
       Navigator.pop(context);
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.red,
-          content: Text(
-            "Email or Phone number already exist",
-            style: textStyle,
-          ),
-          duration: const Duration(milliseconds: 3000),
-        ),
+      ShowMessage.show(
+        context,
+        color: Colors.red,
+        'Email or Phone Number alreday exist',
       );
     }
   }

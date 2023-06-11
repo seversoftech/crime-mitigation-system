@@ -1,9 +1,12 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import '../widgets/elevatedButton.dart';
+import '../widgets/showmessage.dart';
 import '../widgets/textButton.dart';
 import '../constants/constants.dart';
 
@@ -31,27 +34,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
     var data = json.decode(response.body);
     if (data == "Success") {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.green,
-          content: Text(
-            "Login Successful",
-            style: textStyle,
-          ),
-          duration: const Duration(milliseconds: 3000),
-        ),
+      ShowMessage.show(
+        context,
+        color: Colors.green,
+        'Successful Login',
       );
-      Navigator.pushNamed(context, '/profile');
+      Navigator.pop(context);
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.red,
-          content: Text(
-            "Username & Password Incorrect!",
-            style: textStyle,
-          ),
-          duration: const Duration(milliseconds: 3000),
-        ),
+      ShowMessage.show(
+        context,
+        color: Colors.red,
+        'Incorrect Login details!',
       );
     }
   }
