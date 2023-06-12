@@ -32,13 +32,9 @@ class _LoginScreenState extends State<LoginScreen> {
     await prefs.setString('token', token);
   }
 
-// retrieve the token
-  Future<String?> getToken() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('token');
-  }
 
-  Future login(String username, String password) async {
+
+  Future login() async {
     var url = loginUrl;
     var response = await http.post(
       url,
@@ -47,21 +43,28 @@ class _LoginScreenState extends State<LoginScreen> {
         "password": _passwordController.text.trim,
       },
     );
+    if (response.statusCode == 200) {
+      var data = json.decode(response.body);
+      var token = data['token'];
+      await saveToken(token);
 
-    var data = json.decode(response.body);
-    if (data == "Success") {
-      ShowMessage.show(
-        context,
-        color: Colors.green,
-        'Successful Login',
-      );
-      Navigator.pushNamed(context, '/profile');
+      if (data == "Success") {
+        ShowMessage.show(
+          context,
+          color: Colors.green,
+          'Successful Login',
+        );
+        Navigator.pushNamed(context, '/profile');
+      } else {
+        ShowMessage.show(
+          context,
+          color: Colors.red,
+          'Incorrect Login details!',
+        );
+      }
+      return true;
     } else {
-      ShowMessage.show(
-        context,
-        color: Colors.red,
-        'Incorrect Login details!',
-      );
+      return false;
     }
   }
 

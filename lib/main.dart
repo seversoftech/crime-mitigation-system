@@ -1,6 +1,7 @@
 import 'package:crime_mitigation_system/screens/report_history.dart';
 import 'package:crime_mitigation_system/screens/notificationscreen.dart';
 import 'package:crime_mitigation_system/screens/reportscreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
@@ -12,34 +13,25 @@ import 'screens/signup.dart';
 import 'screens/theme.dart';
 
 
-Future<bool> checkToken(String token) async {
- 
-  final url = checkloginUrl;
-  
-  final response = await http.post(
-    url,
-    body: {'token': token},
-  );
-  
-  if (response.statusCode == 200) {
-    // Token is valid
-    return true;
-  } else {
-    // Token is invalid
-    return false;
+// retrieve the token
+  Future<String?> getToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('token');
   }
-}
 
 List<CameraDescription>? cameras;
 
 void main() async {
+  
   WidgetsFlutterBinding.ensureInitialized();
   cameras = await availableCameras();
-  runApp(const MainApp());
+  String? token = await getToken();
+  runApp( MainApp(token: token));
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  final String? token;
+  const MainApp({super.key, this.token});
 
   @override
   Widget build(BuildContext context) {
