@@ -1,13 +1,53 @@
+import 'dart:convert';
+import 'dart:js';
+import 'package:crime_mitigation_system/widgets/showmessage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import '../constants/constants.dart';
 
-TextEditingController? _incidentController = TextEditingController();
+TextEditingController _incidentController = TextEditingController();
 TextEditingController _severityController = TextEditingController();
 TextEditingController _locationController = TextEditingController();
 TextEditingController _descriptionController = TextEditingController();
 TextEditingController _dateController = TextEditingController(
     text: DateFormat('dd-MM-yyyy').format(DateTime.now()));
+
+Future register() async {
+  var url = reportUrl;
+  var response = await http.post(
+    url,
+    body: {
+      "incident": _incidentController.text,
+      "date": _dateController.text,
+      "severity": _severityController.text,
+      "location": _locationController.text,
+      "description": _descriptionController.text,
+      // "user_id": _passwordController.text,
+    },
+  );
+
+  // if (kDebugMode) {
+  //   print(response.body);
+  // }
+
+  var data = json.decode(response.body);
+  if (data == "Success") {
+    ShowMessage.show(
+      context as BuildContext,
+      color: Colors.green,
+      'Report Sent!',
+    );
+    Navigator.pop(context as BuildContext);
+  } else {
+    ShowMessage.show(
+      context as BuildContext,
+      color: Colors.red,
+      'An error occured...',
+    );
+  }
+}
 
 SizedBox reportFormInputIncidentType() {
   return SizedBox(
@@ -124,7 +164,6 @@ SizedBox reportFormInputDescription() {
       minLines: 6,
       keyboardType: TextInputType.multiline,
       maxLines: null,
-
       controller: _descriptionController,
       decoration: const InputDecoration(
         alignLabelWithHint: true,
@@ -133,7 +172,6 @@ SizedBox reportFormInputDescription() {
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(6))),
       ),
-   
     ),
   );
 }
