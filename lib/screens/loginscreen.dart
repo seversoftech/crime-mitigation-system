@@ -26,14 +26,14 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-// save token
+//save token
   Future<void> saveToken(String token) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('token', token);
   }
 
   Future login() async {
-    var  url = loginUrl;
+    var url = loginUrl;
     final headers = {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Accept': 'application/json',
@@ -43,8 +43,8 @@ class _LoginScreenState extends State<LoginScreen> {
       headers: headers,
       url,
       body: {
-        "email": _emailController.text.trim,
-        "password": _passwordController.text.trim,
+        "email": _emailController.text,
+        "password": _passwordController.text,
       },
     );
     if (response.statusCode == 200) {
