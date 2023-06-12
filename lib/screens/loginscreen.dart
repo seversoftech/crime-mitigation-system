@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -34,13 +35,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future login() async {
     var url = loginUrl;
-    final headers = {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Accept': 'application/json',
-    };
-
+   
     var response = await http.post(
-      headers: headers,
       url,
       body: {
         "email": _emailController.text,
@@ -49,8 +45,11 @@ class _LoginScreenState extends State<LoginScreen> {
     );
     if (response.statusCode == 200) {
       var data = json.decode(response.body);
-      var token = data['token'];
-      await saveToken(token);
+      // if (kDebugMode) {
+      //   print(response.body);
+      // }
+      // int token = data['token'];
+      // await saveToken(token.toString());
 
       if (data == "Success") {
         ShowMessage.show(

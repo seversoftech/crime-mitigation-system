@@ -133,18 +133,7 @@ SizedBox reportFormInputDescription() {
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(6))),
       ),
-      // onSaved: (newValue) => _incident = newValue,
-      // onChanged: (value) {
-      //   if (value.isNotEmpty) {
-      //   } else if (value.length >= 8) {}
-      //   return;
-      // },
-      // validator: (value) {
-      //   if (value!.isEmpty) {
-      //     return incidentError;
-      //   }
-      //   return null;
-      // },
+   
     ),
   );
 }

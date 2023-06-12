@@ -2,6 +2,8 @@ import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:crime_mitigation_system/constants/constants.dart';
+
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -20,8 +22,6 @@ class ReportCrime extends StatefulWidget {
 
 class _ReportCrimeState extends State<ReportCrime> {
   CameraController? _controller;
-  
-
 
   Future<void>? _initializeControllerFuture;
   final _formKey = GlobalKey<FormState>();
@@ -42,6 +42,36 @@ class _ReportCrimeState extends State<ReportCrime> {
     // Dispose of the controller when the widget is disposed
     _controller!.dispose();
     super.dispose();
+  }
+
+  Future<void> saveField(
+    String incident,
+    String date,
+    String severity,
+    String location,
+    String description,
+    String image,
+    String userId,
+  ) async {
+    var url = reportUrl;
+
+    var response = await http.post(url, body: {
+      'incident': incident,
+      'date': date,
+      'severity': severity,
+      'location': location,
+      'description': description,
+      'image': image,
+      'user_id': userId,
+    });
+
+    if (response.statusCode == 200) {
+      // Successful response
+      print('Fields saved successfully!');
+    } else {
+      // Error handling
+      print('Error saving fields: ${response.statusCode}');
+    }
   }
 
   @override

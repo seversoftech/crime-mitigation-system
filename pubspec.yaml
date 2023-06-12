@@ -11,7 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  line_awesome_flutter: ^2.0.0
+  
+  line_awesome_flutter: 
   shared_preferences:
   path_provider:
   google_fonts: 
