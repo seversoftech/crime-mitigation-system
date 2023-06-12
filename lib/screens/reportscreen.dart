@@ -1,5 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
+import 'package:intl/intl.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:crime_mitigation_system/constants/constants.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +11,7 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import '../main.dart';
 import '../widgets/elevatedButton.dart';
-import '../widgets/report_input_fields.dart';
+import '../widgets/showmessage.dart';
 
 class ReportCrime extends StatefulWidget {
   const ReportCrime({super.key});
@@ -23,6 +27,13 @@ class _ReportCrimeState extends State<ReportCrime> {
 
   Future<void>? _initializeControllerFuture;
   final _formKey = GlobalKey<FormState>();
+
+  final TextEditingController _incidentController = TextEditingController();
+  final TextEditingController _severityController = TextEditingController();
+  final TextEditingController _locationController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _dateController = TextEditingController(
+      text: DateFormat('dd-MM-yyyy').format(DateTime.now()));
 
   @override
   void initState() {
@@ -40,6 +51,35 @@ class _ReportCrimeState extends State<ReportCrime> {
     // Dispose of the controller when the widget is disposed
     _controller!.dispose();
     super.dispose();
+  }
+
+  Future register() async {
+    var url = reportUrl;
+    var response = await http.post(
+      url,
+      body: {
+        "incident": _incidentController.text,
+        "date": _dateController.text,
+        "severity": _severityController.text,
+        "location": _locationController.text,
+        "description": _descriptionController.text,
+      },
+    );
+    var data = json.decode(response.body);
+    if (data == "Success") {
+      ShowMessage.show(
+        context,
+        color: Colors.green,
+        'Report Sent!',
+      );
+      Navigator.pop(context);
+    } else {
+      ShowMessage.show(
+        context,
+        color: Colors.red,
+        'An error occured...',
+      );
+    }
   }
 
   @override
@@ -77,25 +117,29 @@ class _ReportCrimeState extends State<ReportCrime> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: reportFormInputIncidentType(),
+                        child: reportFormInputIncidentType(_incidentController),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
                           children: [
-                            Expanded(child: reportFormInputDate()),
+                            Expanded(
+                                child: reportFormInputDate(_dateController)),
                             const SizedBox(width: 5),
-                            Expanded(child: reportFormInputSeverity())
+                            Expanded(
+                                child: reportFormInputSeverity(
+                                    _severityController))
                           ],
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: reportFormInputLocation(),
+                        child: reportFormInputLocation(_locationController),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: reportFormInputDescription(),
+                        child:
+                            reportFormInputDescription(_descriptionController),
                       ),
                       cameraView(halfWidth, halfHeight),
                     ],
@@ -173,4 +217,131 @@ class _ReportCrimeState extends State<ReportCrime> {
       },
     );
   }
+}
+
+SizedBox reportFormInputIncidentType(incidentController) {
+  return SizedBox(
+    child: TextFormField(
+      maxLines: 1,
+      controller: incidentController,
+      decoration: const InputDecoration(
+        hintText: 'Enter type of incident',
+        labelText: 'Incident type E.g Robbery, Kidnapping*',
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(6))),
+      ),
+      // onSaved: (newValue) => _incident = newValue,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+        } else if (value.length >= 8) {}
+        return;
+      },
+      validator: (value) {
+        if (value!.isEmpty) {
+          return incidentError;
+        }
+        return null;
+      },
+    ),
+  );
+}
+
+SizedBox reportFormInputDate(dateController) {
+  return SizedBox(
+    child: TextFormField(
+      readOnly: true,
+      maxLines: 1,
+      controller: dateController,
+      decoration: const InputDecoration(
+        hintText: 'Date of incident',
+        labelText: 'DD/MM/YYYY*',
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(6))),
+      ),
+      // onSaved: (newValue) => _date = newValue,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+        } else if (value.length >= 8) {}
+        return;
+      },
+      validator: (value) {
+        if (value!.isEmpty) {
+          return incidentError;
+        }
+        return null;
+      },
+    ),
+  );
+}
+
+SizedBox reportFormInputSeverity(severityController) {
+  return SizedBox(
+    child: TextFormField(
+      maxLines: 1,
+      controller: severityController,
+      decoration: const InputDecoration(
+        hintText: 'select how severe',
+        labelText: 'severity*',
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(6))),
+      ),
+      // onSaved: (newValue) => _severity = newValue,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+        } else if (value.length >= 8) {}
+        return;
+      },
+      validator: (value) {
+        if (value!.isEmpty) {
+          return incidentError;
+        }
+        return null;
+      },
+    ),
+  );
+}
+
+SizedBox reportFormInputLocation(locationController) {
+  return SizedBox(
+    child: TextFormField(
+      maxLines: 1,
+      controller: locationController,
+      decoration: const InputDecoration(
+        hintText: 'Enter type the incident location',
+        labelText: 'Location*',
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(6))),
+      ),
+      // onSaved: (newValue) => _location = newValue,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+        } else if (value.length >= 8) {}
+        return;
+      },
+      validator: (value) {
+        if (value!.isEmpty) {
+          return incidentError;
+        }
+        return null;
+      },
+    ),
+  );
+}
+
+SizedBox reportFormInputDescription(descriptionController) {
+  return SizedBox(
+    child: TextField(
+      minLines: 6,
+      keyboardType: TextInputType.multiline,
+      maxLines: null,
+      controller: descriptionController,
+      decoration: const InputDecoration(
+        alignLabelWithHint: true,
+        hintText: 'Detailed incident description',
+        labelText: 'Description*',
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(6))),
+      ),
+    ),
+  );
 }
