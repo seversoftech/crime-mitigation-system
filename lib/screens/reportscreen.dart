@@ -5,7 +5,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:crime_mitigation_system/constants/constants.dart';
+import '../constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -20,8 +20,6 @@ class ReportCrime extends StatefulWidget {
   State<ReportCrime> createState() => _ReportCrimeState();
 }
 
-// String? _incident;
-
 class _ReportCrimeState extends State<ReportCrime> {
   CameraController? _controller;
 
@@ -33,7 +31,10 @@ class _ReportCrimeState extends State<ReportCrime> {
   final TextEditingController _locationController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _dateController = TextEditingController(
-      text: DateFormat('dd-MM-yyyy').format(DateTime.now()));
+    text: DateFormat('yyyy-MM-dd HH:mm:ss').format(
+      DateTime.now(),
+    ),
+  );
 
   @override
   void initState() {
@@ -66,22 +67,23 @@ class _ReportCrimeState extends State<ReportCrime> {
       },
     );
 
-    
-    var data = json.decode(response.body);
-    if (data == "Success") {
-      ShowMessage.show(
-        context,
-        color: Colors.green,
-        'Report Sent!',
-      );
-      Navigator.pop(context);
-    } else {
-      ShowMessage.show(
-        context,
-        color: Colors.red,
-        'An error occured...',
-      );
+    // var data = json.decode(response.body);
+    if (kDebugMode) {
+      print(response.body);
     }
+    // if (data == "Success") {
+    //   ShowMessage.show(
+    //     context as BuildContext,
+    //     color: Colors.green,
+    //     'Report Sent!',
+    //   );
+    // } else {
+    //   ShowMessage.show(
+    //     context as BuildContext,
+    //     color: Colors.red,
+    //     'An error occured...',
+    //   );
+    // }
   }
 
   @override
@@ -282,7 +284,7 @@ SizedBox reportFormInputSeverity(severityController) {
       maxLines: 1,
       controller: severityController,
       decoration: const InputDecoration(
-        hintText: 'select how severe',
+        hintText: 'low, medium, high',
         labelText: 'severity*',
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(6))),

@@ -10,27 +10,25 @@ import 'screens/profilescreen.dart';
 import 'screens/signup.dart';
 import 'screens/theme.dart';
 
-
 //retrieve the token
-  Future<String?> getToken() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('token');
-  }
+Future<String?> getToken() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  return prefs.getString('token');
+}
 
 List<CameraDescription>? cameras;
 
 void main() async {
-  
   WidgetsFlutterBinding.ensureInitialized();
   cameras = await availableCameras();
   String? token = await getToken();
-  runApp( MainApp(token: token));
-   runApp( const MainApp());
+  runApp(MainApp(token: token));
+  runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
   final String? token;
-  const MainApp({super.key,this.token });
+  const MainApp({super.key, this.token});
 
   @override
   Widget build(BuildContext context) {
