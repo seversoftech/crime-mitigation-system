@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../widgets/elevatedButton.dart';
 import '../widgets/showmessage.dart';
@@ -25,13 +26,25 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  Future login() async {
+// save token
+  Future<void> saveToken(String token) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('token', token);
+  }
+
+// retrieve the token
+  Future<String?> getToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('token');
+  }
+
+  Future login(String username, String password) async {
     var url = loginUrl;
     var response = await http.post(
       url,
       body: {
-        "email": _emailController.text,
-        "password": _passwordController.text,
+        "email": _emailController.text.trim,
+        "password": _passwordController.text.trim,
       },
     );
 

@@ -29,11 +29,11 @@ class _SignupScreenState extends State<SignupScreen> {
   Future register() async {
     var url = signupUrl;
     var response = await http.post(url, body: {
-      "fullname": _fullnameController.text,
-      "email": _emailController.text,
-      "phone": _phoneController.text,
-      "address": _addressController.text,
-      "password": _passwordController.text,
+      "fullname": _fullnameController.text.trim,
+      "email": _emailController.text.trim,
+      "phone": _phoneController.text.trim,
+      "address": _addressController.text.trim,
+      "password": _passwordController.text.trim,
     });
 
     if (kDebugMode) {

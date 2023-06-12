@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   line_awesome_flutter: ^2.0.0
+  shared_preferences:
   path_provider:
   google_fonts: 
   camera: 
