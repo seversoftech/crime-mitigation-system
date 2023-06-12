@@ -27,10 +27,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future login() async {
     var url = loginUrl;
-    var response = await http.post(url, body: {
-      "email": _emailController.text,
-      "password": _passwordController.text,
-    });
+    var response = await http.post(
+      url,
+      body: {
+        "email": _emailController.text,
+        "password": _passwordController.text,
+      },
+    );
 
     var data = json.decode(response.body);
     if (data == "Success") {

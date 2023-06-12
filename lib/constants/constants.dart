@@ -45,3 +45,6 @@ var forgetpassUrl =
     Uri.parse("http://192.168.15.214/crimemitigation/forgetpass.php");
 var notificationUrl =
     Uri.parse("http://192.168.15.214/crimemitigation/notification.php");
+var checkloginUrl =
+    Uri.parse("http://192.168.15.214/crimemitigation/checkLogin.php");
+var logoutUrl = Uri.parse("http://192.168.15.214/crimemitigation/logout.php");
