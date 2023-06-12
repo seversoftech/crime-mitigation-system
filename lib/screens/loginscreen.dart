@@ -32,11 +32,15 @@ class _LoginScreenState extends State<LoginScreen> {
     await prefs.setString('token', token);
   }
 
-
-
   Future login() async {
     var url = loginUrl;
+    final headers = {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Accept': 'application/json',
+    };
+
     var response = await http.post(
+      headers: headers,
       url,
       body: {
         "email": _emailController.text.trim,
