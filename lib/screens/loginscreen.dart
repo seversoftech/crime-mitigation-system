@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -42,30 +43,30 @@ class _LoginScreenState extends State<LoginScreen> {
       },
     );
     if (response.statusCode == 200) {
-      var data = json.decode(response.body);
-      // if (kDebugMode) {
-      //   print(response.body);
-      // }
+      // var data = json.decode(response.body);
+      if (kDebugMode) {
+        print(response.body);
+      }
       // int token = data['token'];
       // await saveToken(token.toString());
 
-      if (data == "Success") {
-        ShowMessage.show(
-          context,
-          color: Colors.green,
-          'Successful Login',
-        );
-        Navigator.pushNamed(context, '/profile');
-      } else {
-        ShowMessage.show(
-          context,
-          color: Colors.red,
-          'Incorrect Login details!',
-        );
-      }
-      return true;
-    } else {
-      return false;
+      //   if (data == "Success") {
+      //     ShowMessage.show(
+      //       context,
+      //       color: Colors.green,
+      //       'Successful Login',
+      //     );
+      //     Navigator.pushNamed(context, '/profile');
+      //   } else {
+      //     ShowMessage.show(
+      //       context,
+      //       color: Colors.red,
+      //       'Incorrect Login details!',
+      //     );
+      //   }
+      //   return true;
+      // } else {
+      //   return false;
     }
   }
 
