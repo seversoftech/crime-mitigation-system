@@ -27,15 +27,11 @@ const String phoneNumberNullError = "Please Enter a valid phone number";
 const String shortPhoneError = "Phone number must be 11 digit";
 const String addressNullError = "Please Enter your address";
 const String incidentError = "Field is required";
-bool validatePhoneNumber(String phoneNumber) {
-  String digitsOnly = phoneNumber.replaceAll(RegExp(r'[^0-9]'), '');
-
-  return digitsOnly.length == 11;
-}
-
 const String noError = " ";
 
-//192.168.139.214
+//
+
+//
 var baseUrl = "http://192.168.139.214";
 
 var loginUrl = Uri.parse("$baseUrl/crimemitigation/login.php");
