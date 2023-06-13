@@ -35,16 +35,14 @@ bool validatePhoneNumber(String phoneNumber) {
 
 const String noError = " ";
 
-//
+//192.168.139.214
+var baseUrl = "http://192.168.139.214";
 
-var loginUrl = Uri.parse("http://192.168.15.214/crimemitigation/login.php");
-var signupUrl = Uri.parse("http://192.168.15.214/crimemitigation/register.php");
-var reportUrl = Uri.parse("http://192.168.15.214/crimemitigation/report.php");
-var historyUrl = Uri.parse("http://192.168.15.214/crimemitigation/history.php");
-var forgetpassUrl =
-    Uri.parse("http://192.168.15.214/crimemitigation/forgetpass.php");
-var notificationUrl =
-    Uri.parse("http://192.168.15.214/crimemitigation/notification.php");
-var checkloginUrl =
-    Uri.parse("http://192.168.15.214/crimemitigation/checkLogin.php");
-var logoutUrl = Uri.parse("http://192.168.15.214/crimemitigation/logout.php");
+var loginUrl = Uri.parse("$baseUrl/crimemitigation/login.php");
+var signupUrl = Uri.parse("$baseUrl/crimemitigation/register.php");
+var reportUrl = Uri.parse("$baseUrl/crimemitigation/report.php");
+var historyUrl = Uri.parse("$baseUrl/crimemitigation/history.php");
+var forgetpassUrl = Uri.parse("$baseUrl/crimemitigation/forgetpass.php");
+var notificationUrl = Uri.parse("$baseUrl/crimemitigation/notification.php");
+var checkloginUrl = Uri.parse("$baseUrl/crimemitigation/checkLogin.php");
+var logoutUrl = Uri.parse("$baseUrl/crimemitigation/logout.php");
