@@ -47,8 +47,8 @@ class _LoginScreenState extends State<LoginScreen> {
       if (kDebugMode) {
         print(response.body);
       }
-      int token = data['token'];
-      await saveToken(token.toString());
+      // var token = data['token'];
+      // await saveToken(token);
 
       if (data == "Success") {
         ShowMessage.show(
