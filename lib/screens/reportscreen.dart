@@ -1,14 +1,16 @@
 // ignore_for_file: use_build_context_synchronously
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import '../constants/constants.dart';
-import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+
+import '../constants/constants.dart';
 import '../main.dart';
 import '../widgets/elevatedButton.dart';
 import '../widgets/showmessage.dart';
@@ -26,7 +28,6 @@ class _ReportCrimeState extends State<ReportCrime> {
   Future<void>? _initializeControllerFuture;
   final _formKey = GlobalKey<FormState>();
 
-  
   final TextEditingController _incidentController = TextEditingController();
   final TextEditingController _severityController = TextEditingController();
   final TextEditingController _locationController = TextEditingController();
@@ -36,6 +37,8 @@ class _ReportCrimeState extends State<ReportCrime> {
       DateTime.now(),
     ),
   );
+
+  get path => takePicture(path);
 
   @override
   void initState() {
@@ -47,7 +50,6 @@ class _ReportCrimeState extends State<ReportCrime> {
 
   @override
   void dispose() {
- 
     _controller!.dispose();
     super.dispose();
   }
@@ -62,7 +64,7 @@ class _ReportCrimeState extends State<ReportCrime> {
         "severity": _severityController.text,
         "location": _locationController.text,
         "description": _descriptionController.text,
-        "image":path;
+        "image": path,
       },
     );
 
@@ -169,26 +171,28 @@ class _ReportCrimeState extends State<ReportCrime> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        onPressed: takePicture,
         child: const Icon(LineAwesomeIcons.retro_camera),
-        onPressed: () async {
-          try {
-            await _initializeControllerFuture;
-
-            final path = join(
-              (await getTemporaryDirectory()).path,
-              '${DateTime.now()}.png',
-            );
-
-            await _controller!.takePicture();
-          } catch (e) {
-            if (kDebugMode) {
-              print(e);
-            }
-          }
-        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
+  }
+
+  takePicture(path) async {
+    try {
+      await _initializeControllerFuture;
+
+      final path = join(
+        (await getTemporaryDirectory()).path,
+        '${DateTime.now()}.png',
+      );
+
+      await _controller!.takePicture();
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
   }
 
   FutureBuilder<void> cameraView(double halfWidth, double halfHeight) {
