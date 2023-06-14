@@ -38,8 +38,6 @@ class _ReportCrimeState extends State<ReportCrime> {
     ),
   );
 
-  get path => takePicture(path);
-
   @override
   void initState() {
     super.initState();
@@ -54,7 +52,10 @@ class _ReportCrimeState extends State<ReportCrime> {
     super.dispose();
   }
 
-  Future register() async {
+  Future sendReport() async {
+    await _initializeControllerFuture;
+
+    final image = await _controller!.takePicture();
     var url = reportUrl;
     var response = await http.post(
       url,
@@ -64,7 +65,7 @@ class _ReportCrimeState extends State<ReportCrime> {
         "severity": _severityController.text,
         "location": _locationController.text,
         "description": _descriptionController.text,
-        "image": path,
+        "image": image.path,
       },
     );
 
@@ -160,7 +161,7 @@ class _ReportCrimeState extends State<ReportCrime> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
-                    register();
+                    sendReport();
                   }
                   // Navigator.pushNamed(context, '/profile');
                 },
@@ -178,7 +179,7 @@ class _ReportCrimeState extends State<ReportCrime> {
     );
   }
 
-  takePicture(path) async {
+  takePicture() async {
     try {
       await _initializeControllerFuture;
 
@@ -186,8 +187,8 @@ class _ReportCrimeState extends State<ReportCrime> {
         (await getTemporaryDirectory()).path,
         '${DateTime.now()}.png',
       );
-
-      await _controller!.takePicture();
+      final image = await _controller!.takePicture();
+      // await _controller!.takePicture();
     } catch (e) {
       if (kDebugMode) {
         print(e);
