@@ -11,7 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  
+
+  # flutter_secure_storage:
   line_awesome_flutter: 
   shared_preferences:
   path_provider:
@@ -20,6 +21,7 @@ dependencies:
   http:
   intl:
   path:
+  flutter_secure_storage: ^8.0.0
 
   
  
