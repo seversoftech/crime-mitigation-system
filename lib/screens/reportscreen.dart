@@ -178,22 +178,22 @@ class _ReportCrimeState extends State<ReportCrime> {
     );
   }
 
-  takePicture() async {
-    try {
-      await _initializeControllerFuture;
+  // takePicture() async {
+  //   try {
+  //     // await _initializeControllerFuture;
 
-      // final path = join(
-      //   (await getTemporaryDirectory()).path,
-      //   '${DateTime.now()}.png',
-      // );
-      // final image = await _controller!.takePicture();
-      // await _controller!.takePicture();
-    } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
-    }
-  }
+  //     // final path = join(
+  //     //   (await getTemporaryDirectory()).path,
+  //     //   '${DateTime.now()}.png',
+  //     // );
+  //     // final image = await _controller!.takePicture();
+  //     // await _controller!.takePicture();
+  //   } catch (e) {
+  //     if (kDebugMode) {
+  //       print(e);
+  //     }
+  //   }
+  // }
 
   FutureBuilder<void> cameraView(double halfWidth, double halfHeight) {
     return FutureBuilder<void>(
