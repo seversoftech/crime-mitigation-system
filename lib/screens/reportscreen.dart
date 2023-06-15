@@ -72,19 +72,19 @@ class _ReportCrimeState extends State<ReportCrime> {
       print(response.body);
     }
 
-    // if (data == "Success") {
-    //   ShowMessage.show(
-    //     context,
-    //     color: Colors.green,
-    //     'Report Sent!',
-    //   );
-    // } else {
-    //   ShowMessage.show(
-    //     context,
-    //     color: Colors.red,
-    //     'An error occured...',
-    //   );
-    // }
+    if (data == "Success") {
+      ShowMessage.show(
+        context,
+        color: Colors.green,
+        'Report Sent!',
+      );
+    } else {
+      ShowMessage.show(
+        context,
+        color: Colors.red,
+        'An error occured...',
+      );
+    }
   }
 
   @override
@@ -162,7 +162,7 @@ class _ReportCrimeState extends State<ReportCrime> {
                     _formKey.currentState!.save();
                     sendReport();
                   }
-                  // Navigator.pushNamed(context, '/profile');
+                   Navigator.pop(context);
                 },
                 child: 'Snap and Report',
               ),
