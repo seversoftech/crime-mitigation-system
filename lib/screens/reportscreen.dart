@@ -1,4 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
 import 'dart:convert';
 
 import 'package:camera/camera.dart';
@@ -6,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -74,19 +72,19 @@ class _ReportCrimeState extends State<ReportCrime> {
       print(response.body);
     }
 
-    if (data == "Success") {
-      ShowMessage.show(
-        context as BuildContext,
-        color: Colors.green,
-        'Report Sent!',
-      );
-    } else {
-      ShowMessage.show(
-        context as BuildContext,
-        color: Colors.red,
-        'An error occured...',
-      );
-    }
+    // if (data == "Success") {
+    //   ShowMessage.show(
+    //     context,
+    //     color: Colors.green,
+    //     'Report Sent!',
+    //   );
+    // } else {
+    //   ShowMessage.show(
+    //     context,
+    //     color: Colors.red,
+    //     'An error occured...',
+    //   );
+    // }
   }
 
   @override
@@ -166,17 +164,17 @@ class _ReportCrimeState extends State<ReportCrime> {
                   }
                   // Navigator.pushNamed(context, '/profile');
                 },
-                child: 'Send Report',
+                child: 'Snap and Report',
               ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: takePicture,
-        child: const Icon(LineAwesomeIcons.retro_camera),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: takePicture,
+      //   child: const Icon(LineAwesomeIcons.retro_camera),
+      // ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 
@@ -184,11 +182,11 @@ class _ReportCrimeState extends State<ReportCrime> {
     try {
       await _initializeControllerFuture;
 
-      final path = join(
-        (await getTemporaryDirectory()).path,
-        '${DateTime.now()}.png',
-      );
-      final image = await _controller!.takePicture();
+      // final path = join(
+      //   (await getTemporaryDirectory()).path,
+      //   '${DateTime.now()}.png',
+      // );
+      // final image = await _controller!.takePicture();
       // await _controller!.takePicture();
     } catch (e) {
       if (kDebugMode) {
