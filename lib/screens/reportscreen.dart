@@ -69,24 +69,24 @@ class _ReportCrimeState extends State<ReportCrime> {
       },
     );
 
-    // var data = json.decode(response.body);
+    var data = json.decode(response.body);
     if (kDebugMode) {
       print(response.body);
     }
-    
-    // if (data == "Success") {
-    //   ShowMessage.show(
-    //     context as BuildContext,
-    //     color: Colors.green,
-    //     'Report Sent!',
-    //   );
-    // } else {
-    //   ShowMessage.show(
-    //     context as BuildContext,
-    //     color: Colors.red,
-    //     'An error occured...',
-    //   );
-    // }
+
+    if (data == "Success") {
+      ShowMessage.show(
+        context as BuildContext,
+        color: Colors.green,
+        'Report Sent!',
+      );
+    } else {
+      ShowMessage.show(
+        context as BuildContext,
+        color: Colors.red,
+        'An error occured...',
+      );
+    }
   }
 
   @override
