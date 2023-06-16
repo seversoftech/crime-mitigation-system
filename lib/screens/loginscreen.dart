@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../widgets/elevatedButton.dart';
 import '../widgets/showmessage.dart';
@@ -37,10 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
 //save token
-  Future<void> saveToken(String token) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('token', token);
-  }
+
 
   Future login() async {
     await _storage.write(key: "KEY_EMAIL", value: _emailController.text);

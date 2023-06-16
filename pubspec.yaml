@@ -12,16 +12,14 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # flutter_secure_storage:
-  line_awesome_flutter: 
-  shared_preferences:
+  flutter_secure_storage:
+  line_awesome_flutter:
   path_provider:
   google_fonts: 
   camera: 
   http:
   intl:
   path:
-  flutter_secure_storage: ^8.0.0
 
   
  

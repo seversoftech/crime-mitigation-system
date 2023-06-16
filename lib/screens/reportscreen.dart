@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 // import 'package:path/path.dart';
 // import 'package:path_provider/path_provider.dart';
-
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../constants/constants.dart';
 import '../main.dart';
 import '../widgets/elevatedButton.dart';
@@ -27,7 +27,10 @@ class _ReportCrimeState extends State<ReportCrime> {
 
   Future<void>? _initializeControllerFuture;
   final _formKey = GlobalKey<FormState>();
+  final _storage = const FlutterSecureStorage();
 
+  final TextEditingController _emailController =
+      TextEditingController(text: "");
   final TextEditingController _incidentController = TextEditingController();
   final TextEditingController _severityController = TextEditingController();
   final TextEditingController _locationController = TextEditingController();
@@ -38,10 +41,14 @@ class _ReportCrimeState extends State<ReportCrime> {
     ),
   );
 
+  Future<void> _readFromStorage() async {
+    _emailController.text = await _storage.read(key: "KEY_EMAIL") ?? '';
+  }
+
   @override
   void initState() {
     super.initState();
-
+     _readFromStorage();
     _controller = CameraController(cameras![0], ResolutionPreset.medium);
     _initializeControllerFuture = _controller!.initialize();
   }
@@ -49,10 +56,14 @@ class _ReportCrimeState extends State<ReportCrime> {
   @override
   void dispose() {
     _controller!.dispose();
+     _emailController.dispose();
     super.dispose();
   }
 
+
+
   Future sendReport() async {
+    await _storage.write(key: "KEY_EMAIL", value: _emailController.text);
     await _initializeControllerFuture;
 
     final image = await _controller!.takePicture();
@@ -60,6 +71,7 @@ class _ReportCrimeState extends State<ReportCrime> {
     var response = await http.post(
       url,
       body: {
+        "user_email": _emailController.text,
         "incident": _incidentController.text,
         "date": _dateController.text,
         "severity": _severityController.text,
@@ -89,6 +101,8 @@ class _ReportCrimeState extends State<ReportCrime> {
     //   );
     // }
   }
+
+  
 
   @override
   Widget build(BuildContext context) {
