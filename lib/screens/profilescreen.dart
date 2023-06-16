@@ -24,6 +24,13 @@ class _UserProfilePageState extends State<UserProfilePage> {
     });
   }
 
+  void logOut() async {
+    await _storage.delete(key: 'KEY_EMAIL');
+    setState(() {
+      storedValue = '';
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -101,7 +108,8 @@ class _UserProfilePageState extends State<UserProfilePage> {
             ProfileMenu(
               icon: LineAwesomeIcons.alternate_sign_out,
               press: () {
-                Navigator.pushNamed(context, '/');
+                logOut();
+                Navigator.pop(context);
               },
               text: 'Log Out',
             ),
