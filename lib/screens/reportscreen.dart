@@ -48,7 +48,7 @@ class _ReportCrimeState extends State<ReportCrime> {
   @override
   void initState() {
     super.initState();
-     _readFromStorage();
+    _readFromStorage();
     _controller = CameraController(cameras![0], ResolutionPreset.medium);
     _initializeControllerFuture = _controller!.initialize();
   }
@@ -56,11 +56,9 @@ class _ReportCrimeState extends State<ReportCrime> {
   @override
   void dispose() {
     _controller!.dispose();
-     _emailController.dispose();
+    _emailController.dispose();
     super.dispose();
   }
-
-
 
   Future sendReport() async {
     await _storage.write(key: "KEY_EMAIL", value: _emailController.text);
@@ -81,28 +79,26 @@ class _ReportCrimeState extends State<ReportCrime> {
       },
     );
 
-    // var data = json.decode(response.body);
+    var data = json.decode(response.body);
     if (kDebugMode) {
       print(response.body);
     }
 
-    // if (data == "Success") {
-    //   ShowMessage.show(
-    //     context,
-    //     color: Colors.green,
-    //     'Report Sent!',
-    //   );
-    //   Navigator.pop(context);
-    // } else {
-    //   ShowMessage.show(
-    //     context,
-    //     color: Colors.red,
-    //     'An error occured...',
-    //   );
-    // }
+    if (data == "Success") {
+      ShowMessage.show(
+        context,
+        color: Colors.green,
+        'Report Sent!',
+      );
+      Navigator.pop(context);
+    } else {
+      ShowMessage.show(
+        context,
+        color: Colors.red,
+        'An error occured...',
+      );
+    }
   }
-
-  
 
   @override
   Widget build(BuildContext context) {

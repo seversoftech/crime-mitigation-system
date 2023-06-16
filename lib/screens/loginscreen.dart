@@ -37,7 +37,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
 //save token
 
-
   Future login() async {
     await _storage.write(key: "KEY_EMAIL", value: _emailController.text);
     await _storage.write(key: "KEY_PASSWORD", value: _passwordController.text);
@@ -56,8 +55,6 @@ class _LoginScreenState extends State<LoginScreen> {
       if (kDebugMode) {
         print(response.body);
       }
-      // var token = data['token'];
-      // await saveToken(token);
 
       if (data == "Success") {
         ShowMessage.show(
