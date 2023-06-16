@@ -182,30 +182,11 @@ class _ReportCrimeState extends State<ReportCrime> {
           ],
         ),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: takePicture,
-      //   child: const Icon(LineAwesomeIcons.retro_camera),
-      // ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+    
     );
   }
 
-  // takePicture() async {
-  //   try {
-  //     // await _initializeControllerFuture;
-
-  //     // final path = join(
-  //     //   (await getTemporaryDirectory()).path,
-  //     //   '${DateTime.now()}.png',
-  //     // );
-  //     // final image = await _controller!.takePicture();
-  //     // await _controller!.takePicture();
-  //   } catch (e) {
-  //     if (kDebugMode) {
-  //       print(e);
-  //     }
-  //   }
-  // }
+ 
 
   FutureBuilder<void> cameraView(double halfWidth, double halfHeight) {
     return FutureBuilder<void>(
