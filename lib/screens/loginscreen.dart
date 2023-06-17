@@ -72,6 +72,11 @@ class _LoginScreenState extends State<LoginScreen> {
       }
       return true;
     } else {
+      ShowMessage.show(
+        context,
+        color: Colors.red,
+        'Connection Problem...',
+      );
       return false;
     }
   }

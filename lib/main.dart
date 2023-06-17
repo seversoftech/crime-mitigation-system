@@ -19,8 +19,7 @@ void main() async {
 }
 
 class MainApp extends StatelessWidget {
-  final String? token;
-  const MainApp({super.key, this.token});
+  const MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
