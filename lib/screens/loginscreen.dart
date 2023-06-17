@@ -35,49 +35,59 @@ class _LoginScreenState extends State<LoginScreen> {
     _passwordController.text = await _storage.read(key: "KEY_PASSWORD") ?? '';
   }
 
-//save token
-
   Future login() async {
     await _storage.write(key: "KEY_EMAIL", value: _emailController.text);
     await _storage.write(key: "KEY_PASSWORD", value: _passwordController.text);
 
-    var url = loginUrl;
+    try {
+      var url = loginUrl;
 
-    var response = await http.post(
-      url,
-      body: {
-        "email": _emailController.text,
-        "password": _passwordController.text,
-      },
-    );
-    if (response.statusCode == 200) {
-      var data = json.decode(response.body);
-      if (kDebugMode) {
-        print(response.body);
-      }
+      var response = await http.post(
+        url,
+        body: {
+          "email": _emailController.text,
+          "password": _passwordController.text,
+        },
+      );
+      if (response.statusCode == 200) {
+        var data = json.decode(response.body);
+        if (kDebugMode) {
+          print(response.body);
+        }
 
-      if (data == "Success") {
-        ShowMessage.show(
-          context,
-          color: Colors.green,
-          'Successful Login',
-        );
-        Navigator.pushNamed(context, '/profile');
+        if (data == "Success") {
+          ShowMessage.show(
+            context,
+            color: Colors.green,
+            'Successful Login',
+          );
+          Navigator.pushNamed(context, '/profile');
+        } else {
+          ShowMessage.show(
+            context,
+            color: Colors.red,
+            'Incorrect Login details!',
+          );
+        }
+        return true;
       } else {
         ShowMessage.show(
           context,
           color: Colors.red,
-          'Incorrect Login details!',
+          'Connection Problem...',
+        );
+        return false;
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('An error occurred: $e');
+
+        ShowMessage.show(
+          context,
+          color: Colors.red,
+          'An error occurred: $e',
         );
       }
-      return true;
-    } else {
-      ShowMessage.show(
-        context,
-        color: Colors.red,
-        'Connection Problem...',
-      );
-      return false;
     }
   }
 

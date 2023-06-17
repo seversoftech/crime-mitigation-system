@@ -32,13 +32,13 @@ const String noError = " ";
 //
 
 //
-var baseUrl = "http://192.168.139.214";
+var baseUrl = "http://172.20.10.6/crimemitigation";
 
-var loginUrl = Uri.parse("$baseUrl/crimemitigation/login.php");
-var signupUrl = Uri.parse("$baseUrl/crimemitigation/register.php");
-var reportUrl = Uri.parse("$baseUrl/crimemitigation/report.php");
-var historyUrl = Uri.parse("$baseUrl/crimemitigation/history.php");
-var forgetpassUrl = Uri.parse("$baseUrl/crimemitigation/forgetpass.php");
-var notificationUrl = Uri.parse("$baseUrl/crimemitigation/notification.php");
-var checkloginUrl = Uri.parse("$baseUrl/crimemitigation/checkLogin.php");
-var logoutUrl = Uri.parse("$baseUrl/crimemitigation/logout.php");
+var loginUrl = Uri.parse("$baseUrl/login.php");
+var signupUrl = Uri.parse("$baseUrl/register.php");
+var reportUrl = Uri.parse("$baseUrl/report.php");
+var historyUrl = Uri.parse("$baseUrl/history.php");
+var forgetpassUrl = Uri.parse("$baseUrl/forgetpass.php");
+var notificationUrl = Uri.parse("$baseUrl/notification.php");
+var checkloginUrl = Uri.parse("$baseUrl/checkLogin.php");
+var logoutUrl = Uri.parse("$baseUrl/logout.php");
