@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
@@ -24,6 +25,7 @@ class ReportCrime extends StatefulWidget {
 
 class _ReportCrimeState extends State<ReportCrime> {
   CameraController? _controller;
+  
 
   Future<void>? _initializeControllerFuture;
   final _formKey = GlobalKey<FormState>();
@@ -47,6 +49,7 @@ class _ReportCrimeState extends State<ReportCrime> {
 
   @override
   void initState() {
+    
     super.initState();
     _readFromStorage();
     _controller = CameraController(cameras![0], ResolutionPreset.medium);
@@ -75,7 +78,7 @@ class _ReportCrimeState extends State<ReportCrime> {
         "severity": _severityController.text,
         "location": _locationController.text,
         "description": _descriptionController.text,
-        "image": image.path,
+        "image": base64Encode(File(image.path).readAsBytesSync()),
       },
     );
 
@@ -182,11 +185,8 @@ class _ReportCrimeState extends State<ReportCrime> {
           ],
         ),
       ),
-    
     );
   }
-
- 
 
   FutureBuilder<void> cameraView(double halfWidth, double halfHeight) {
     return FutureBuilder<void>(
