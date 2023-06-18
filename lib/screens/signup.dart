@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
@@ -25,32 +26,43 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _addressController = TextEditingController();
 
   Future register() async {
-    var url = signupUrl;
-    var response = await http.post(
-      url,
-      body: {
-        "fullname": _fullnameController.text,
-        "email": _emailController.text,
-        "phone": _phoneController.text,
-        "address": _addressController.text,
-        "password": _passwordController.text,
-      },
-    );
-
-    var data = json.decode(response.body);
-    if (data == "Success") {
-      ShowMessage.show(
-        context,
-        color: Colors.green,
-        'Registeration Successful',
+    try {
+      var url = signupUrl;
+      var response = await http.post(
+        url,
+        body: {
+          "fullname": _fullnameController.text,
+          "email": _emailController.text,
+          "phone": _phoneController.text,
+          "address": _addressController.text,
+          "password": _passwordController.text,
+        },
       );
-      Navigator.pop(context);
-    } else {
+
+      var data = json.decode(response.body);
+      if (data == "Success") {
+        ShowMessage.show(
+          context,
+          color: Colors.green,
+          'Registeration Successful',
+        );
+        Navigator.pop(context);
+      } else {
+        ShowMessage.show(
+          context,
+          color: Colors.red,
+          'Email or Phone Number alreday exist',
+        );
+      }
+    } catch (exception) {
       ShowMessage.show(
         context,
         color: Colors.red,
-        'Email or Phone Number alreday exist',
+        'An error occurred: $exception',
       );
+      if (kDebugMode) {
+        print('Exception caught: $exception');
+      }
     }
   }
 
