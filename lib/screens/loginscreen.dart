@@ -79,14 +79,13 @@ class _LoginScreenState extends State<LoginScreen> {
         return false;
       }
     } catch (e) {
+      ShowMessage.show(
+        context,
+        color: Colors.red,
+        'An error occurred: $e',
+      );
       if (kDebugMode) {
         print('An error occurred: $e');
-
-        ShowMessage.show(
-          context,
-          color: Colors.red,
-          'An error occurred: $e',
-        );
       }
     }
   }

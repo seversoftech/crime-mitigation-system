@@ -25,7 +25,6 @@ class ReportCrime extends StatefulWidget {
 
 class _ReportCrimeState extends State<ReportCrime> {
   CameraController? _controller;
-  
 
   Future<void>? _initializeControllerFuture;
   final _formKey = GlobalKey<FormState>();
@@ -49,7 +48,6 @@ class _ReportCrimeState extends State<ReportCrime> {
 
   @override
   void initState() {
-    
     super.initState();
     _readFromStorage();
     _controller = CameraController(cameras![0], ResolutionPreset.medium);
@@ -68,37 +66,49 @@ class _ReportCrimeState extends State<ReportCrime> {
     await _initializeControllerFuture;
 
     final image = await _controller!.takePicture();
-    var url = reportUrl;
-    var response = await http.post(
-      url,
-      body: {
-        "user_email": _emailController.text,
-        "incident": _incidentController.text,
-        "date": _dateController.text,
-        "severity": _severityController.text,
-        "location": _locationController.text,
-        "description": _descriptionController.text,
-        "image": base64Encode(File(image.path).readAsBytesSync()),
-      },
-    );
 
-    var data = json.decode(response.body);
-    if (kDebugMode) {
-      print(response.body);
-    }
-
-    if (data == "Success") {
-      ShowMessage.show(
-        context,
-        color: Colors.green,
-        'Report Sent!',
+    try {
+      var url = reportUrl;
+      var response = await http.post(
+        url,
+        body: {
+          "user_email": _emailController.text,
+          "incident": _incidentController.text,
+          "date": _dateController.text,
+          "severity": _severityController.text,
+          "location": _locationController.text,
+          "description": _descriptionController.text,
+          "image": base64Encode(File(image.path).readAsBytesSync()),
+        },
       );
-      Navigator.pop(context);
-    } else {
+
+      var data = json.decode(response.body);
+      if (kDebugMode) {
+        print(response.body);
+      }
+
+      if (data == "Success") {
+        ShowMessage.show(
+          context,
+          color: Colors.green,
+          'Report Sent!',
+        );
+        Navigator.pop(context);
+      } else {
+        ShowMessage.show(
+          context,
+          color: Colors.red,
+          'An error occured...',
+        );
+      }
+    } catch (exception) {
+      if (kDebugMode) {
+        print('Exception caught: $exception');
+      }
       ShowMessage.show(
         context,
         color: Colors.red,
-        'An error occured...',
+        'An error occurred: $exception',
       );
     }
   }
