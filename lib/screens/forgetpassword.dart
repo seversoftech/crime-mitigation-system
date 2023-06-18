@@ -94,7 +94,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                       ),
                       TextClickButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/signup');
+                          Navigator.pushReplacementNamed(context, '/signup');
                         },
                         text: 'Sign Up',
                       )

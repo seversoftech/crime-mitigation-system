@@ -61,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
             color: Colors.green,
             'Successful Login',
           );
-          Navigator.pushNamed(context, '/profile');
+          Navigator.pushReplacementNamed(context, '/profile');
         } else {
           ShowMessage.show(
             context,
@@ -207,7 +207,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       TextClickButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/forgetpassword');
+                          Navigator.pushReplacementNamed(context, '/forgetpassword');
                         },
                         text: 'Forget Password',
                       )
@@ -235,7 +235,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       TextClickButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/signup');
+                          Navigator.pushReplacementNamed(context, '/signup');
                         },
                         text: 'Sign Up',
                       )

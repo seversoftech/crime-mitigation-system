@@ -80,21 +80,21 @@ class _UserProfilePageState extends State<UserProfilePage> {
             ProfileMenu(
               icon: LineAwesomeIcons.eye,
               press: () {
-                Navigator.pushNamed(context, '/report');
+                Navigator.pushReplacementNamed(context, '/report');
               },
               text: 'Report Crime',
             ),
             ProfileMenu(
               icon: LineAwesomeIcons.history,
               press: () {
-                Navigator.pushNamed(context, '/history');
+                Navigator.pushReplacementNamed(context, '/history');
               },
               text: 'Report History',
             ),
             ProfileMenu(
               icon: LineAwesomeIcons.bell,
               press: () {
-                Navigator.pushNamed(context, '/notifications');
+                Navigator.pushReplacementNamed(context, '/notifications');
               },
               text: 'Notification',
             ),
