@@ -78,7 +78,7 @@ class _ReportCrimeState extends State<ReportCrime> {
           "severity": _severityController.text,
           "location": _locationController.text,
           "description": _descriptionController.text,
-          "image": base64Encode(File(image.path).readAsBytesSync()),
+          "image": image.name
         },
       );
 
