@@ -41,28 +41,4 @@ final List<ReportItem> reports = [
     time: '6h ago',
     iconData: LineAwesomeIcons.history,
   ),
-  const ReportItem(
-    title: 'Recieved Report',
-    message: 'You have a new message from Admin.',
-    time: '2h ago',
-    iconData: LineAwesomeIcons.history,
-  ),
-  const ReportItem(
-    title: 'Recieved Report',
-    message: 'You have a new message from Admin.',
-    time: '1h ago',
-    iconData: LineAwesomeIcons.history,
-  ),
-  const ReportItem(
-    title: 'Recieved Report',
-    message: 'You have a new message from Admin.',
-    time: '7h ago',
-    iconData: LineAwesomeIcons.history,
-  ),
-  const ReportItem(
-    title: 'Recieved Report',
-    message: 'You have a new message from Admin.',
-    time: '3d ago',
-    iconData: LineAwesomeIcons.history,
-  ),
 ];
