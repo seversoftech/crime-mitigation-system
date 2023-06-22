@@ -32,7 +32,7 @@ const String noError = " ";
 //
 
 //
-var baseUrl = "http://1172.20.10.6/crimemitigation";
+var baseUrl = "http://172.20.10.6/crimemitigation";
 
 var loginUrl = Uri.parse("$baseUrl/login.php");
 var signupUrl = Uri.parse("$baseUrl/register.php");

@@ -15,19 +15,24 @@ class UserProfilePage extends StatefulWidget {
 
 class _UserProfilePageState extends State<UserProfilePage> {
   final _storage = const FlutterSecureStorage();
-  String? storedValue;
+  String? storedEmail;
+  String? storedPass;
 
   Future<void> getValueFromStorage() async {
-    final value = await _storage.read(key: 'KEY_EMAIL');
+    final email = await _storage.read(key: 'KEY_EMAIL');
+    final password = await _storage.read(key: 'KEY_PASSWORD');
     setState(() {
-      storedValue = value;
+      storedEmail = email;
+      storedPass = password;
     });
   }
 
   void logOut() async {
     await _storage.delete(key: 'KEY_EMAIL');
+    await _storage.delete(key: 'KEY_PASSWORD');
     setState(() {
-      storedValue = '';
+      storedEmail = '';
+      storedPass = '';
     });
   }
 
@@ -76,7 +81,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                 ],
               ),
             ),
-            Text(storedValue ?? '', style: textStyleBold),
+            Text(storedEmail ?? '', style: textStyleBold),
             ProfileMenu(
               icon: LineAwesomeIcons.eye,
               press: () {
@@ -109,7 +114,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
               icon: LineAwesomeIcons.alternate_sign_out,
               press: () {
                 logOut();
-                Navigator.pop(context);
+                Navigator.popAndPushNamed(context, '/');
               },
               text: 'Log Out',
             ),
