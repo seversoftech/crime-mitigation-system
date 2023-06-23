@@ -45,36 +45,3 @@ final List<ReportItem> reports = [
     iconData: LineAwesomeIcons.history,
   ),
 ];
-
-// Define a function to fetch and display user details
-Future<void> fetchHistory() async {
-  final url = historyUrl;
-
-  try {
-    final response = await http.get(url);
-
-    if (response.statusCode == 200) {
-      final data = json.decode(response.body);
-
-      List<dynamic> userDetails = data['userDetails'];
-
-      // Display the user details
-      for (var userDetail in userDetails) {
-        // Access the specific details you need and display them
-        final username = userDetail['username'];
-        final email = userDetail['email'];
-        final age = userDetail['age'];
-
-        print('Username: $username');
-        print('Email: $email');
-        print('Age: $age');
-      }
-    } else {
-      // Handle error
-      print('Error: ${response.statusCode}');
-    }
-  } catch (e) {
-    // Handle exceptions
-    print('Exception: $e');
-  }
-}
