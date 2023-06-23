@@ -39,7 +39,7 @@ class MainApp extends StatelessWidget {
         return MaterialApp(
           theme: themeData(),
           debugShowCheckedModeBanner: false,
-          initialRoute: storedEmail != null ? '/profile' : '/home',
+          initialRoute: storedEmail != '' ? '/profile' : '/home',
           routes: {
             '/home': (context) => const LoginScreen(),
             '/signup': (context) => const SignupScreen(),
