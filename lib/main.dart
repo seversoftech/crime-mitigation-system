@@ -24,33 +24,37 @@ class MainApp extends StatelessWidget {
   final storage = const FlutterSecureStorage();
 
   Future<String?> getEmailFromStorage() async {
-    return await storage.read(key:  "KEY_EMAIL");
+    return await storage.read(key: "KEY_EMAIL");
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<String?>(
-        future: getEmailFromStorage(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {}
+      future: getEmailFromStorage(),
+      builder: (context, snapshot) {
+        // if (snapshot.connectionState == ConnectionState.waiting) {}
 
-          final storedEmail = snapshot.data;
-          return MaterialApp(
-            theme: themeData(),
-            debugShowCheckedModeBanner: false,
-            initialRoute: storedEmail != null ? '/profile' : '/',
-            routes: {
-              '/': (context) => const LoginScreen(),
-              '/signup': (context) => const SignupScreen(),
-              '/forgetpassword': (context) => const ForgetPassword(),
-              '/profile': (context) => const UserProfilePage(),
-              '/notifications': (context) => const NotificationScreen(),
-              '/report': (context) => const ReportCrime(),
-              '/history': (context) => const History(
-                  // userEmail: null,
-                  ),
-            },
-          );
-        });
+        final storedEmail = snapshot.data;
+
+        
+
+        return MaterialApp(
+          theme: themeData(),
+          debugShowCheckedModeBanner: false,
+          initialRoute: storedEmail != null ? '/profile' : '/',
+          routes: {
+            '/': (context) => const LoginScreen(),
+            '/signup': (context) => const SignupScreen(),
+            '/forgetpassword': (context) => const ForgetPassword(),
+            '/profile': (context) => const UserProfilePage(),
+            '/notifications': (context) => const NotificationScreen(),
+            '/report': (context) => const ReportCrime(),
+            '/history': (context) => const History(
+                // userEmail: null,
+                ),
+          },
+        );
+      },
+    );
   }
 }
