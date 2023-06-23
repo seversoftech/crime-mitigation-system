@@ -19,6 +19,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
   String? storedPass;
 
   Future<void> getValueFromStorage() async {
+    
     final email = await _storage.read(key: 'KEY_EMAIL');
     final password = await _storage.read(key: 'KEY_PASSWORD');
     setState(() {

@@ -3,6 +3,7 @@ import 'package:crime_mitigation_system/screens/report_history.dart';
 import 'package:crime_mitigation_system/screens/reportscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'screens/forgetpassword.dart';
 import 'screens/loginscreen.dart';
 import 'screens/profilescreen.dart';
@@ -14,31 +15,42 @@ List<CameraDescription>? cameras;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   cameras = await availableCameras();
-
   runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
+  final storage = const FlutterSecureStorage();
+
+  Future<String?> getEmailFromStorage() async {
+    return await storage.read(key:  "KEY_EMAIL");
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: themeData(),
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const LoginScreen(),
-        '/signup': (context) => const SignupScreen(),
-        '/forgetpassword': (context) => const ForgetPassword(),
-        '/profile': (context) => const UserProfilePage(),
-        '/notifications': (context) => const NotificationScreen(),
-        '/report': (context) => const ReportCrime(),
-        '/history': (context) => const History(
-              // userEmail: null,
-            ),
-      },
-    );
+    return FutureBuilder<String?>(
+        future: getEmailFromStorage(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {}
+
+          final storedEmail = snapshot.data;
+          return MaterialApp(
+            theme: themeData(),
+            debugShowCheckedModeBanner: false,
+            initialRoute: storedEmail != null ? '/profile' : '/',
+            routes: {
+              '/': (context) => const LoginScreen(),
+              '/signup': (context) => const SignupScreen(),
+              '/forgetpassword': (context) => const ForgetPassword(),
+              '/profile': (context) => const UserProfilePage(),
+              '/notifications': (context) => const NotificationScreen(),
+              '/report': (context) => const ReportCrime(),
+              '/history': (context) => const History(
+                  // userEmail: null,
+                  ),
+            },
+          );
+        });
   }
 }
-
