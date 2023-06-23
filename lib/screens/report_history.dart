@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import '../constants/constants.dart';
 import '../models/models.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import '../widgets/reports_widgets.dart';
 
 class History extends StatefulWidget {
@@ -42,3 +45,36 @@ final List<ReportItem> reports = [
     iconData: LineAwesomeIcons.history,
   ),
 ];
+
+// Define a function to fetch and display user details
+Future<void> fetchHistory() async {
+  final url = historyUrl;
+
+  try {
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+
+      List<dynamic> userDetails = data['userDetails'];
+
+      // Display the user details
+      for (var userDetail in userDetails) {
+        // Access the specific details you need and display them
+        final username = userDetail['username'];
+        final email = userDetail['email'];
+        final age = userDetail['age'];
+
+        print('Username: $username');
+        print('Email: $email');
+        print('Age: $age');
+      }
+    } else {
+      // Handle error
+      print('Error: ${response.statusCode}');
+    }
+  } catch (e) {
+    // Handle exceptions
+    print('Exception: $e');
+  }
+}
