@@ -36,12 +36,10 @@ class MainApp extends StatelessWidget {
 
         final storedEmail = snapshot.data;
 
-        
-
         return MaterialApp(
           theme: themeData(),
           debugShowCheckedModeBanner: false,
-          initialRoute: storedEmail != null ? '/profile' : '/',
+          initialRoute: storedEmail != null ? '/' : '/profile',
           routes: {
             '/': (context) => const LoginScreen(),
             '/signup': (context) => const SignupScreen(),
