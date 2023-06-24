@@ -47,8 +47,9 @@ class MainApp extends StatelessWidget {
             '/profile': (context) => const UserProfilePage(),
             '/notifications': (context) => const NotificationScreen(),
             '/report': (context) => const ReportCrime(),
-            '/history': (context) => const History(
-                // userEmail: null,
+            '/history': (context) => ReportList(
+                  userEmail: 'lorynxo@gmail.com',
+                  // userEmail: null,
                 ),
           },
         );
