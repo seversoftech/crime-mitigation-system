@@ -32,7 +32,7 @@ class MainApp extends StatelessWidget {
     return FutureBuilder<String?>(
       future: getEmailFromStorage(),
       builder: (context, snapshot) {
-        // if (snapshot.connectionState  ==  ConnectionState.waiting) {}
+        // if (snapshot.connectionState  ==  ConnectionState.waiting) {Not neccessary sha}
 
         final storedEmail = snapshot.data;
 
