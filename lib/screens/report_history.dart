@@ -33,7 +33,6 @@ class _ReportListState extends State<ReportList> {
     try {
       final response = await http.get(Uri.parse(url));
       final responseData = json.decode(response.body);
-     
 
       setState(() {
         reports = responseData['reports'];
