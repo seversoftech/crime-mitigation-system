@@ -1,9 +1,9 @@
 import 'package:crime_mitigation_system/screens/notificationscreen.dart';
 import 'package:crime_mitigation_system/screens/report_history.dart';
 import 'package:crime_mitigation_system/screens/reportscreen.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'screens/forgetpassword.dart';
 import 'screens/loginscreen.dart';
 import 'screens/profilescreen.dart';
@@ -33,7 +33,6 @@ class MainApp extends StatelessWidget {
       future: getEmailFromStorage(),
       builder: (context, snapshot) {
         // if (snapshot.connectionState  ==  ConnectionState.waiting) {}
-
 
         final storedEmail = snapshot.data;
 
