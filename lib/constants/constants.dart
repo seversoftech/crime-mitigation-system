@@ -37,7 +37,7 @@ var baseUrl = "http://192.168.139.214/crimemitigation";
 var loginUrl = Uri.parse("$baseUrl/login.php");
 var signupUrl = Uri.parse("$baseUrl/register.php");
 var reportUrl = Uri.parse("$baseUrl/report.php");
-var historyUrl = Uri.parse("$baseUrl/history.php");
+var historyUrl = Uri.parse("$baseUrl/report_history.php?user_email=");
 var forgetpassUrl = Uri.parse("$baseUrl/forgetpass.php");
 var notificationUrl = Uri.parse("$baseUrl/notification.php");
 var checkloginUrl = Uri.parse("$baseUrl/checkLogin.php");

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import '../constants/constants.dart';
+
 class ReportList extends StatefulWidget {
   final String userEmail;
 
@@ -27,19 +29,26 @@ class _ReportListState extends State<ReportList> {
       isLoading = true;
     });
 
-    final url =
-        'http://192.168.139.214/crimemitigation/report_history.php?user_email=${widget.userEmail}';
+    final url = '$baseUrl/report_history.php?user_email=${widget.userEmail}';
 
     try {
       final response = await http.get(Uri.parse(url));
       final responseData = json.decode(response.body);
 
-      setState(() {
-        reports = responseData['reports'];
-        isLoading = false;
-      });
+      if (responseData != null && responseData is List<dynamic>) {
+        setState(() {
+          reports = responseData;
+          isLoading = false;
+        });
+      } else {
+        setState(() {
+          reports = [];
+          isLoading = false;
+        });
+      }
     } catch (error) {
       setState(() {
+        reports = [];
         isLoading = false;
       });
       if (kDebugMode) {
@@ -56,28 +65,23 @@ class _ReportListState extends State<ReportList> {
       ),
       body: isLoading
           ? const Center(
-              child: CircularProgressIndicator(
-                strokeWidth: 1,
-              ),
+              child: CircularProgressIndicator(),
             )
-          : ListView.builder(
-              itemCount: reports.length,
-              itemBuilder: (context, index) {
-                final report = reports[index];
-
-                return ListTile(
-                  title: Text(report['title']),
-                  subtitle: Text(report['description']),
-                  // Add more details or customize the ListTile as needed
-                );
-              },
-            ),
+          : reports.isNotEmpty
+              ? ListView.builder(
+                  itemCount: reports.length,
+                  itemBuilder: (context, index) {
+                    final report = reports[index];
+                    return ListTile(
+                      title: Text(report['incident']),
+                      subtitle: Text(report['description']),
+                      // Add more details or customize the ListTile as needed
+                    );
+                  },
+                )
+              : const Center(
+                  child: Text('No reports available.'),
+                ),
     );
   }
 }
-
-// void main() {
-//   runApp(MaterialApp(
-//     home: ReportList(userEmail: 'user@useremail.com'),
-//   ));
-// }
