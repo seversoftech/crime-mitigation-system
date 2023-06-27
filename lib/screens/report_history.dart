@@ -66,7 +66,9 @@ class _ReportListState extends State<ReportList> {
       ),
       body: isLoading
           ? const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                strokeWidth: 1,
+              ),
             )
           : reports.isNotEmpty
               ? ListView.builder(
