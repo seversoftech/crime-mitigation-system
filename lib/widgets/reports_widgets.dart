@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import '../constants/constants.dart';
 
 class ReportCard extends StatelessWidget {
-  final String title;
-  final String message;
-  final String time;
-  final IconData iconData;
+  final Widget title;
+  final Widget message;
+  final Widget time;
 
   const ReportCard({
     Key? key,
     required this.title,
     required this.message,
     required this.time,
-    required this.iconData,
   }) : super(key: key);
 
   @override
@@ -23,10 +22,10 @@ class ReportCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.0),
       ),
       child: ListTile(
-        leading: Icon(iconData),
-        title: Text(title, style: textStyleBold),
-        subtitle: Text(message),
-        trailing: Text(time),
+        leading: const Icon(LineAwesomeIcons.history),
+        title: title,
+        subtitle: message,
+        trailing: time,
         onTap: () {
           // Handle Report tap
         },

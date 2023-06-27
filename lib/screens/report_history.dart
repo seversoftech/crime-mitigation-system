@@ -1,9 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'dart:convert';
 
 import '../constants/constants.dart';
+import '../widgets/notification_widget.dart';
+import '../widgets/reports_widgets.dart';
 
 class ReportList extends StatefulWidget {
   final String userEmail;
@@ -69,18 +72,29 @@ class _ReportListState extends State<ReportList> {
             )
           : reports.isNotEmpty
               ? ListView.builder(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0, vertical: 8.0),
                   itemCount: reports.length,
                   itemBuilder: (context, index) {
                     final report = reports[index];
-                    return ListTile(
+                    // return ListTile(
+                    //   leading: const Icon(LineAwesomeIcons.history),
+                    //   title: Text(report['incident']),
+                    //   subtitle: Text(report['description']),
+                    //   // Add more details or customize the ListTile as needed
+                    // );
+                    return ReportCard(
                       title: Text(report['incident']),
-                      subtitle: Text(report['description']),
-                      // Add more details or customize the ListTile as needed
+                      message: Text(report['description']),
+                      time: Text(report['date']),
                     );
                   },
                 )
-              : const Center(
-                  child: Text('No reports available.'),
+              : Center(
+                  child: Text(
+                    'No reports available.',
+                    style: textStyle,
+                  ),
                 ),
     );
   }
