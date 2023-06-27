@@ -108,7 +108,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
             ProfileMenu(
               icon: LineAwesomeIcons.address_card,
               press: () {
-                _showSimpleDialog(context);
+                _showAboutDialog(context);
               },
               text: 'About',
             ),
@@ -117,7 +117,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
               press: () {
                 Navigator.popAndPushNamed(context, '/home');
                 logOut();
-                exit(0);
+                // exit(0);
               },
               text: 'Log Out',
             ),
@@ -128,7 +128,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
   }
 }
 
-void _showSimpleDialog(BuildContext context) {
+void _showAboutDialog(BuildContext context) {
   showDialog(
     barrierDismissible: false,
     context: context,

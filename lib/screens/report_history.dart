@@ -6,16 +6,16 @@ import 'dart:convert';
 import '../constants/constants.dart';
 import '../widgets/reports_widgets.dart';
 
-class ReportList extends StatefulWidget {
+class ReportHistroy extends StatefulWidget {
   final String userEmail;
 
-  ReportList({required this.userEmail});
+ const ReportHistroy({super.key, required this.userEmail});
 
   @override
   _ReportListState createState() => _ReportListState();
 }
 
-class _ReportListState extends State<ReportList> {
+class _ReportListState extends State<ReportHistroy> {
   List<dynamic> reports = [];
   bool isLoading = false;
 
