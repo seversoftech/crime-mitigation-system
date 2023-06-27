@@ -75,16 +75,17 @@ class _ReportListState extends State<ReportList> {
                   itemCount: reports.length,
                   itemBuilder: (context, index) {
                     final report = reports[index];
-                    // return ListTile(
-                    //   leading: const Icon(LineAwesomeIcons.history),
-                    //   title: Text(report['incident']),
-                    //   subtitle: Text(report['description']),
-                    //   // Add more details or customize the ListTile as needed
-                    // );
                     return ReportCard(
                       title: Text(report['incident']),
-                      message: Text(report['description']),
+                      message: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(report['description']),
+                          Text(report['location']),
+                        ],
+                      ),
                       time: Text(report['date']),
+                      location: Text(report['location']),
                     );
                   },
                 )

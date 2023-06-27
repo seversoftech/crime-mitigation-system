@@ -6,12 +6,14 @@ class ReportCard extends StatelessWidget {
   final Widget title;
   final Widget message;
   final Widget time;
+  final Widget location;
 
   const ReportCard({
     Key? key,
     required this.title,
     required this.message,
     required this.time,
+    required this.location,
   }) : super(key: key);
 
   @override
@@ -26,9 +28,6 @@ class ReportCard extends StatelessWidget {
         title: title,
         subtitle: message,
         trailing: time,
-        onTap: () {
-          // Handle Report tap
-        },
       ),
     );
   }
