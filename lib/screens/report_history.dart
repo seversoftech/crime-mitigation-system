@@ -1,11 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'dart:convert';
 
 import '../constants/constants.dart';
-import '../widgets/notification_widget.dart';
 import '../widgets/reports_widgets.dart';
 
 class ReportList extends StatefulWidget {
