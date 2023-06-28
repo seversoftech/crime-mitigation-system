@@ -46,7 +46,7 @@ class _SignupScreenState extends State<SignupScreen> {
           color: Colors.green,
           'Registeration Successful',
         );
-        Navigator.pop(context);
+        Navigator.pushReplacementNamed(context, '/home');
       } else {
         ShowMessage.show(
           context,

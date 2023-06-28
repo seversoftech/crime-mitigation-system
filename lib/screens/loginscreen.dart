@@ -233,7 +233,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       TextClickButton(
                         onPressed: () {
-                          Navigator.pushReplacementNamed(context, '/signup');
+                          Navigator.pushNamed(context, '/signup');
                         },
                         text: 'Sign Up',
                       )
