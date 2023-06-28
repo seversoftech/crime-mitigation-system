@@ -78,7 +78,7 @@ class _ReportListState extends State<ReportHistroy> {
                   itemBuilder: (context, index) {
                     final report = reports[index];
                     return ReportCard(
-                      title: Text(report['incident']),
+                      incident: Text(report['incident']),
                       message: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -86,7 +86,7 @@ class _ReportListState extends State<ReportHistroy> {
                           Text(report['date']),
                         ],
                       ),
-                      time: Text(report['severity']),
+                      severity: Text(report['severity']),
                       location: Text(
                         report['location'],
                         style: textStyleBold,

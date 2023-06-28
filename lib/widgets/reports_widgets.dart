@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import '../constants/constants.dart';
 
 class ReportCard extends StatelessWidget {
-  final Widget title;
+  final Widget incident;
   final Widget message;
-  final Widget time;
+  final Widget severity;
   final Widget location;
 
   const ReportCard({
     Key? key,
-    required this.title,
+    required this.incident,
     required this.message,
-    required this.time,
+    required this.severity,
     required this.location,
   }) : super(key: key);
 
@@ -25,9 +24,9 @@ class ReportCard extends StatelessWidget {
       ),
       child: ListTile(
         leading: const Icon(LineAwesomeIcons.history),
-        title: title,
+        title: incident,
         subtitle: message,
-        trailing: time,
+        trailing: severity,
       ),
     );
   }
