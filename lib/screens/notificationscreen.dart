@@ -38,13 +38,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
 final List<NotificationItem> notifications = [
   const NotificationItem(
     title: 'New Message',
-    message: '.You have a new message by Admin',
+    message: 'Your report has been viewed by Admin',
     time: '1h ago',
     iconData: LineAwesomeIcons.bell,
   ),
   const NotificationItem(
     title: 'New Message',
-    message: 'You have a new message by Admin.',
+    message: 'our report has been viewed by Admin',
     time: '3h ago',
     iconData: LineAwesomeIcons.bell,
   ),
