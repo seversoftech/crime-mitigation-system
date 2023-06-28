@@ -38,75 +38,14 @@ class _NotificationScreenState extends State<NotificationScreen> {
 final List<NotificationItem> notifications = [
   const NotificationItem(
     title: 'New Message',
-    message: 'You have a new message from John Doe.',
+    message: '.You have a new message by Admin',
     time: '1h ago',
     iconData: LineAwesomeIcons.bell,
   ),
   const NotificationItem(
     title: 'New Message',
-    message: 'You have a new message from John Doe.',
-    time: '1h ago',
+    message: 'You have a new message by Admin.',
+    time: '3h ago',
     iconData: LineAwesomeIcons.bell,
   ),
-  const NotificationItem(
-    title: 'New Message',
-    message: 'You have a new message from John Doe.',
-    time: '1h ago',
-    iconData: LineAwesomeIcons.bell,
-  ),
-  const NotificationItem(
-    title: 'New Message',
-    message: 'You have a new message from John Doe.',
-    time: '1h ago',
-    iconData: LineAwesomeIcons.bell,
-  ),
-  const NotificationItem(
-    title: 'New Message',
-    message: 'You have a new message from John Doe.',
-    time: '1h ago',
-    iconData: LineAwesomeIcons.bell,
-  ),
-  const NotificationItem(
-    title: 'New Message',
-    message: 'You have a new message from John Doe.',
-    time: '1h ago',
-    iconData: LineAwesomeIcons.bell,
-  ),
-  const NotificationItem(
-    title: 'New Message',
-    message: 'You have a new message from John Doe.',
-    time: '1h ago',
-    iconData: LineAwesomeIcons.bell,
-  ),
-  const NotificationItem(
-    title: 'New Message',
-    message: 'You have a new message from John Doe.',
-    time: '1h ago',
-    iconData: LineAwesomeIcons.bell,
-  ),
-  const NotificationItem(
-    title: 'New Message',
-    message: 'You have a new message from John Doe.',
-    time: '1h ago',
-    iconData: LineAwesomeIcons.bell,
-  ),
-  const NotificationItem(
-    title: 'New Message',
-    message: 'You have a new message from John Doe.',
-    time: '1h ago',
-    iconData: LineAwesomeIcons.bell,
-  ),
-  const NotificationItem(
-    title: 'New Message',
-    message: 'You have a new message from John Doe.',
-    time: '1h ago',
-    iconData: LineAwesomeIcons.bell,
-  ),
-  const NotificationItem(
-    title: 'New Message',
-    message: 'You have a new message from John Doe.',
-    time: '1h ago',
-    iconData: LineAwesomeIcons.bell,
-  ),
-  // Add more NotificationItem objects as needed
 ];

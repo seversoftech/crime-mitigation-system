@@ -78,11 +78,13 @@ class _ReportListState extends State<ReportHistroy> {
                   itemBuilder: (context, index) {
                     final report = reports[index];
                     return ReportCard(
-                      incident: Text(report['incident']),
+                      incident: Text(report['incident'],
+                              overflow: TextOverflow.ellipsis),
                       message: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(report['description']),
+                          Text(report['description'],
+                              overflow: TextOverflow.ellipsis),
                           Text(report['date']),
                         ],
                       ),
