@@ -204,8 +204,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       TextClickButton(
                         onPressed: () {
-                          Navigator.pushReplacementNamed(
-                              context, '/forgetpassword');
+                          Navigator.pushNamed(context, '/forgetpassword');
                         },
                         text: 'Forget Password',
                       )
