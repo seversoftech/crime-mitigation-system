@@ -39,6 +39,6 @@ var signupUrl = Uri.parse("$baseUrl/register.php");
 var reportUrl = Uri.parse("$baseUrl/report.php");
 var historyUrl = Uri.parse("$baseUrl/report_history.php?user_email=");
 var forgetpassUrl = Uri.parse("$baseUrl/forgetpass.php");
-var notificationUrl = Uri.parse("$baseUrl/notification.php");
+var notificationUrl = Uri.parse("$baseUrl/notification.php?user_email=");
 var checkloginUrl = Uri.parse("$baseUrl/checkLogin.php");
 var logoutUrl = Uri.parse("$baseUrl/logout.php");

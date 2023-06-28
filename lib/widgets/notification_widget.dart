@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
-import '../constants/constants.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-class NotificationCard extends StatelessWidget {
-  final String title;
-  final String message;
-  final String time;
-  final IconData iconData;
+class NotificationWidget extends StatelessWidget {
+  final Widget title;
+  final Widget message;
+  final Widget time;
 
-  const NotificationCard({
-    Key? key,
-    required this.title,
-    required this.message,
-    required this.time,
-    required this.iconData,
-  }) : super(key: key);
+  const NotificationWidget(
+      {super.key,
+      required this.title,
+      required this.message,
+      required this.time});
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +20,10 @@ class NotificationCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.0),
       ),
       child: ListTile(
-        leading: Icon(iconData),
-        title: Text(title, style: textStyleBold),
-        subtitle: Text(message),
-        trailing: Text(time),
-        onTap: () {
-          // Handle notification tap.
-        },
+        leading: const Icon(LineAwesomeIcons.bell),
+        title: title,
+        subtitle: message,
+        trailing: time,
       ),
     );
   }
