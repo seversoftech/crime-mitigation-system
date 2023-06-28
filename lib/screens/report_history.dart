@@ -9,7 +9,7 @@ import '../widgets/reports_widgets.dart';
 class ReportHistroy extends StatefulWidget {
   final String userEmail;
 
- const ReportHistroy({super.key, required this.userEmail});
+  const ReportHistroy({super.key, required this.userEmail});
 
   @override
   _ReportListState createState() => _ReportListState();
@@ -83,18 +83,21 @@ class _ReportListState extends State<ReportHistroy> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(report['description']),
-                          Text(report['location']),
+                          Text(report['date']),
                         ],
                       ),
-                      time: Text(report['date']),
-                      location: Text(report['location']),
+                      time: Text(report['severity']),
+                      location: Text(
+                        report['location'],
+                        style: textStyleBold,
+                      ),
                     );
                   },
                 )
               : Center(
                   child: Text(
                     'No reports available.',
-                    style: textStyle,
+                    style: textStyleBold,
                   ),
                 ),
     );
