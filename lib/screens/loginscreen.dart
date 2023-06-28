@@ -1,7 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -51,9 +50,8 @@ class _LoginScreenState extends State<LoginScreen> {
       );
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
-        if (kDebugMode) {
-          print(response.body);
-        }
+
+        print(response.body);
 
         if (data == "Success") {
           ShowMessage.show(
@@ -84,9 +82,8 @@ class _LoginScreenState extends State<LoginScreen> {
         color: Colors.red,
         'An error occurred: $e',
       );
-      if (kDebugMode) {
-        print('An error occurred: $e');
-      }
+
+      print('An error occurred: $e');
     }
   }
 
@@ -207,7 +204,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       TextClickButton(
                         onPressed: () {
-                          Navigator.pushReplacementNamed(context, '/forgetpassword');
+                          Navigator.pushReplacementNamed(
+                              context, '/forgetpassword');
                         },
                         text: 'Forget Password',
                       )
