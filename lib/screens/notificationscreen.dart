@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'dart:convert';
 
 import '../constants/constants.dart';
@@ -79,7 +80,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     final report = reports[index];
                     return ReportCard(
                       incident: Text(report['title'],
-                              overflow: TextOverflow.ellipsis),
+                          overflow: TextOverflow.ellipsis),
                       message: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -97,9 +98,18 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   },
                 )
               : Center(
-                  child: Text(
-                    'No Notification',
-                    style: textStyleBold,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        LineAwesomeIcons.alternate_trash,
+                        size: 100,
+                      ),
+                      Text(
+                        'No Notification',
+                        style: textStyleBold,
+                      ),
+                    ],
                   ),
                 ),
     );
