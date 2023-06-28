@@ -1,11 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'dart:convert';
 
 import '../constants/constants.dart';
-import '../widgets/reports_widgets.dart';
+import '../widgets/notification_widget.dart';
 
 class NotificationScreen extends StatefulWidget {
   final String userEmail;
@@ -53,9 +52,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
         notificationData = [];
         isLoading = false;
       });
-      
-        print('Error fetching notification data: $error');
-     
+
+      print('Error fetching notification data: $error');
     }
   }
 
@@ -77,21 +75,20 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       horizontal: 8.0, vertical: 8.0),
                   itemCount: notificationData.length,
                   itemBuilder: (context, index) {
-                    final report = notificationData[index];
-                    return ReportCard(
-                      incident: Text(report['title'],
+                    final notification = notificationData[index];
+                    return NotificationWidget(
+                      title: Text(notification['title'],
                           overflow: TextOverflow.ellipsis),
                       message: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(report['message'],
+                          Text(notification['message'],
                               overflow: TextOverflow.ellipsis),
-                          Text(report['date']),
+                          Text(notification['date']),
                         ],
                       ),
-                      severity: Text(report['date']),
-                      location: Text(
-                        report['date'],
+                      time: Text(
+                        notification['date'],
                         style: textStyleBold,
                       ),
                     );
