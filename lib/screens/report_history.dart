@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'dart:convert';
 
 import '../constants/constants.dart';
@@ -79,7 +80,7 @@ class _ReportListState extends State<ReportHistroy> {
                     final report = reports[index];
                     return ReportCard(
                       incident: Text(report['incident'],
-                              overflow: TextOverflow.ellipsis),
+                          overflow: TextOverflow.ellipsis),
                       message: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -97,9 +98,18 @@ class _ReportListState extends State<ReportHistroy> {
                   },
                 )
               : Center(
-                  child: Text(
-                    'No reports available.',
-                    style: textStyleBold,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        LineAwesomeIcons.alternate_trash,
+                        size: 100,
+                      ),
+                      Text(
+                        'No reports available.',
+                        style: textStyleBold,
+                      ),
+                    ],
                   ),
                 ),
     );

@@ -17,7 +17,7 @@ class NotificationScreen extends StatefulWidget {
 }
 
 class _NotificationScreenState extends State<NotificationScreen> {
-  List<dynamic> reports = [];
+  List<dynamic> notificationData = [];
   bool isLoading = false;
 
   @override
@@ -39,22 +39,22 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
       if (responseData != null && responseData is List<dynamic>) {
         setState(() {
-          reports = responseData;
+          notificationData = responseData;
           isLoading = false;
         });
       } else {
         setState(() {
-          reports = [];
+          notificationData = [];
           isLoading = false;
         });
       }
     } catch (error) {
       setState(() {
-        reports = [];
+        notificationData = [];
         isLoading = false;
       });
       if (kDebugMode) {
-        print('Error fetching reports: $error');
+        print('Error fetching notification data: $error');
       }
     }
   }
@@ -71,13 +71,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 strokeWidth: 1,
               ),
             )
-          : reports.isNotEmpty
+          : notificationData.isNotEmpty
               ? ListView.builder(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 8.0, vertical: 8.0),
-                  itemCount: reports.length,
+                  itemCount: notificationData.length,
                   itemBuilder: (context, index) {
-                    final report = reports[index];
+                    final report = notificationData[index];
                     return ReportCard(
                       incident: Text(report['title'],
                           overflow: TextOverflow.ellipsis),
