@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
 
-        print(response.body);
+        // print(response.body);
 
         if (data == "Success") {
           ShowMessage.show(
@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
         'An error occurred: $e',
       );
 
-      print('An error occurred: $e');
+      // print('An error occurred: $e');
     }
   }
 

@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -53,9 +53,9 @@ class _NotificationScreenState extends State<NotificationScreen> {
         notificationData = [];
         isLoading = false;
       });
-      if (kDebugMode) {
+      
         print('Error fetching notification data: $error');
-      }
+     
     }
   }
 
