@@ -87,10 +87,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                           Text(notification['date']),
                         ],
                       ),
-                      time: Text(
-                        notification['date'],
-                        style: textStyleBold,
-                      ),
+                      time: Text(notification['date']),
                     );
                   },
                 )

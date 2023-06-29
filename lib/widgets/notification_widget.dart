@@ -23,7 +23,7 @@ class NotificationWidget extends StatelessWidget {
         leading: const Icon(LineAwesomeIcons.bell),
         title: title,
         subtitle: message,
-        trailing: time,
+        trailing: const Icon(LineAwesomeIcons.dot_circle),
       ),
     );
   }
