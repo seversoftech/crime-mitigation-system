@@ -50,7 +50,9 @@ class MainApp extends StatelessWidget {
             '/history': (context) => ReportHistroy(
                   userEmail: storedEmail!,
                 ),
+
           },
+          
         );
       },
     );
