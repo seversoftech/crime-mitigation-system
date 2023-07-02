@@ -32,7 +32,9 @@ class MainApp extends StatelessWidget {
     return FutureBuilder<String?>(
       future: getEmailFromStorage(),
       builder: (context, snapshot) {
-        // if (snapshot.connectionState  ==  ConnectionState.waiting) {Not neccessary sha}
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          const MaterialApp(home: LoginScreen());
+        }
 
         final storedEmail = snapshot.data;
 
@@ -45,14 +47,14 @@ class MainApp extends StatelessWidget {
             '/signup': (context) => const SignupScreen(),
             '/forgetpassword': (context) => const ForgetPassword(),
             '/profile': (context) => const UserProfilePage(),
-            '/notifications': (context) =>  NotificationScreen(  userEmail: storedEmail!,),
+            '/notifications': (context) => NotificationScreen(
+                  userEmail: storedEmail!,
+                ),
             '/report': (context) => const ReportCrime(),
             '/history': (context) => ReportHistroy(
                   userEmail: storedEmail!,
                 ),
-
           },
-          
         );
       },
     );
