@@ -130,7 +130,7 @@ void _showAboutDialog(BuildContext context) {
     barrierDismissible: false,
     context: context,
     builder: (BuildContext context) {
-      var halfHeight = MediaQuery.of(context).size.height * 0.1;
+      var halfHeight = MediaQuery.of(context).size.width;
 
       return AlertDialog(
         icon: const Icon(
@@ -145,11 +145,12 @@ void _showAboutDialog(BuildContext context) {
         content: SizedBox(
           height: halfHeight,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('Full Name:  Name goes here', style: textStyle),
               Text('Department of Computer Science', style: textStyle),
-              Text('Supervised by Mr. Name goes here', style: textStyle),
-              Text('Verified by Mr. Name goes here', style: textStyle),
+              Text('Supervisor: Mr. Name goes here', style: textStyle),
+              Text('Verifier Mr. Name goes here', style: textStyle),
             ],
           ),
         ),
