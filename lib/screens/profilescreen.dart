@@ -130,7 +130,7 @@ void _showAboutDialog(BuildContext context) {
     barrierDismissible: false,
     context: context,
     builder: (BuildContext context) {
-      var halfHeight = MediaQuery.of(context).size.width;
+      var height = MediaQuery.of(context).size.width / 3;
 
       return AlertDialog(
         icon: const Icon(
@@ -143,7 +143,7 @@ void _showAboutDialog(BuildContext context) {
             textAlign: TextAlign.center,
             'Design and Implementation of mobile app to mitigate insurgency in Nigeria'),
         content: SizedBox(
-          height: halfHeight,
+          height: height,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
