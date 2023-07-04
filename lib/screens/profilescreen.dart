@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -112,9 +113,8 @@ class _UserProfilePageState extends State<UserProfilePage> {
             ProfileMenu(
               icon: LineAwesomeIcons.alternate_sign_out,
               press: () {
-              Navigator.of(context).popUntil((route) => route.isFirst);
+                SystemNavigator.pop();
                 logOut();
-                
               },
               text: 'Log Out',
             ),
