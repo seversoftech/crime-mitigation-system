@@ -80,7 +80,7 @@ class _ReportCrimeState extends State<ReportCrime> {
 
       var data = json.decode(response.body);
 
-      print(response.body);
+      // print(response.body);
 
       if (data == "Success") {
         ShowMessage.show(
@@ -97,7 +97,7 @@ class _ReportCrimeState extends State<ReportCrime> {
         );
       }
     } catch (exception) {
-      print('Exception caught: $exception');
+      // print('Exception caught: $exception');
 
       ShowMessage.show(
         context,

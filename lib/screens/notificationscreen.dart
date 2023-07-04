@@ -53,7 +53,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
         isLoading = false;
       });
 
-      print('Error fetching notification data: $error');
+      // print('Error fetching notification data: $error');
     }
   }
 
