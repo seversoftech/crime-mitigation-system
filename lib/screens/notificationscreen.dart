@@ -92,6 +92,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   },
                 )
               : Center(
+                
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

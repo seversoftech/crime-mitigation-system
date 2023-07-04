@@ -35,9 +35,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future login() async {
-    await _storage.write(key: "KEY_EMAIL", value: _emailController.text);
-    await _storage.write(key: "KEY_PASSWORD", value: _passwordController.text);
-
     try {
       var url = loginUrl;
 
@@ -59,6 +56,9 @@ class _LoginScreenState extends State<LoginScreen> {
             color: Colors.green,
             'Successful Login',
           );
+          await _storage.write(key: "KEY_EMAIL", value: _emailController.text);
+          await _storage.write(
+              key: "KEY_PASSWORD", value: _passwordController.text);
           Navigator.pushReplacementNamed(context, '/profile');
         } else {
           ShowMessage.show(
