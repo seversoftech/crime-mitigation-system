@@ -1,3 +1,4 @@
+import 'package:crime_mitigation_system/screens/notificationscreen.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import '../constants/constants.dart';
 import '../widgets/profilemenu.dart';
 import '../widgets/textButton.dart';
+import 'report_history.dart';
 
 class UserProfilePage extends StatefulWidget {
   const UserProfilePage({super.key});
@@ -92,14 +94,28 @@ class _UserProfilePageState extends State<UserProfilePage> {
             ProfileMenu(
               icon: LineAwesomeIcons.history,
               press: () {
-                Navigator.pushNamed(context, '/history');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ReportHistroy(
+                      userEmail: storedEmail!,
+                    ),
+                  ),
+                );
               },
               text: 'Report History',
             ),
             ProfileMenu(
               icon: LineAwesomeIcons.bell,
               press: () {
-                Navigator.pushNamed(context, '/notifications');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NotificationScreen(
+                      userEmail: storedEmail!,
+                    ),
+                  ),
+                );
               },
               text: 'Notification',
             ),
@@ -113,7 +129,8 @@ class _UserProfilePageState extends State<UserProfilePage> {
             ProfileMenu(
               icon: LineAwesomeIcons.alternate_sign_out,
               press: () {
-                SystemNavigator.pop();
+                Navigator.pushNamed(context, '/home');
+                // SystemNavigator.pop();
                 logOut();
               },
               text: 'Log Out',
