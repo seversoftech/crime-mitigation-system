@@ -1,4 +1,5 @@
 import 'package:crime_mitigation_system/screens/notificationscreen.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -49,92 +50,94 @@ class _UserProfilePageState extends State<UserProfilePage> {
       appBar: AppBar(
         title: const Text('User Profile'),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            const SizedBox(height: 10),
-            SizedBox(
-              height: 115,
-              width: 115,
-              child: Stack(
-                clipBehavior: Clip.hardEdge,
-                fit: StackFit.expand,
-                children: [
-                  const CircleAvatar(
-                    backgroundImage: AssetImage("assets/icons/icon.png"),
-                  ),
-                  Positioned(
-                    right: 0,
-                    bottom: 0,
-                    child: SizedBox(
-                      height: 40,
-                      width: 40,
-                      child: CircleAvatar(
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: (const Icon(
-                            LineAwesomeIcons.camera,
-                          )),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 115,
+                width: 115,
+                child: Stack(
+                  clipBehavior: Clip.hardEdge,
+                  fit: StackFit.expand,
+                  children: [
+                    const CircleAvatar(
+                      backgroundImage: AssetImage("assets/icons/icon.png"),
+                    ),
+                    Positioned(
+                      right: 0,
+                      bottom: 0,
+                      child: SizedBox(
+                        height: 40,
+                        width: 40,
+                        child: CircleAvatar(
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: (const Icon(
+                              LineAwesomeIcons.camera,
+                            )),
+                          ),
                         ),
                       ),
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
-            ),
-            Text(storedEmail ?? '', style: textStyleBold),
-            ProfileMenu(
-              icon: LineAwesomeIcons.eye,
-              press: () {
-                Navigator.pushNamed(context, '/report');
-              },
-              text: 'Report Crime',
-            ),
-            ProfileMenu(
-              icon: LineAwesomeIcons.history,
-              press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ReportHistroy(
-                      userEmail: storedEmail!,
+              Text(storedEmail ?? '', style: textStyleBold),
+              ProfileMenu(
+                icon: LineAwesomeIcons.eye,
+                press: () {
+                  Navigator.pushNamed(context, '/report');
+                },
+                text: 'Report Crime',
+              ),
+              ProfileMenu(
+                icon: LineAwesomeIcons.history,
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ReportHistroy(
+                        userEmail: storedEmail!,
+                      ),
                     ),
-                  ),
-                );
-              },
-              text: 'Report History',
-            ),
-            ProfileMenu(
-              icon: LineAwesomeIcons.bell,
-              press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => NotificationScreen(
-                      userEmail: storedEmail!,
+                  );
+                },
+                text: 'Report History',
+              ),
+              ProfileMenu(
+                icon: LineAwesomeIcons.bell,
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => NotificationScreen(
+                        userEmail: storedEmail!,
+                      ),
                     ),
-                  ),
-                );
-              },
-              text: 'Notification',
-            ),
-            ProfileMenu(
-              icon: LineAwesomeIcons.address_card,
-              press: () {
-                _showAboutDialog(context);
-              },
-              text: 'About',
-            ),
-            ProfileMenu(
-              icon: LineAwesomeIcons.alternate_sign_out,
-              press: () {
-                Navigator.pushNamed(context, '/home');
-                // SystemNavigator.pop();
-                logOut();
-              },
-              text: 'Log Out',
-            ),
-          ],
+                  );
+                },
+                text: 'Notification',
+              ),
+              ProfileMenu(
+                icon: LineAwesomeIcons.address_card,
+                press: () {
+                  _showAboutDialog(context);
+                },
+                text: 'About',
+              ),
+              ProfileMenu(
+                icon: LineAwesomeIcons.alternate_sign_out,
+                press: () {
+                  logOut();
+                  // Navigator.pushNamed(context, '/home');
+                  SystemNavigator.pop();
+                },
+                text: 'Log Out',
+              ),
+            ],
+          ),
         ),
       ),
     );
