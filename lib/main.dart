@@ -47,13 +47,13 @@ class MainApp extends StatelessWidget {
             '/signup': (context) => const SignupScreen(),
             '/forgetpassword': (context) => const ForgetPassword(),
             '/profile': (context) => const UserProfilePage(),
-            '/notifications': (context) => NotificationScreen(
-                  userEmail: storedEmail!,
-                ),
+            // '/notifications': (context) => NotificationScreen(
+            //       userEmail: storedEmail!,
+            //     ),
             '/report': (context) => const ReportCrime(),
-            '/history': (context) => ReportHistroy(
-                  userEmail: storedEmail!,
-                ),
+            // '/history': (context) => ReportHistroy(
+            //       userEmail: storedEmail!,
+            //     ),
           },
         );
       },
