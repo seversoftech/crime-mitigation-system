@@ -130,11 +130,11 @@ class _UserProfilePageState extends State<UserProfilePage> {
               ProfileMenu(
                 icon: LineAwesomeIcons.alternate_sign_out,
                 press: () {
-                  // logOut();
-                  Navigator.pushNamed(context, '/home');
+                  logOut();
+                  Navigator.pushReplacementNamed(context, '/home');
                   // SystemNavigator.pop();
                 },
-                text: 'Exit',
+                text: 'Log Out',
               ),
             ],
           ),
