@@ -132,7 +132,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                 press: () {
                   logOut();
                   Navigator.pushReplacementNamed(context, '/home');
-                  // SystemNavigator.pop();
+                
                 },
                 text: 'Log Out',
               ),
