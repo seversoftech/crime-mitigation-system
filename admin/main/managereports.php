@@ -153,6 +153,7 @@ window.onload=startclock;
 				for($i=0; $row = $result->fetch(); $i++){
 				
 			?>
+
 		
 			<td><?php echo $row['id']; ?></td>
 			<td><?php echo $row['incident']; ?></td>
@@ -162,7 +163,7 @@ window.onload=startclock;
 			<td><?php echo $row['date']; ?></td>
 			<td><?php echo $row['image']; ?></td>
 			<td><?php echo $row['user_email']; ?></td>
-			<td><a title="Click to view the  report" href="viewreport.php?id=<?php echo $row['id']; ?>"><button class="btn btn-success btn-mini"><i class="icon-search"></i> View Report</button> </a>
+			<td><a title="Click to view the report" href="viewreport.php?id=<?php echo $row['id']; ?>"><button class="btn btn-success btn-mini"><i class="icon-search"></i> View Report</button> </a>
 			<a  title="Click to send notification to user" href="notification.php?id=<?php echo $row['id']; ?>"><button class="btn btn-warning btn-mini"><i class="icon-bell"></i>Send Notification</button> </a>
 			<a  href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click To Delete"><button class="btn btn-danger btn-mini"><i class="icon-trash"></i> Delete Report</button></a></td>
 			</tr>
