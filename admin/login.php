@@ -15,7 +15,7 @@
 	}
 	
 	//Select database
-	$db = mysqli_select_db($link,'model');
+	$db = mysqli_select_db($link,'crimemitigation');
 	if(!$db) {
 		die("Unable to select database");
 	}
@@ -50,7 +50,7 @@
 	}
 	
 	//Create query
-	$qry="SELECT * FROM user WHERE username='$login' AND password='$password'";
+	$qry="SELECT * FROM admin WHERE username='$login' AND password='$password'";
 	$result=mysqli_query($link,$qry);
 	
 	//Check whether the query was successful or not
