@@ -115,15 +115,8 @@ window.onload=startclock;
 <a  href="index.php"><button class="btn btn-default btn-large" style="float: left;"><i class="icon icon-circle-arrow-left icon-large"></i> Back</button></a>
 <center><?php
 	include('../connect.php');
-	// $id=$_GET['id'];
-  if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    // Rest of your code goes here
-} else {
-    // Handle the case when 'id' is not present in the array
-    echo "Error: 'id' parameter is missing.";
-}
-	$result = $db->prepare("SELECT * FROM  users WHERE id= :userid");
+	$id=$_GET['id'];
+  $result = $db->prepare("SELECT * FROM  users WHERE id= :userid");
 	$result->bindParam(':userid', $id);
 	$result->execute();
 	for($i=0; $row = $result->fetch(); $i++){
@@ -134,7 +127,7 @@ window.onload=startclock;
 <hr>
 <div id="ac">
 <input type="hidden" name="memi" value="<?php echo $id; ?>" />
-<span>ID. : </span><input type="text" style="width:265px; height:30px;"  name="id" value="<?php echo $row['id']; ?>" readonly Required/><br>
+<span>User ID. : </span><input type="text" style="width:265px; height:30px;"  name="id" value="<?php echo $row['id']; ?>" readonly Required/><br>
 <span>Full Name : </span><input type="text" style="width:265px; height:30px;"  name="fullname" value="<?php echo $row['fullname']; ?>" readonly Require/><br>
 <span>Email : </span><input type="text" style="width:265px; height:30px;"  name="email" value="<?php echo $row['email']; ?>" readonly Require/><br>
 

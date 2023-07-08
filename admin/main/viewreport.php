@@ -84,6 +84,7 @@ window.onload=startclock;
               <li><a href="index.php"><i class="icon-dashboard icon-2x"></i> Dashboard </a></li> 
 			<li><a href="users.php"><i class="icon-group icon-2x"></i>Manage Users</a>  </li>
 			<li><a href="adduser.php"><i class="icon-user icon-2x"></i>Add User</a>     </li>
+			<li lass="active"><a href="managereports.php"><i class="icon-laptop icon-2x"></i>Manage Reports</a></li>
 
 			<br><br>	
 			<li>
