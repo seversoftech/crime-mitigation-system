@@ -6,6 +6,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import '../widgets/elevatedButton.dart';
+import '../widgets/loading.dart';
 import '../widgets/showmessage.dart';
 import '../widgets/textButton.dart';
 import '../constants/constants.dart';
@@ -222,8 +223,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                           child: 'Login',
                         ),
-                      if (_isLoading)
-                        const CircularProgressIndicator(strokeWidth: 1),
+                      if (_isLoading) const Loading()
                     ]),
                   ]),
                   Row(
