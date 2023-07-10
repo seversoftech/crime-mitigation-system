@@ -11,7 +11,7 @@ import '../widgets/textButton.dart';
 import '../constants/constants.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -19,6 +19,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool isChecked = false;
+  bool _isLoading = false;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -34,7 +35,11 @@ class _LoginScreenState extends State<LoginScreen> {
     _passwordController.text = await _storage.read(key: "KEY_PASSWORD") ?? '';
   }
 
-  Future login() async {
+  Future<void> login() async {
+    setState(() {
+      _isLoading = true;
+    });
+
     try {
       var url = loginUrl;
 
@@ -47,8 +52,6 @@ class _LoginScreenState extends State<LoginScreen> {
       );
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
-
-        // print(response.body);
 
         if (data == "Success") {
           ShowMessage.show(
@@ -67,14 +70,12 @@ class _LoginScreenState extends State<LoginScreen> {
             'Incorrect Login details!',
           );
         }
-        return true;
       } else {
         ShowMessage.show(
           context,
           color: Colors.red,
           'Connection Problem...',
         );
-        return false;
       }
     } catch (e) {
       ShowMessage.show(
@@ -82,9 +83,11 @@ class _LoginScreenState extends State<LoginScreen> {
         color: Colors.red,
         'An error occurred: $e',
       );
-
-      // print('An error occurred: $e');
     }
+
+    setState(() {
+      _isLoading = false; // Hide circular progress bar
+    });
   }
 
   @override
@@ -122,13 +125,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Text('WELCOME BACK', style: textStyleBig),
                   Text(
-                    textAlign: TextAlign.center,
                     'Sign in with your registered email address and password to continue...',
+                    textAlign: TextAlign.center,
                     style: textStyle,
                   ),
                   const SizedBox(height: 20.0),
                   TextFormField(
-                    // onSaved: (newValue) => _email = newValue,
                     onChanged: (value) {
                       if (value.isNotEmpty) {
                       } else if (emailValidatorRegExp.hasMatch(value)) {}
@@ -157,7 +159,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
-                    // onSaved: (newValue) => _password = newValue,
                     onChanged: (value) {
                       if (value.isNotEmpty) {
                       } else if (value.length >= 8) {}
@@ -189,11 +190,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           Checkbox(
                             value: isChecked,
                             onChanged: (bool? value) {
-                              setState(
-                                () {
-                                  isChecked = value!;
-                                },
-                              );
+                              setState(() {
+                                isChecked = value!;
+                              });
                             },
                           ),
                           Text(
@@ -211,20 +210,27 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                   const SizedBox(height: 10.0),
-                  ElevatedClickButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        _formKey.currentState!.save();
-                        login();
-                      }
-                    },
-                    child: 'Login',
-                  ),
+                  Stack(alignment: Alignment.center, children: [
+                    Stack(alignment: Alignment.center, children: [
+                      if (!_isLoading)
+                        ElevatedClickButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              _formKey.currentState!.save();
+                              login();
+                            }
+                          },
+                          child: 'Login',
+                        ),
+                      if (_isLoading)
+                        const CircularProgressIndicator(strokeWidth: 1),
+                    ]),
+                  ]),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Dont have an account?',
+                        'Don\'t have an account?',
                         style: textStyle,
                       ),
                       const SizedBox(
