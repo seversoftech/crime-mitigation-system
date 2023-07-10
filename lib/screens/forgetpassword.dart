@@ -1,8 +1,13 @@
+
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../constants/constants.dart';
 import '../widgets/elevatedButton.dart';
+import '../widgets/loading.dart';
+import '../widgets/showmessage.dart';
 import '../widgets/textButton.dart';
 
 class ForgetPassword extends StatefulWidget {
@@ -16,6 +21,36 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   final _formKey = GlobalKey<FormState>();
 
   final TextEditingController _emailController = TextEditingController();
+  bool _isLoading = false;
+
+  Future<void> resetPassword() async {
+    setState(() {
+      _isLoading = true; 
+    });
+
+    try {
+     
+      await Future.delayed(const Duration(seconds: 2));
+
+   
+
+      ShowMessage.show(
+        context,
+        color: Colors.green,
+        'Password reset link sent!',
+      );
+    } catch (e) {
+      ShowMessage.show(
+        context,
+        color: Colors.red,
+        'An error occurred: $e',
+      );
+    } finally {
+      setState(() {
+        _isLoading = false; 
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,13 +107,16 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     ),
                   ),
                   const SizedBox(height: 20.0),
-                  ElevatedClickButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        _formKey.currentState!.save();
-                      }
-                    },
-                    child: 'Continue',
+                  ElevatedButton(
+                    onPressed: _isLoading
+                        ? null
+                        : () async {
+                            if (_formKey.currentState!.validate()) {
+                              _formKey.currentState!.save();
+                              await resetPassword();
+                            }
+                          },
+                    child: _isLoading ? const Loading (): const Text('Continue'),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
