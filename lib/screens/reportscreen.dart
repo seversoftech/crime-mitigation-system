@@ -10,6 +10,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../constants/constants.dart';
 import '../main.dart';
 import '../widgets/elevatedButton.dart';
+import '../widgets/loading.dart';
 import '../widgets/showmessage.dart';
 
 class ReportCrime extends StatefulWidget {
@@ -206,10 +207,7 @@ class _ReportCrimeState extends State<ReportCrime> {
           return Column(
             children: [
               const Center(
-                child: CircularProgressIndicator(
-                  strokeCap: StrokeCap.square,
-                  strokeWidth: 2,
-                ),
+                child: Loading()
               ),
               Text(
                 'You must Grant Camera Permission',

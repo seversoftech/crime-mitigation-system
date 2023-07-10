@@ -1,3 +1,4 @@
+import 'package:crime_mitigation_system/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -65,9 +66,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
       ),
       body: isLoading
           ? const Center(
-              child: CircularProgressIndicator(
-                strokeWidth: 1,
-              ),
+              child: Loading(),
             )
           : notificationData.isNotEmpty
               ? ListView.builder(
@@ -92,7 +91,6 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   },
                 )
               : Center(
-                
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

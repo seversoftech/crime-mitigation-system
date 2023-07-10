@@ -6,18 +6,17 @@ import '../widgets/elevatedButton.dart';
 import '../widgets/textButton.dart';
 
 class ForgetPassword extends StatefulWidget {
-  const ForgetPassword({super.key});
+  const ForgetPassword({Key? key}) : super(key: key);
 
   @override
   State<ForgetPassword> createState() => _ForgetPasswordState();
 }
 
 class _ForgetPasswordState extends State<ForgetPassword> {
-
-
   final _formKey = GlobalKey<FormState>();
 
   final TextEditingController _emailController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,13 +39,12 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    textAlign: TextAlign.center,
                     'Please enter your email, we will send you a password reset link...',
+                    textAlign: TextAlign.center,
                     style: textStyle,
                   ),
                   const SizedBox(height: 20.0),
                   TextFormField(
-                   
                     onChanged: (value) {
                       if (value.isNotEmpty) {
                       } else if (emailValidatorRegExp.hasMatch(value)) {}
@@ -86,7 +84,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Dont have an account?',
+                        'Don\'t have an account?',
                         style: textStyle,
                       ),
                       const SizedBox(

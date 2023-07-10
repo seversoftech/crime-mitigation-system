@@ -1,3 +1,4 @@
+import 'package:crime_mitigation_system/widgets/loading.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -66,11 +67,7 @@ class _ReportListState extends State<ReportHistroy> {
         title: const Text('Report History'),
       ),
       body: isLoading
-          ? const Center(
-              child: CircularProgressIndicator(
-                strokeWidth: 1,
-              ),
-            )
+          ? const Center(child: Loading())
           : reports.isNotEmpty
               ? ListView.builder(
                   padding: const EdgeInsets.symmetric(

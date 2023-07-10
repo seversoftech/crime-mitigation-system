@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:convert';
+import 'package:crime_mitigation_system/widgets/loading.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -10,7 +11,7 @@ import '../widgets/elevatedButton.dart';
 import '../widgets/showmessage.dart';
 
 class SignupScreen extends StatefulWidget {
-  const SignupScreen({super.key});
+  const SignupScreen({Key? key}) : super(key: key);
 
   @override
   State<SignupScreen> createState() => _SignupScreenState();
@@ -25,7 +26,13 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
 
-  Future register() async {
+  bool _isLoading = false;
+
+  Future<void> register() async {
+    setState(() {
+      _isLoading = true;
+    });
+
     try {
       var url = signupUrl;
       var response = await http.post(
@@ -44,14 +51,14 @@ class _SignupScreenState extends State<SignupScreen> {
         ShowMessage.show(
           context,
           color: Colors.green,
-          'Registeration Successful',
+          'Registration Successful',
         );
         Navigator.pushReplacementNamed(context, '/home');
       } else {
         ShowMessage.show(
           context,
           color: Colors.red,
-          'Email or Phone Number alreday exist',
+          'Email or Phone Number already exists',
         );
       }
     } catch (exception) {
@@ -64,6 +71,10 @@ class _SignupScreenState extends State<SignupScreen> {
         print('Exception caught: $exception');
       }
     }
+
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   @override
@@ -91,13 +102,12 @@ class _SignupScreenState extends State<SignupScreen> {
                     style: textStyleBig,
                   ),
                   Text(
+                    'Fill in the required details',
                     textAlign: TextAlign.center,
-                    'Fill in the required details ',
                     style: textStyle,
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
-                    // onSaved: (newValue) => _fullname = newValue,
                     onChanged: (value) {
                       if (value.isNotEmpty) {}
                       return;
@@ -114,12 +124,14 @@ class _SignupScreenState extends State<SignupScreen> {
                       hintText: 'Enter your full name',
                       labelText: 'Full Name',
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(12))),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(12),
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
-                    // onSaved: (newValue) => _email = newValue,
                     onChanged: (value) {
                       if (value.isNotEmpty) {
                       } else if (emailValidatorRegExp.hasMatch(value)) {}
@@ -140,12 +152,14 @@ class _SignupScreenState extends State<SignupScreen> {
                       hintText: 'Enter your email',
                       labelText: 'Email',
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(12))),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(12),
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
-                    //onSaved: (newValue) => _phone = newValue,
                     onChanged: (value) {
                       if (value.isNotEmpty) {
                       } else if (phoneValidatorRegExp.hasMatch(value)) {}
@@ -166,12 +180,14 @@ class _SignupScreenState extends State<SignupScreen> {
                       hintText: 'Enter your Phone number',
                       labelText: 'Phone Number',
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(12))),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(12),
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
-                    // onSaved: (newValue) => _address = newValue,
                     onChanged: (value) {
                       if (value.isNotEmpty) {}
                       return;
@@ -188,12 +204,14 @@ class _SignupScreenState extends State<SignupScreen> {
                       hintText: 'Enter your resident address',
                       labelText: 'Address',
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(12))),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(12),
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
-                    // onSaved: (newValue) => _password = newValue,
                     onChanged: (value) {
                       if (value.isNotEmpty) {
                       } else if (value.length >= 8) {}
@@ -214,23 +232,33 @@ class _SignupScreenState extends State<SignupScreen> {
                       hintText: 'Enter your password',
                       labelText: 'Password',
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(12))),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(12),
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 30.0),
-                  ElevatedClickButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        _formKey.currentState!.save();
-                        register();
-                      }
-                    },
-                    child: 'Register',
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      if (!_isLoading)
+                        ElevatedClickButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              _formKey.currentState!.save();
+                              register();
+                            }
+                          },
+                          child: 'Register',
+                        ),
+                      if (_isLoading) const Loading()
+                    ],
                   ),
                   const SizedBox(height: 20),
                   Text(
-                    textAlign: TextAlign.center,
                     'Kindly confirm all details. By Continuing, you agree with our Terms and Conditions',
+                    textAlign: TextAlign.center,
                     style: textStyle,
                   ),
                   const SizedBox(height: 10.0),
