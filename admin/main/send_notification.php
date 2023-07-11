@@ -3,9 +3,11 @@ session_start();
 include('../connect.php');
 
 $userEmail = $_POST['email'];
-$userId = $_POST['id'];
 $title = $_POST['title'];
 $message = $_POST['message'];
+
+// Retrieve the previously saved userId from the session or file
+$userId = $_SESSION['userId'];
 
 $sql = "INSERT INTO notifications (user_email, user_id, title, message) VALUES (:userEmail, :userId, :title, :message)";
 

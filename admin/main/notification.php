@@ -118,7 +118,17 @@ window.onload=startclock;
 	$id=$_GET['id'];
   $result = $db->prepare("SELECT * FROM  users WHERE id= :userid");
 	$result->bindParam(':userid', $id);
+  $row = $result->fetch();
 	$result->execute();
+
+
+  if ($row) {
+    $userId = $row['id']; // Extract the ID from the row
+    // Save the $userId variable in a separate file or session for later use
+    // For example:
+    
+    $_SESSION['userId'] = $userId;
+}
 	for($i=0; $row = $result->fetch(); $i++){
 ?>
 <link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
