@@ -3,6 +3,7 @@ session_start();
 include('../connect.php');
 
 $userEmail = $_POST['email'];
+
 $title = $_POST['title'];
 $message = $_POST['message'];
 
