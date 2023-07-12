@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2023 at 03:31 PM
+-- Generation Time: Jul 12, 2023 at 08:08 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -50,7 +50,6 @@ INSERT INTO `admin` (`id`, `name`, `position`, `username`, `password`) VALUES
 
 CREATE TABLE `notifications` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
   `user_email` varchar(99) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
   `message` varchar(255) DEFAULT NULL,
@@ -103,9 +102,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fullname`, `email`, `phone`, `address`, `password`, `token`) VALUES
-(1, 'Sever Emmanuel ', 'sever@seversoftech.com', '07033409667', '12th Street, Greens Avenue...    ', '$2y$10$nyVM3zaHFKAGAdrSnt3VJ.q.YVlwFIyJ3ROf/tDBoDqJQU0YszlsG', '908e383b1b38565bbfa2d8a93d2936977f8e8e154a2842e8ba4f2ad9a35318bb'),
-(2, 'Ibiam Uko', 'ibiam@gmail.com', '09050000056', 'AIFPU', '$2y$10$1p1zGXSE0LQrzpvKwQ8WXus3QtO4F4h4kVpVIksG2hTa8qdgiKINS', '80cb1fbd9eea40cc4009d57b54e04f625daa176a8375a7cc57272521040a1ce6'),
-(9, 'Ibeabuchi Emmanuel Iheke', 'developersever@gmail.com', '07033409669', 'General Market Road', '$2y$10$0l4ntKPnZ1qGYoxPiBNKY.G.oP5XgoFfxP1Zo9i8/Ruj8tWkA6C4e', '');
+(1, 'Sever Emmanuels', 'sever@seversoftech.com', '07033409667', '12th Street, Greens Avenue.', '$2y$10$nyVM3zaHFKAGAdrSnt3VJ.q.YVlwFIyJ3ROf/tDBoDqJQU0YszlsG', 'cfc2a0ed2bb92e457abf1023666b12bbd88a14856266d13747b3d102ba671512'),
+(2, 'Ibiam Uko', 'ibiam@gmail.com', '09050000056', 'AIFPU', '$2y$10$1p1zGXSE0LQrzpvKwQ8WXus3QtO4F4h4kVpVIksG2hTa8qdgiKINS', '2f7c8a4dd52c6c709091d0fec15c7ec9ea8ba40dd74b6019945466a2fe422b69');
 
 --
 -- Indexes for dumped tables
@@ -157,23 +155,13 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `notifications`
---
-ALTER TABLE `notifications`
-  ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

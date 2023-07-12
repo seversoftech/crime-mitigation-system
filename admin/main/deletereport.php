@@ -9,15 +9,15 @@
     }
 
 
-    $statement = $db->prepare("DELETE FROM users WHERE id = :memid");
+    $statement = $db->prepare("DELETE FROM reports WHERE id = :memid");
     $statement->bindParam(':memid', $id, PDO::PARAM_INT);
 
-
+  
     if ($statement->execute()) {
         header("location: users.php");
         exit;
     } else {
-        echo "Error deleting the user.";
+        echo "Error deleting the report.";
         exit;
     }
 ?>
