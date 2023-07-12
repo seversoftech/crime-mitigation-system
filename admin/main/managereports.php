@@ -193,6 +193,7 @@ $(function() {
         url: "deletereport.php",
         data: info,
         success: function() {
+			location.reload();
           // Handle the success response if needed
         }
       });
