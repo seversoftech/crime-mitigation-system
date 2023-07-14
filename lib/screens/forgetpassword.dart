@@ -22,9 +22,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   bool _isLoading = false;
 
   Future<void> resetPassword() async {
-    setState(() {
-      _isLoading = true;
-    });
+    setState(
+      () {
+        _isLoading = true;
+      },
+    );
 
     try {
       await Future.delayed(const Duration(seconds: 2));
@@ -33,9 +35,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
     } catch (e) {
       ShowMessage.show('An error occurred: $e', backgroundColor: Colors.red);
     } finally {
-      setState(() {
-        _isLoading = false;
-      });
+      setState(
+        () {
+          _isLoading = false;
+        },
+      );
     }
   }
 
