@@ -1,6 +1,5 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -89,24 +88,23 @@ class _ReportCrimeState extends State<ReportCrime> {
 
       if (response.statusCode == 200) {
         ShowMessage.show(
-          context,
-          color: Colors.green,
           'Report Sent!',
+          backgroundColor: Colors.green,
         );
         Navigator.pop(context);
       } else {
         ShowMessage.show(
-          context,
-          color: Colors.red,
+          backgroundColor: Colors.red,
           'An error occured...',
         );
       }
     } catch (exception) {
-      print('Exception caught: $exception');
+      if (kDebugMode) {
+        print('Exception caught: $exception');
+      }
 
       ShowMessage.show(
-        context,
-        color: Colors.red,
+        backgroundColor: Colors.red,
         'An error occurred: $exception',
       );
     }
@@ -305,7 +303,7 @@ class _ReportCrimeState extends State<ReportCrime> {
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'Please select a severity.';
+            return 'Please select an option.';
           }
           return null;
         },

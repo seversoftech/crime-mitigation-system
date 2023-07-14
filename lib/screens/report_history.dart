@@ -14,10 +14,10 @@ class ReportHistroy extends StatefulWidget {
   const ReportHistroy({super.key, required this.userEmail});
 
   @override
-  _ReportListState createState() => _ReportListState();
+  ReportHistroyState createState() => ReportHistroyState();
 }
 
-class _ReportListState extends State<ReportHistroy> {
+class ReportHistroyState extends State<ReportHistroy> {
   List<dynamic> reports = [];
   bool isLoading = false;
 

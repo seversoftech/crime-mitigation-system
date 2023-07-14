@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'dart:convert';
 import 'package:crime_mitigation_system/widgets/loading.dart';
 import 'package:flutter/foundation.dart';
@@ -10,6 +8,8 @@ import '../constants/constants.dart';
 import '../widgets/elevatedButton.dart';
 import '../widgets/showmessage.dart';
 
+final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
 
@@ -18,8 +18,6 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  final _formKey = GlobalKey<FormState>();
-
   final TextEditingController _fullnameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -49,22 +47,19 @@ class _SignupScreenState extends State<SignupScreen> {
       var data = json.decode(response.body);
       if (data == "Success") {
         ShowMessage.show(
-          context,
-          color: Colors.green,
+          backgroundColor: Colors.green,
           'Registration Successful',
         );
         Navigator.pushReplacementNamed(context, '/home');
       } else {
         ShowMessage.show(
-          context,
-          color: Colors.red,
+          backgroundColor: Colors.red,
           'Email or Phone Number already exists',
         );
       }
     } catch (exception) {
       ShowMessage.show(
-        context,
-        color: Colors.red,
+        backgroundColor: Colors.red,
         'An error occurred: $exception',
       );
       if (kDebugMode) {

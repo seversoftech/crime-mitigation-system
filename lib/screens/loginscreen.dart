@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -56,9 +54,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
         if (data == "Success") {
           ShowMessage.show(
-            context,
-            color: Colors.green,
-            'Successful Login',
+            'Successful Login!',
+            backgroundColor: Colors.green,
           );
           await _storage.write(key: "KEY_EMAIL", value: _emailController.text);
           await _storage.write(
@@ -66,22 +63,19 @@ class _LoginScreenState extends State<LoginScreen> {
           Navigator.pushReplacementNamed(context, '/profile');
         } else {
           ShowMessage.show(
-            context,
-            color: Colors.red,
-            'Incorrect Login details!',
+            'Incorrect login details!',
+            backgroundColor: Colors.red,
           );
         }
       } else {
         ShowMessage.show(
-          context,
-          color: Colors.red,
+          backgroundColor: Colors.red,
           'Connection Problem...',
         );
       }
     } catch (e) {
       ShowMessage.show(
-        context,
-        color: Colors.red,
+        backgroundColor: Colors.red,
         'An error occurred: $e',
       );
     }

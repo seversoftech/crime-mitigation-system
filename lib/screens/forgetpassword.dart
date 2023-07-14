@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../constants/constants.dart';
-import '../widgets/elevatedButton.dart';
 import '../widgets/loading.dart';
 import '../widgets/showmessage.dart';
 import '../widgets/textButton.dart';
@@ -29,18 +28,10 @@ class _ForgetPasswordState extends State<ForgetPassword> {
 
     try {
       await Future.delayed(const Duration(seconds: 2));
-
-      ShowMessage.show(
-        context,
-        color: Colors.green,
-        'Password reset link sent!',
-      );
+      ShowMessage.show('Password reset link sent!',
+          backgroundColor: Colors.green);
     } catch (e) {
-      ShowMessage.show(
-        context,
-        color: Colors.red,
-        'An error occurred: $e',
-      );
+      ShowMessage.show('An error occurred: $e', backgroundColor: Colors.red);
     } finally {
       setState(() {
         _isLoading = false;
