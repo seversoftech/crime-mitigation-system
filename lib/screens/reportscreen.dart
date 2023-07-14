@@ -223,31 +223,38 @@ class _ReportCrimeState extends State<ReportCrime> {
               left: 0,
               right: 0,
               bottom: 0,
-              child: ElevatedClickButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
-                    sendReport();
-                  }
-                },
-                child: 'Snap and Report',
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: ElevatedClickButton(
+                      onPressed: () {
+                        _pickImage();
+                      },
+                      child: 'Capture',
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 4,
+                  ),
+                  Expanded(
+                    child: ElevatedClickButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          _formKey.currentState!.save();
+                          sendReport();
+                        }
+                      },
+                      child: 'Send Report',
+                    ),
+                  ),
+                  const SizedBox(width: 5),
+                ],
               ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _pickImage(),
-        elevation: 0.0,
-        backgroundColor: Colors.blue,
-        mini: true,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-        isExtended: false,
-        child: const Icon(
-          LineAwesomeIcons.camera,
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 
