@@ -41,7 +41,7 @@ class _ReportCrimeState extends State<ReportCrime> {
 
   Future<void> _pickImage() async {
     final picker = ImagePicker();
-    final pickedImage = await picker.pickImage(source: ImageSource.gallery);
+    final pickedImage = await picker.pickImage(source: ImageSource.camera);
 
     if (pickedImage != null) {
       setState(() {
