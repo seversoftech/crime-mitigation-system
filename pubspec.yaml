@@ -16,11 +16,12 @@ dependencies:
   line_awesome_flutter:
   flutter_animate:
   path_provider:
-  google_fonts: 
-  camera: 
+  image_picker:
+  google_fonts:
   http:
   intl:
   path:
+  
   
 
   

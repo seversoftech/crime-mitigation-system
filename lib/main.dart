@@ -1,18 +1,17 @@
 import 'package:crime_mitigation_system/screens/reportscreen.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
 import 'screens/forgetpassword.dart';
 import 'screens/loginscreen.dart';
 import 'screens/profilescreen.dart';
 import 'screens/signup.dart';
 import 'screens/theme.dart';
 
-List<CameraDescription>? cameras;
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  cameras = await availableCameras();
+
   runApp(const MainApp());
 }
 
