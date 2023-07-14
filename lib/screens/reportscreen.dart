@@ -6,10 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import '../constants/constants.dart';
 import '../widgets/elevatedButton.dart';
-import '../widgets/loading.dart';
 import '../widgets/showmessage.dart';
 
 class ReportCrime extends StatefulWidget {
@@ -283,25 +281,31 @@ class _ReportCrimeState extends State<ReportCrime> {
   }
 
   SizedBox reportFormInputSeverity(severityController) {
+    final List<String> severityOptions = ['Low', 'Medium', 'High'];
+    String selectedSeverity = severityController.text;
+
     return SizedBox(
-      child: TextFormField(
-        maxLines: 1,
-        controller: severityController,
-        decoration: const InputDecoration(
-          hintText: 'low, medium, high',
-          labelText: 'severity*',
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(6))),
-        ),
-        // onSaved: (newValue) => _severity = newValue,
-        onChanged: (value) {
-          if (value.isNotEmpty) {
-          } else if (value.length >= 8) {}
-          return;
+      child: DropdownButtonFormField<String>(
+        value: selectedSeverity.isEmpty ? null : selectedSeverity,
+        items: severityOptions.map((String option) {
+          return DropdownMenuItem<String>(
+            value: option,
+            child: Text(option),
+          );
+        }).toList(),
+        onChanged: (String? newValue) {
+          severityController.text = newValue ?? '';
         },
+        decoration: const InputDecoration(
+          hintText: 'Select severity',
+          labelText: 'Severity*',
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(6)),
+          ),
+        ),
         validator: (value) {
-          if (value!.isEmpty) {
-            return incidentError;
+          if (value == null || value.isEmpty) {
+            return 'Please select a severity.';
           }
           return null;
         },
