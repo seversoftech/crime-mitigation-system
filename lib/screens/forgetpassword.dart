@@ -1,4 +1,3 @@
-
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
@@ -25,14 +24,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
 
   Future<void> resetPassword() async {
     setState(() {
-      _isLoading = true; 
+      _isLoading = true;
     });
 
     try {
-     
       await Future.delayed(const Duration(seconds: 2));
-
-   
 
       ShowMessage.show(
         context,
@@ -47,7 +43,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
       );
     } finally {
       setState(() {
-        _isLoading = false; 
+        _isLoading = false;
       });
     }
   }
@@ -108,6 +104,13 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   ),
                   const SizedBox(height: 20.0),
                   ElevatedButton(
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                      ),
+                    ),
                     onPressed: _isLoading
                         ? null
                         : () async {
@@ -116,7 +119,23 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                               await resetPassword();
                             }
                           },
-                    child: _isLoading ? const Loading (): const Text('Continue'),
+                    child: Ink(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      child: Container(
+                        constraints: const BoxConstraints(
+                            maxWidth: 200.0, minHeight: 50.0),
+                        alignment: Alignment.center,
+                        child: _isLoading
+                            ? const Loading()
+                            : Text(
+                                'Continue',
+                                style: Theme.of(context).textTheme.titleLarge,
+                              ),
+                      ),
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

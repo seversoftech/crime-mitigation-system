@@ -41,7 +41,7 @@ class _ReportCrimeState extends State<ReportCrime> {
 
   Future<void> _pickImage() async {
     final picker = ImagePicker();
-    final pickedImage = await picker.pickImage(source: ImageSource.camera);
+    final pickedImage = await picker.pickImage(source: ImageSource.gallery);
 
     if (pickedImage != null) {
       setState(() {
@@ -103,37 +103,6 @@ class _ReportCrimeState extends State<ReportCrime> {
           'An error occured...',
         );
       }
-      // var response = await http.post(
-      //   url,
-      //   body: {
-      //     "user_email": _emailController.text,
-      //     "incident": _incidentController.text,
-      //     "date": _dateController.text,
-      //     "severity": _severityController.text,
-      //     "location": _locationController.text,
-      //     "description": _descriptionController.text,
-      //     "image": image.name
-      //   },
-      // );
-
-      // var data = json.decode(response.body);
-
-      // print(response.body);
-
-      //   if (data == "Success") {
-      //     ShowMessage.show(
-      //       context,
-      //       color: Colors.green,
-      //       'Report Sent!',
-      //     );
-      //     Navigator.pop(context);
-      //   } else {
-      //     ShowMessage.show(
-      //       context,
-      //       color: Colors.red,
-      //       'An error occured...',
-      //     );
-      //   }
     } catch (exception) {
       print('Exception caught: $exception');
 

@@ -212,19 +212,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 10.0),
                   Stack(alignment: Alignment.center, children: [
-                    Stack(alignment: Alignment.center, children: [
-                      if (!_isLoading)
-                        ElevatedClickButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              _formKey.currentState!.save();
-                              login();
-                            }
-                          },
-                          child: 'Login',
-                        ),
-                      if (_isLoading) const Loading()
-                    ]),
+                    if (!_isLoading)
+                      ElevatedClickButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            _formKey.currentState!.save();
+                            login();
+                          }
+                        },
+                        child: 'Login',
+                      ),
+                    if (_isLoading) const Loading()
                   ]),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
