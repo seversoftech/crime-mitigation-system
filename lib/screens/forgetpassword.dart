@@ -30,10 +30,15 @@ class _ForgetPasswordState extends State<ForgetPassword> {
 
     try {
       await Future.delayed(const Duration(seconds: 2));
-      ShowMessage.show( context,'Password reset link sent!',
-          backgroundColor: Colors.green);
+      ShowSuccessMessage.show(
+        context,
+        'Password reset link sent!',
+      );
     } catch (e) {
-      ShowMessage.show( context,'An error occurred: $e', backgroundColor: Colors.red);
+      ShowErrorMessage.show(
+        context,
+        'An error occurred: $e',
+      );
     } finally {
       setState(
         () {

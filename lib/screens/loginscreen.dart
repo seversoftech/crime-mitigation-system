@@ -55,33 +55,33 @@ class _LoginScreenState extends State<LoginScreen> {
         var data = json.decode(response.body);
 
         if (data == "Success") {
-          ShowMessage.show(
+          ShowSuccessMessage.show(
             context,
             'Successful Login!',
-            backgroundColor: Colors.green,
+           
           );
           await _storage.write(key: "KEY_EMAIL", value: _emailController.text);
           await _storage.write(
               key: "KEY_PASSWORD", value: _passwordController.text);
           Navigator.pushReplacementNamed(context, '/profile');
         } else {
-          ShowMessage.show(
+          ShowErrorMessage.show(
             context,
             'Incorrect Login details!',
-            backgroundColor: Colors.red,
+            
           );
         }
       } else {
-        ShowMessage.show(
+        ShowErrorMessage.show(
           context,
-          backgroundColor: Colors.red,
+         
           'Connection Problem...',
         );
       }
     } catch (e) {
-      ShowMessage.show(
+      ShowErrorMessage.show(
         context,
-        backgroundColor: Colors.red,
+       
         'An error occurred: $e',
       );
     }

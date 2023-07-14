@@ -89,15 +89,14 @@ class _ReportCrimeState extends State<ReportCrime> {
       var response = await request.send();
 
       if (response.statusCode == 200) {
-        ShowMessage.show(
+        ShowSuccessMessage.show(
           context,
           'Report Sent!',
-          backgroundColor: Colors.green,
+         
         );
         Navigator.pop(context);
       } else {
-        ShowMessage.show( context,
-          backgroundColor: Colors.red,
+       ShowErrorMessage.show( context,
           'An error occured...',
         );
       }
@@ -106,8 +105,7 @@ class _ReportCrimeState extends State<ReportCrime> {
         print('Exception caught: $exception');
       }
 
-      ShowMessage.show( context,
-        backgroundColor: Colors.red,
+      ShowErrorMessage.show( context,
         'An error occurred: $exception',
       );
     }

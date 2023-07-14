@@ -48,20 +48,20 @@ class _SignupScreenState extends State<SignupScreen> {
 
       var data = json.decode(response.body);
       if (data == "Success") {
-        ShowMessage.show( context,
-          backgroundColor: Colors.green,
+        ShowSuccessMessage.show(
+          context,
           'Registration Successful',
         );
         Navigator.pushReplacementNamed(context, '/home');
       } else {
-        ShowMessage.show( context,
-          backgroundColor: Colors.red,
+        ShowErrorMessage.show(
+          context,
           'Email or Phone Number already exists',
         );
       }
     } catch (exception) {
-      ShowMessage.show( context,
-        backgroundColor: Colors.red,
+      ShowErrorMessage.show(
+        context,
         'An error occurred: $exception',
       );
       if (kDebugMode) {
