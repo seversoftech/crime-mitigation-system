@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>
- 
+ Crime Mitigation System --ADMIN
 </title>
  <link href="css/bootstrap.css" rel="stylesheet">
 
@@ -61,7 +61,7 @@ showtime();
 }
 window.onload=startclock;
 // End -->
-</SCRIPT>	
+</script>	
 </head>
 <body>
 <?php include('navfixed.php');?>
