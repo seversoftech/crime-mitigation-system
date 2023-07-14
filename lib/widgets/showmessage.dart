@@ -8,8 +8,8 @@ class ShowMessage {
       msg: message,
       backgroundColor: backgroundColor,
       textColor: Colors.white,
-      toastLength: Toast.LENGTH_LONG,
-      gravity: ToastGravity.SNACKBAR,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.CENTER,
       timeInSecForIosWeb: 1,
       fontSize: 16.0,
     );

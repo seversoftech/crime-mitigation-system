@@ -7,8 +7,6 @@ import 'screens/profilescreen.dart';
 import 'screens/signup.dart';
 import 'screens/theme.dart';
 
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -44,13 +42,7 @@ class MainApp extends StatelessWidget {
             '/signup': (context) => const SignupScreen(),
             '/forgetpassword': (context) => const ForgetPassword(),
             '/profile': (context) => const UserProfilePage(),
-            // '/notifications': (context) => NotificationScreen(
-            //       userEmail: storedEmail!,
-            //     ),
             '/report': (context) => const ReportCrime(),
-            // '/history': (context) => ReportHistroy(
-            //       userEmail: storedEmail!,
-            //     ),
           },
         );
       },
