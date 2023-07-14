@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -53,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
         var data = json.decode(response.body);
 
         if (data == "Success") {
-          ShowMessage.show(
+          ShowMessage.show( context,
             'Successful Login!',
             backgroundColor: Colors.green,
           );
@@ -62,19 +64,19 @@ class _LoginScreenState extends State<LoginScreen> {
               key: "KEY_PASSWORD", value: _passwordController.text);
           Navigator.pushReplacementNamed(context, '/profile');
         } else {
-          ShowMessage.show(
+          ShowMessage.show( context,
             'Incorrect login details!',
             backgroundColor: Colors.red,
           );
         }
       } else {
-        ShowMessage.show(
+        ShowMessage.show( context,
           backgroundColor: Colors.red,
           'Connection Problem...',
         );
       }
     } catch (e) {
-      ShowMessage.show(
+      ShowMessage.show( context,
         backgroundColor: Colors.red,
         'An error occurred: $e',
       );

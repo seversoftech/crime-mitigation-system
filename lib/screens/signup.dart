@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 import 'package:crime_mitigation_system/widgets/loading.dart';
 import 'package:flutter/foundation.dart';
@@ -46,19 +48,19 @@ class _SignupScreenState extends State<SignupScreen> {
 
       var data = json.decode(response.body);
       if (data == "Success") {
-        ShowMessage.show(
+        ShowMessage.show( context,
           backgroundColor: Colors.green,
           'Registration Successful',
         );
         Navigator.pushReplacementNamed(context, '/home');
       } else {
-        ShowMessage.show(
+        ShowMessage.show( context,
           backgroundColor: Colors.red,
           'Email or Phone Number already exists',
         );
       }
     } catch (exception) {
-      ShowMessage.show(
+      ShowMessage.show( context,
         backgroundColor: Colors.red,
         'An error occurred: $exception',
       );

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
@@ -88,12 +90,13 @@ class _ReportCrimeState extends State<ReportCrime> {
 
       if (response.statusCode == 200) {
         ShowMessage.show(
+          context,
           'Report Sent!',
           backgroundColor: Colors.green,
         );
         Navigator.pop(context);
       } else {
-        ShowMessage.show(
+        ShowMessage.show( context,
           backgroundColor: Colors.red,
           'An error occured...',
         );
@@ -103,7 +106,7 @@ class _ReportCrimeState extends State<ReportCrime> {
         print('Exception caught: $exception');
       }
 
-      ShowMessage.show(
+      ShowMessage.show( context,
         backgroundColor: Colors.red,
         'An error occurred: $exception',
       );
