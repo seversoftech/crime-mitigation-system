@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../constants/constants.dart';
 import '../widgets/elevatedButton.dart';
+import '../widgets/loading.dart';
 import '../widgets/showmessage.dart';
 
 class ReportCrime extends StatefulWidget {
@@ -24,6 +25,8 @@ class _ReportCrimeState extends State<ReportCrime> {
 
   Future<void>? _initializeControllerFuture;
   final _formKey = GlobalKey<FormState>();
+  bool _isLoading = false;
+
   final _storage = const FlutterSecureStorage();
 
   final TextEditingController _emailController =
@@ -92,11 +95,11 @@ class _ReportCrimeState extends State<ReportCrime> {
         ShowSuccessMessage.show(
           context,
           'Report Sent!',
-         
         );
         Navigator.pop(context);
       } else {
-       ShowErrorMessage.show( context,
+        ShowErrorMessage.show(
+          context,
           'An error occured...',
         );
       }
@@ -105,8 +108,9 @@ class _ReportCrimeState extends State<ReportCrime> {
         print('Exception caught: $exception');
       }
 
-      ShowErrorMessage.show( context,
-        'An error occurred: $exception',
+      ShowErrorMessage.show(
+        context,
+        '$exception',
       );
     }
   }
@@ -174,9 +178,15 @@ class _ReportCrimeState extends State<ReportCrime> {
                                 fit: BoxFit.cover,
                               )
                             : Center(
-                                child: Text(
-                                  'No Image available',
-                                  style: textStyleWarning,
+                                child: Column(
+                                  children: [
+                                    const Loading(),
+                                    Text(
+                                      textAlign: TextAlign.center,
+                                      'No Image! \n Capture an Image.',
+                                      style: textStyleWarning,
+                                    ),
+                                  ],
                                 ),
                               ),
                       ),

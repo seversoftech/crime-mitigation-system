@@ -7,13 +7,21 @@ class ShowSuccessMessage {
     final scaffoldMessenger = ScaffoldMessenger.of(context);
     scaffoldMessenger.showSnackBar(
       SnackBar(
+        elevation: 0,
         content: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(message, style: textStyleBold),
-              Icon(LineAwesomeIcons.check_circle, color: Colors.white)
+              Text(
+                  overflow: TextOverflow.ellipsis,
+                  message,
+                  style: textStyleBold),
+              const Icon(
+                LineAwesomeIcons.check_circle,
+                color: Colors.white,
+                size: 30,
+              )
             ],
           ),
         ),
@@ -41,13 +49,21 @@ class ShowErrorMessage {
     final scaffoldMessenger = ScaffoldMessenger.of(context);
     scaffoldMessenger.showSnackBar(
       SnackBar(
+        elevation: 0,
         content: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(message, style: textStyleBold),
-              Icon(LineAwesomeIcons.times_circle, color: Colors.white)
+              Text(
+                  overflow: TextOverflow.ellipsis,
+                  message,
+                  style: textStyleBold),
+              const Icon(
+                LineAwesomeIcons.times_circle,
+                color: Colors.white,
+                size: 30,
+              )
             ],
           ),
         ),

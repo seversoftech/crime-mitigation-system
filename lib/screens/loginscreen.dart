@@ -58,7 +58,6 @@ class _LoginScreenState extends State<LoginScreen> {
           ShowSuccessMessage.show(
             context,
             'Successful Login!',
-           
           );
           await _storage.write(key: "KEY_EMAIL", value: _emailController.text);
           await _storage.write(
@@ -68,21 +67,18 @@ class _LoginScreenState extends State<LoginScreen> {
           ShowErrorMessage.show(
             context,
             'Incorrect Login details!',
-            
           );
         }
       } else {
         ShowErrorMessage.show(
           context,
-         
           'Connection Problem...',
         );
       }
     } catch (e) {
       ShowErrorMessage.show(
         context,
-       
-        'An error occurred: $e',
+        'Error: $e',
       );
     }
 

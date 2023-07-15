@@ -37,7 +37,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
     } catch (e) {
       ShowErrorMessage.show(
         context,
-        'An error occurred: $e',
+        'Error: $e',
       );
     } finally {
       setState(

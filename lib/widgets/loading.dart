@@ -7,9 +7,13 @@ class Loading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CircularProgressIndicator(
-      strokeWidth: 1,
-      strokeCap: StrokeCap.square,
+    return const SizedBox(
+      width: 25,
+      height: 25,
+      child: CircularProgressIndicator(
+        strokeWidth: 5,
+        strokeCap: StrokeCap.round,
+      ),
     );
   }
 }

@@ -62,7 +62,7 @@ class _SignupScreenState extends State<SignupScreen> {
     } catch (exception) {
       ShowErrorMessage.show(
         context,
-        'An error occurred: $exception',
+        'Error: $exception',
       );
       if (kDebugMode) {
         print('Exception caught: $exception');
