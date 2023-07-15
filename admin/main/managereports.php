@@ -32,6 +32,39 @@
             })
         })
     </script>
+
+
+<script language="javascript" type="text/javascript">
+//
+
+var timerID = null;
+var timerRunning = false;
+function stopclock (){
+if(timerRunning)
+clearTimeout(timerID);
+timerRunning = false;
+}
+function showtime () {
+var now = new Date();
+var hours = now.getHours();
+var minutes = now.getMinutes();
+var seconds = now.getSeconds()
+var timeValue = "" + ((hours >12) ? hours -12 :hours)
+if (timeValue == "0") timeValue = 12;
+timeValue += ((minutes < 10) ? ":0" : ":") + minutes
+timeValue += ((seconds < 10) ? ":0" : ":") + seconds
+timeValue += (hours >= 12) ? " P.M." : " A.M."
+document.clock.face.value = timeValue;
+timerID = setTimeout("showtime()",1000);
+timerRunning = true;
+}
+function startclock() {
+stopclock();
+showtime();
+}
+window.onload=startclock;
+// End -->
+</script>	
 </head>
 <body>
 <?php include('navfixed.php'); ?>
@@ -42,7 +75,7 @@
                 <ul class="nav nav-list">
                     <li><a href="index.php"><i class="icon-dashboard icon-2x"></i> Dashboard </a></li>
                     <li><a href="users.php"><i class="icon-group icon-2x"></i>Manage Users</a></li>
-                    <li><a href="adduser.php"><i class="icon-group icon-2x"></i>Add User</a></li>
+                    <li><a href="adduser.php"><i class="icon-user icon-2x"></i>Add User</a></li>
                     <li class="active"><a href="managereports.php"><i class="icon-laptop icon-2x"></i>Manage
                             Reports</a></li>
 
@@ -93,15 +126,15 @@
             <table class="hoverTable" id="resultTable" data-responsive="table" style="text-align: left;">
                 <thead>
                 <tr>
-                    <th width="12%">Report ID</th>
-                    <th width="20%">Incident</th>
-                    <th width="40%">Description</th>
+                    <th width="10%">Report ID</th>
+                    <th width="15%">Incident</th>
+                    <th width="30%">Description</th>
                     <th width="10%">Severity</th>
                     <th width="10%">Location</th>
                     <th width="15%">Date</th>
-                    <th width="20%">Image</th>
+                    <th width="30%">Image</th>
                     <th width="20%">Reporter</th>
-                    <th width="70%">Action</th>
+                    <th width="20%">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -120,7 +153,7 @@
                         <td><?php echo $row['date']; ?></td>
                         <td>
                             <?php if (!empty($row['image'])) { ?>
-                                <img src="admin/uploads/<?php echo $row['image']; ?>" alt="Image">
+                                <img src="admin/uploads/<?php echo $row['image']; ?>" alt="Crime Scene">
                             <?php } else { ?>
                                 No Image
                             <?php } ?>

@@ -84,7 +84,7 @@ window.onload=startclock;
               <li><a href="index.php"><i class="icon-dashboard icon-2x"></i> Dashboard </a></li> 
 			<li><a href="users.php"><i class="icon-group icon-2x"></i>Manage Users</a>  </li>
 			<li><a href="adduser.php"><i class="icon-user icon-2x"></i>Add User</a>     </li>
-			<li lass="active"><a href="managereports.php"><i class="icon-laptop icon-2x"></i>Manage Reports</a></li>
+			<li class="active"><a href="managereports.php"><i class="icon-laptop icon-2x"></i>Manage Reports</a></li>
 
 			<br><br>	
 			<li>
@@ -110,7 +110,7 @@ window.onload=startclock;
 
 
 <div style="margin-top: -19px; margin-bottom: 21px;">
-<a  href="index.php"><button class="btn btn-default btn-large" style="float: left;"><i class="icon icon-circle-arrow-left icon-large"></i> Back</button></a>
+<a  href="managereports.php"><button class="btn btn-default btn-large" style="float: left;"><i class="icon icon-circle-arrow-left icon-large"></i> Back</button></a>
 
 <?php
 	include('../connect.php');
