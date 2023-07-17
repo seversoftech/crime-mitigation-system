@@ -14,9 +14,9 @@ class ShowSuccessMessage {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                  overflow: TextOverflow.ellipsis,
-                  message,
-                  style: textStyleBold),
+                overflow: TextOverflow.ellipsis,
+                message,
+              ),
               const Icon(
                 LineAwesomeIcons.check_circle,
                 color: Colors.white,
