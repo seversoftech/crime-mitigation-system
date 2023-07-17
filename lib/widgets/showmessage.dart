@@ -1,6 +1,5 @@
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:flutter/material.dart';
-import '../constants/constants.dart';
 
 class ShowSuccessMessage {
   static void show(BuildContext context, String message) {
@@ -9,7 +8,7 @@ class ShowSuccessMessage {
       SnackBar(
         elevation: 0,
         content: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(4.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -51,14 +50,11 @@ class ShowErrorMessage {
       SnackBar(
         elevation: 0,
         content: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(4.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                  overflow: TextOverflow.ellipsis,
-                  message,
-                  style: textStyleBold),
+              Text(overflow: TextOverflow.ellipsis, message),
               const Icon(
                 LineAwesomeIcons.times_circle,
                 color: Colors.white,

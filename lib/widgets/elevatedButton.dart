@@ -25,9 +25,6 @@ class ElevatedClickButton extends StatelessWidget {
       ),
       child: Ink(
         width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12.0),
-        ),
         child: Container(
           constraints: const BoxConstraints(maxWidth: 200.0, minHeight: 50.0),
           alignment: Alignment.center,
