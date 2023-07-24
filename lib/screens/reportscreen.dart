@@ -46,13 +46,17 @@ class _ReportCrimeState extends State<ReportCrime> {
     final pickedImage = await picker.pickImage(source: ImageSource.camera);
 
     if (pickedImage != null) {
-      setState(() {
-        _image = File(pickedImage.path);
-      });
+      setState(
+        () {
+          _image = File(pickedImage.path);
+        },
+      );
     } else {
-      setState(() {
-        _image = null;
-      });
+      setState(
+        () {
+          _image = null;
+        },
+      );
     }
   }
 
