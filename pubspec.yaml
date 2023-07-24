@@ -14,9 +14,7 @@ dependencies:
 
   flutter_secure_storage:
   line_awesome_flutter:
-  flutter_animate:
   path_provider:
-  fluttertoast:
   image_picker:
   google_fonts:
   http:
