@@ -9,7 +9,7 @@ $description = $_POST['description'];
 $user_email = $_POST['user_email'];
 
 $image = $_FILES['image']['name'];
-$imagePath = 'admin/uploads/' . $image;
+$imagePath = 'admin/main/uploads/' . $image;
 $tmp_name = $_FILES['image']['tmp_name']; 
 
 

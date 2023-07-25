@@ -2,6 +2,7 @@
 <head>
     <title></title>
     <?php
+    
     require_once('auth.php');
     ?>
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -152,12 +153,18 @@ window.onload=startclock;
                         <td><?php echo $row['location']; ?></td>
                         <td><?php echo $row['date']; ?></td>
                         <td>
-                            <?php if (!empty($row['image'])) { ?>
-                                <img src="admin/uploads/<?php echo $row['image']; ?>" alt="Crime Scene">
+                            <?php
+                            if (!empty($row['image'])) {
+                                $imagePath = "uploads/" . $row['image'];
+                                echo "Image Path: " . $imagePath . "<br>";
+                            ?>
+                                <img src="<?php echo $imagePath; ?>" alt="Crime Scene">
                             <?php } else { ?>
                                 No Image
                             <?php } ?>
                         </td>
+
+                       
                         <td><?php echo $row['user_email']; ?></td>
                         <td>
                             <a title="Click to view the report"
