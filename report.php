@@ -31,7 +31,7 @@ if ($connection->query($sql) === TRUE) {
     echo 'Error saving fields: ' . $connection->error;
 }
 
-// Close the database connection
+// Close the database connection.
 $connection->close();
 return;
 ?>
