@@ -176,19 +176,9 @@ window.onload=startclock;
 				color: #7d7d7d;"> 
 				<!-- <?php echo $row['']; ?> -->
 				<?php echo $row['date']; ?></td>
-				</td>
+				
 </tr>
-<tr>
-<td> Photo :  </td>
-<td style="padding: 10px;
-				border-top: 1px solid #fafafa;
-				background-color: #f4f4f4;
-				text-align: center;
-				color: #7d7d7d;"> 
-				<!-- <?php echo $row['']; ?> -->
-				<?php echo $row['image']; ?></td>
-				</td>
-</tr>
+
 <tr>
 <td> Reporter :  </td>
 <td style="padding: 10px;
@@ -201,7 +191,25 @@ window.onload=startclock;
 				</td>
 </tr>
 
-
+<tr>
+<td> Photo :  </td>
+<td style="padding: 10px;
+				border-top: 1px solid #fafafa;
+				background-color: #f4f4f4;
+				text-align: center;
+				color: #7d7d7d;"> 
+				
+				 <?php
+                            if (!empty($row['image'])) {
+                                $imagePath = "uploads/" . $row['image'];
+                                // echo "Image Path: " . $imagePath . "<br>";
+                            ?>
+                                <img src="<?php echo $imagePath; ?>" alt="Crime Scene">
+                            <?php } else { ?>
+                                No Image
+                            <?php } ?>
+				
+</tr>
 
 </table>
 <br>

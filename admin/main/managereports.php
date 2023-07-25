@@ -156,7 +156,7 @@ window.onload=startclock;
                             <?php
                             if (!empty($row['image'])) {
                                 $imagePath = "uploads/" . $row['image'];
-                                echo "Image Path: " . $imagePath . "<br>";
+                                // echo "Image Path: " . $imagePath . "<br>";
                             ?>
                                 <img src="<?php echo $imagePath; ?>" alt="Crime Scene">
                             <?php } else { ?>
