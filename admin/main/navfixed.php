@@ -20,9 +20,8 @@
 				</a></li>
               <li><a href="../index.php"><font color="red"><i class="icon-off icon-large"></i></font> Log Out</a></li>
             </ul>
-          </div><!--/.nav-collapse -->
+          </div><!--/..nav-collapse -->
         </div>
       </div>
     </div>
 	
-    
