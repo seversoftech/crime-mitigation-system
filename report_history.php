@@ -27,4 +27,3 @@ if (isset($_GET['user_email'])) {
 } else {
     echo "No 'user_email' parameter provided in the URL.";
 }
-?>

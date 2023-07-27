@@ -73,4 +73,3 @@
 	}else {
 		die("Query failed");
 	}
-?>

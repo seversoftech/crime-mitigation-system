@@ -37,12 +37,11 @@ $q->bindValue(5, $id, PDO::PARAM_INT);
 $result = $q->execute();
 
 if ($result) {
-    
+
     header("Location: users.php");
     exit;
 } else {
-    
+
     header("Location: edit_user.php?id=$id&error=update_failed");
     exit;
 }
-

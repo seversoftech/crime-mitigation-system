@@ -10,7 +10,7 @@ $user_email = $_POST['user_email'];
 
 $image = $_FILES['image']['name'];
 $imagePath = 'admin/main/uploads/' . $image;
-$tmp_name = $_FILES['image']['tmp_name']; 
+$tmp_name = $_FILES['image']['tmp_name'];
 
 
 move_uploaded_file($tmp_name, $imagePath);
@@ -34,4 +34,3 @@ if ($connection->query($sql) === TRUE) {
 // Close the database connection.
 $connection->close();
 return;
-?>

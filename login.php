@@ -55,4 +55,3 @@ if (mysqli_num_rows($result) == 1) {
 }
 // Close the database connection
 // mysqli_close($connection);
-?>
