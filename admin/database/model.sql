@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2023 at 08:08 AM
+-- Generation Time: Jul 27, 2023 at 06:02 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -78,8 +78,8 @@ CREATE TABLE `reports` (
 --
 
 INSERT INTO `reports` (`id`, `incident`, `date`, `severity`, `location`, `description`, `image`, `user_email`) VALUES
-(1, 'Robbery ', '2023-07-05', 'high', 'Dummy Town', 'Heavily Armed gun men stormed Dummy Bank at 8th Stree, Dummy town. ', 'CAP674262051106838101.jpg', 'sever@seversoftech.com'),
-(2, 'Murder ', '2023-07-05', 'high', 'Advent Road ', 'Someone was just stabbed to death on the way ', 'CAP8584749765518815150.jpg', 'ibiam@gmail.com');
+(1, 'Robbery ', '2023-07-05', 'high', 'Dummy Town', 'Heavily Armed gun men stormed Dummy Bank at 8th Stree, Dummy town. ', '0ea8e274-fca4-4411-9bb2-86f31d6133ac2311579244873362872.jpg', 'sever@seversoftech.com'),
+(2, 'Murder ', '2023-07-05', 'high', 'Advent Road ', 'Someone was just stabbed to death on the way ', '3d2584a1-9bb2-4c6b-afae-f751f3efc99d48704754788869794.jpg', 'ibiam@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -102,8 +102,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fullname`, `email`, `phone`, `address`, `password`, `token`) VALUES
-(1, 'Sever Emmanuels', 'sever@seversoftech.com', '07033409667', '12th Street, Greens Avenue.', '$2y$10$nyVM3zaHFKAGAdrSnt3VJ.q.YVlwFIyJ3ROf/tDBoDqJQU0YszlsG', 'cfc2a0ed2bb92e457abf1023666b12bbd88a14856266d13747b3d102ba671512'),
-(2, 'Ibiam Uko', 'ibiam@gmail.com', '09050000056', 'AIFPU', '$2y$10$1p1zGXSE0LQrzpvKwQ8WXus3QtO4F4h4kVpVIksG2hTa8qdgiKINS', '2f7c8a4dd52c6c709091d0fec15c7ec9ea8ba40dd74b6019945466a2fe422b69');
+(1, 'Sever Emmanuels', 'sever@seversoftech.com', '07033409667', '12th Street, Greens Avenue.', '$2y$10$nyVM3zaHFKAGAdrSnt3VJ.q.YVlwFIyJ3ROf/tDBoDqJQU0YszlsG', '2f1f2ea3f9c23e4611d1ebb2b01d79d9f93c09f42a33f91b8654655a0c7ec0ba'),
+(2, 'Ibiam Uko', 'ibiam@gmail.com', '09050000056', 'AIFPU', '$2y$10$1p1zGXSE0LQrzpvKwQ8WXus3QtO4F4h4kVpVIksG2hTa8qdgiKINS', 'cb293f07cd0781952e98d8951f9bd36cb85a674d6a84d3b6f42db6556110a3bf');
 
 --
 -- Indexes for dumped tables
@@ -155,13 +155,13 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
