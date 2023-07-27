@@ -193,6 +193,6 @@ window.onload=startclock;
 
 
 </body>
-  <!-- //<?php include('footer.php');?> -->
+  
 
 </html>
