@@ -136,9 +136,10 @@ class _ReportCrimeState extends State<ReportCrime> {
                   child: Column(
                     children: [
                       Text(
-                          textAlign: TextAlign.center,
-                          style: textStyleWarning,
-                          'Please note that reporting fasle & misleading Information is punishable by the law'),
+                        textAlign: TextAlign.center,
+                        style: textStyleWarning,
+                        'Please note that reporting fasle & misleading Information is punishable by the law',
+                      ),
                       const Divider(
                         color: Colors.grey,
                         thickness: 1.0,
